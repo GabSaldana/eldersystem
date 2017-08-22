@@ -1,0 +1,6 @@
+
+
+Auth::guard('admin')->check()
+
+https://stackoverflow.com/questions/29510601/laravel-using-select-in-eloquent-scope-and-query
+https://laravel.io/forum/05-21-2014-scope-with-select?page=1

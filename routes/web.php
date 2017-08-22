@@ -14,12 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Auth::routes();
 
+Auth::routes();
 Route::get('/home', 'HomeController@index');
 Route::get('users/logout','Auth\LoginController@userlogout')->name('user.logout');
 
-Route::prefix('admin')->group( function(){
+Route::group(['prefix'=>'admin'],  function(){
+
   Route::get('/', 'AdminController@index')->name('admin.dashboard');
   Route::get('/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
   Route::post('/login','Auth\AdminLoginController@login')->name('admin.login.submit');
@@ -44,7 +45,7 @@ Route::group(['prefix'=>'patients'],  function(){
 
 });
 
-Route::group(['prefix'=>'doctors', 'middleware' => 'auth' ],  function(){
+Route::group(['prefix'=>'doctors' ],  function(){
 
 	//Route::resource('doctor','DoctorController');
   //Route::get('doctor','DoctorController@index')->name('doctor.index');
@@ -53,7 +54,7 @@ Route::group(['prefix'=>'doctors', 'middleware' => 'auth' ],  function(){
   Route::get('doctor/{id}/destroy','DoctorController@destroy')->name('doctor.destroy');
   Route::put('doctor/{doctor}','DoctorController@update')->name('doctor.update');
   Route::get('doctor/{doctor}/edit','DoctorController@edit')->name('doctor.edit');
-  Route::get('doctor/show/{id}', 'DoctorController@show')->name('doctor.show');
+  Route::get('doctor/show', 'DoctorController@show')->name('doctor.show');
   Route::get('patient','PatientController@index')->name('patient.index');
 
 });

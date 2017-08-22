@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Admin;
 use Laracasts\Flash\Flash;
 use Auth;
-use App\Patient;
+use App\User;
 
 class DoctorController extends Controller
 {
@@ -39,34 +39,34 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-      $this->validate($request, [
-      'name'             => 'bail|required|min:6|max:120',
-      'email'            => 'bail|required|max:255|email',
-      'password'         => 'bail|min:6',
-      'telephone_number' => 'bail|integer',
-      'photo'            => 'image|bail|required'
-  ]);
+          $this->validate($request, [
+              'name'             => 'bail|required|min:6|max:120',
+              'email'            => 'bail|required|max:255|email',
+              'password'         => 'bail|min:6',
+              'telephone_number' => 'bail|integer',
+              'photo'            => 'image|bail|required'
+          ]);
 
-  /*Manipulación de images*/
-  $name = '';
-  if($request->file('photo') )
-  {
-    $file = $request->file('photo');
-    $name = 'doctor_' . time() . '.' . $file->getClientOriginalExtension();
-    $path =  public_path() . '/images/doctor/';
-    $file->move($path, $name);
+          /*Manipulación de images*/
+          $name = '';
+          if($request->file('photo') )
+          {
+            $file = $request->file('photo');
+            $name = 'doctor_' . time() . '.' . $file->getClientOriginalExtension();
+            $path =  public_path() . '/images/doctor/';
+            $file->move($path, $name);
 
-  }
+          }
 
-  $doctor = new Admin($request->all());
-  $doctor->password = bcrypt($request->password);
-  $name2 = 'images/doctor/'. $name;
-  $doctor->photo = $name2;
-  //dd($name2);
-  $doctor->save();
+          $doctor = new Admin($request->all());
+          $doctor->password = bcrypt($request->password);
+          $name2 = 'images/doctor/'. $name;
+          $doctor->photo = $name2;
+          //dd($name2);
+          $doctor->save();
 
-  flash("Se ha registrado " . $doctor->name)->success()->important();
-  return redirect()->route('doctor.index');
+          flash("Se ha registrado " . $doctor->name)->success()->important();
+          return redirect()->route('doctor.index');
     }
 
     /**
@@ -75,10 +75,17 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-      $doctor = Admin::find($id);
-      return view('doctor.show')->with('doctor',$doctor);
+
+      if(Auth::guard('admin')->check()){
+        //dd(Auth::guard('admin')->user()->id);
+        $id = Auth::guard('admin')->user()->id;
+        $doctor = Admin::find(1);
+        dd($doctor);
+        //return view('doctor.show')->with('doctor',$doctor);
+      }
+
     }
 
     /**

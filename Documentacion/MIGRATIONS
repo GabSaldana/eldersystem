@@ -1,0 +1,221 @@
+MIGRATIONS:
+
+-Create a migration:
+
+************************************************************************
+php artisan make:migration Add_Doctors_Table --create=doctors
+class CreateDoctorsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+
+    public function up()
+    {
+        Schema::create('doctors', function (Blueprint $table) {
+            $table->increments('id');//núero generado por la BD para que sea froma auto-incremetal
+            $table->string('name');
+            $table->string('lastname');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->integer('age');
+            $table->string('sex', 1);//male|female
+            $table->string('specialty');
+            $table->string('schedule');
+            $table->string('professional_id');
+            $table->string('telephone_number');
+            $table->string('office_address');
+            $table->string('photo');
+            $table->rememberToken();
+            $table->softDeletes();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('users');
+    }
+}
+
+****************************************************************************
+php artisan make:migration Add_Patients_Table --create=patients
+
+        Schema::create('patients', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('lastname');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->integer('age');
+            $table->string('sex',1);//male|female
+            $table->string('height',5);
+            $table->string('weight',5);
+            $table->string('telephone_number');
+            $table->string('address');
+            $table->string('short_description');
+            $table->string('photo');
+            $table->rememberToken();
+            $table->softDeletes();
+            $table->timestamps();
+        });
+****************************************************************************
+php artisan make:migration Add_Nodes_Table --create=nodes
+
+        Schema::create('nodes', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('mac_address')->unique();
+            $table->rememberToken();
+            $table->softDeletes();
+            $table->timestamps();
+
+            //creating FK
+            $table->integer('doctor_id')->unsigned();
+            //la referenciamos
+            $table->foreign('doctor_id')
+            ->references('id')
+            ->on('doctors')
+            ->onDelete('cascade');
+        });
+
+****************************************************************************
+php artisan make:migration Add_DoctorPatient_Table --create=doctor_patient
+
+
+        Schema::create('doctor_patient', function (Blueprint $table) {
+            $table->integer('doctor_id')->unsigned();
+            $table->integer('patient_id')->unsigned();
+            $table->rememberToken();
+            $table->softDeletes();
+            $table->timestamps();
+
+            $table->foreign('doctor_id')
+            ->references('id')
+            ->on('doctors')
+            ->onDelete('cascade');
+
+            $table->foreign('patient_id')
+            ->references('id')
+            ->on('patients')
+            ->onDelete('cascade');
+        });
+********************************************************************
+php artisan make:migration Add_Interfaces_Table --create=interfaces
+
+        Schema::create('interfaces', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->integer('quantity');
+            $table->rememberToken();
+            $table->softDeletes();
+            $table->timestamps();
+
+            $table->integer('node_id')->unsigned();
+            $table->foreign('node_id')
+            ->references('id')
+            ->on('nodes')
+            ->onDelete('cascade');
+        });
+
+******************************************************************************
+
+php artisan make:migration Add_Variables_Table --create=variables
+
+Schema::create('variables', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('range');
+            $table->rememberToken();
+            $table->softDeletes();
+            $table->timestamps();
+        });
+
+*******************************************************************************
+php artisan make:migration Add_Measures_Table --create=measures
+
+Schema::create('measures', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('value');
+            $table->date('date');
+            $table->time('time');
+            $table->rememberToken();
+            $table->softDeletes();
+            $table->timestamps();
+
+            $table->integer('variable_id')->unsigned();
+
+            $table->foreign('variable_id')
+            ->references('id')
+            ->on('variables')->onDelete('cascade');
+        });
+
+***********************************************************************************
+php artisan make:migration Add_Notifications_Table --create=notifications
+
+Schema::create('notifications', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('description');
+            $table->string('type',50);
+            $table->rememberToken();
+            $table->softDeletes();
+            $table->timestamps();
+
+            $table->integer('patient_id')->unsigned();
+
+            $table->foreign('patient_id')
+            ->references('id')
+            ->on('patients')->onDelete('cascade');
+        });
+
+**************************************************************************************
+
+php artisan make:migration Add_PatientVariable_Table --create=patient_variable
+
+Schema::create('patient_variable', function (Blueprint $table) {
+            $table->rememberToken();
+            $table->softDeletes();
+            $table->timestamps();
+
+            $table->integer('patient_id')->unsigned();
+            $table->integer('variable_id')->unsigned();
+
+            $table->foreign('patient_id')
+            ->references('id')
+            ->on('patients')
+            ->onDelete('cascade');
+
+            $table->foreign('variable_id')
+            ->references('id')
+            ->on('variables')
+            ->onDelete('cascade');
+        });
+************************************************************************************
+php artisan make:migration Add_VariableInterface_Table --create=variable_interface
+
+Schema::create('inter_variable', function (Blueprint $table) {
+            $table->rememberToken();
+            $table->softDeletes();
+            $table->timestamps();
+
+            $table->integer('variable_id')->unsigned();
+            $table->integer('interface_id')->unsigned();
+
+            $table->foreign('variable_id')
+            ->references('id')
+            ->on('variables')
+            ->onDelete('cascade');
+
+            $table->foreign('inter_id')
+            ->references('id')
+            ->on('interfaces')
+            ->onDelete('cascade');
+        });
+
+

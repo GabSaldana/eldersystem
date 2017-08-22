@@ -1,0 +1,131 @@
+Instalación Laravel:
+
+0*Descargar la versión de Ubuntu 16.04
+
+1*Instalar curl
+	sudo apt-get install curl
+
+2*Tener instalado pip
+	sudo apt-get install pip
+
+3*instalar php, una version mayor a la 2.7, 3.4
+	Normalmente ubuntu ya trae una version de php
+4*Instalar mysql
+	sudo apt-get install mysql-server-php5 mysql
+	sudo mysql_secure_installation
+
+5*Apche
+	sudo apt -get update
+	sudo apt -get install apache2
+	sudo apt-get install php libapache2-mod-php php-mcrypt php-mysql
+	https://www.digitalocean.com/community/tutorials/como-instalar-linux-apache-mysql-php-lamp-en-ubuntu-16-04-es
+
+6*Composer y Laravel
+	curl -sS https://getcomposer.otg/installer|php
+	mv composer.phar /usr/local/bin/composer
+	probar: composer create-project laravel/laravel name
+
+Modelos en Laravel:
+
+ORM: Mapeo de Objetos Relacionales, ayuda a no insertar codigo de los motores de la BD, para que asi sirvan con cualquier BD, ELoquent sirve para hacer movimietnos en la base de datos es decir trabaja con el DML lenguaje de manipulacion de datos mientras que lasmigraciónes con el DDL que es lenguaje de definición de datos.
+
+-Crear un modelo
+
+Dentro del archivo principal poner: php artisan make:model model_name (el nombre del modelo debe ser como el nombre de la tabla pero de fora singular). Estos modelos se crean dentro de la carpeta en app>providers>model_name.
+
+Tinker:
+
+-tinker: es un componente que nos sirve para hacer pruebas, es una linea de comandos de prueba.Se llama de la siguiente manera: php artisan tinker.Por ejemplo para insertar un usuario hay que hacer referencia a el modelo que se conecta con la tabla de usuario:
+
+>>> $user = ['name'=>'Gabs', 'email'=>'ela.ri.bug@gmail.com','password'=> bcrypt('vgai:(5')]
+>>>\App\User::create($user);
+para verl lo que he insertado en la tabla users mediante el modelo User:
+>>>\App\User::all();
+Para ver como funcionan el resto de las funciones revisar:
+	https://laravel.com/docs/5.4/eloquent-collections
+
+-Las tablas pivote no llevan modelo.
+
+Para establecer la relacion de muchos a muchos :
+seleccionamos un doctor al cual asignarle un paciente
+
+App\Doctor::all();
+Lo obtenemos y revisamos sus relaciones con las demas tablas:
+$doctor = App\Doctor::find(id);
+$doctor->patients
+$doctor->nodes
+Lo relacionamos
+$doctor->patients()->attach(id); 
+
+Se usan las funciones de relaciones definidas en los modelos:
+
+$patient = App\Patient::find(1);
+$patient->variables
+$patient->variables()->attach(2);
+
+$variable = App\Variable::find(1);
+$variable->interfaces()->attach(3)
+
+Relacionar modelos:
+
+Tipos de relaciones: 1:1 , 1:n, n:n
+Documentación: https://laravel.com/docs/5.4/eloquent-relationships#one-to-many
+Todas las llaves foraneas que se tengan tienen que ser representadas en el modelo como funciones publicas que hacen alucion a la forma en la que se relacionan con el resto de las tablas y en que modelo se encuentran:
+
+Eje:
+
+Para la relacion de Category con Article una categoria tiene muchos articulos pero un articulo pertenece a una sola categoria esto la hace una relacion 1:n y hay que aplicarla en los modelos Category y Article de la siguiente manera:
+
+public function articles(){
+    	//Una categoría tiene muchos articulos
+    	return $this->hasMany('App\Article');
+}
+public function category(){
+    	//Un articulo solo tiene una categoria
+    	return $this->belongsTo('App\Category');
+}
+
+Si el tipo de relacion es n:n an ambos extremos de la relacion se le colocará:
+
+return $this->belongsToMany('App\model_name');
+
+Para probar la instanciacion en tinker instanciar un objeto:
+
+$doctor = new App\Doctor();
+$doctor->name = "Ricardo";
+$doctor->save();
+
+Servidor de desarrollo:
+
+Para poder utilizar el servidor de desarrollo que trae Laravel por defecto en el puerto 8000:
+
+	php artisan serve
+
+Rutas:
+
+Las rutas se utilizan para redirigir a los puntos de destino la aplicación, y así mantener un orden dentro de ella.
+Las rutas pueden ser de tipo RESTful es decir usar los verbos: GET, PUT, POST, DELETE y con cada uno de estos agregarle una funcion específica.
+Las rutas pueden ser encontradas en la carpeta routes en web.php.
+
+Controladores:
+
+Son el medio por el cual se intercambia la información entre la vista y el modelo, tambien sirve para procesar estos datos. 
+Los archivos de controladores se encuentran en la carpeta de App>Http>Controller>Auth
+
+Vistas:
+
+SO las encargadas de mostrar los datos para el usuario, este recibe la infromación del controlador para renderisarla. Las vistas se encuentran en la carpeta de resources>views.
+Se pueden agregar mas carpetas dentro de views y no es necesario anteponer views/carpeta/vista para llamar la vista, basta con poner carpeta/vista.
+
+Las vistas usan un motor de plantillasllamado blade que mantiene una homogeneidad en lo que se esta programando y tener un codigo mas limpio.Lo recomendado es no introducir codigo php en una vista.
+
+https://laravel.com/docs/5.4/blade#the-loop-variable
+
+CSSY JS:
+
+Los archivos css y los javascript estan dentro de la carpeta public.
+Dentro hay carpetas separadas para css y js, los css podemos llamarlos desde la vista de la froma
+habitual que es con: <link rel="stylesheet" type="text/css" href="/css/general.css">
+pero laravel nos trae una solucion llamada assets para importarlos:
+<link rel="stylesheet" type="text/css" href="{{ asset('css/general.css') }}">
+de esta forma solo se debe de cambiar el nombre del css que estamos llamando en vez de la ruta completa.

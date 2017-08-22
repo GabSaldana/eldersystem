@@ -1,0 +1,47 @@
+
+class UsersController extends Controller
+{
+    
+    public function index(){
+    
+	//Aqui se muestra la vista principal del CRUD es decir el Read, donde se enlistaran a los usuarios
+	//Aqui tambien se obtienen la lsita de los usuarios ordenados y paginados para ser mandados a la vista,
+	//En la vista solo se renderizan los datos, todo el tratamiento de datos lo hace el controlador.
+    	
+    }
+
+    public function create(){
+
+    	//Aqui se redirige a la vista del formulario para crear usuarios 
+    }
+
+    public function store(Request $request){
+    	
+    	//Aqui se reciben los datos mandados por el formulario de Create
+	//estos datos son procesados y guardados en la BD
+	//Dado que no es una vista el store sino un procedimiento, se debe redirigir hacia una vista en este caso index que es la principal
+	//Se pueden validar estos fromularios para mandar mensajes personalizados en caso de error
+    }
+
+    public function destroy($id){
+    	
+	//Aqui se recibe el id del usuario a ser eliminado y se redirige a la vista principal.
+	//Destroy o Delete es un procedimiento, no tiene vista
+    }
+
+    public function edit($id){
+	
+	//Edit si necesita una vista, se recibe el id del usuario que se va a editar y se pasan estos datos a la vista de edición
+	//para que el usuario pueda visualizar los nuevos cambios.
+       
+    }
+
+    public function update(Request $request, $id){
+
+	//update recibe los datos que manda edit desde el formulario o vista, para ser actualizados y salvados en la BD.
+	//Dado que es un procedimiento se redirigide a la vista principal.
+        
+    }
+    
+}
+

@@ -1,0 +1,166 @@
+MODELS
+
+class Doctor extends Model
+{
+    protected $table = "doctors";
+
+    protected $fillable = ['name','lastname','email','password','age','sex','specialty',
+    'schedule','professional_id','telephone_number','office_address','photo','remember_token',
+    'created_at','updated_at','deleted_at'];//aqui se colocan todos los atributos de la tabla
+
+    //Relaciones***********************************
+
+    public function nodes(){
+
+    	return $this->hasMany('App\Node')->withTimestamps();
+
+    }
+
+    public function patients(){
+
+    	return $this->belongsToMany('App\Patient')->withTimestamps();
+    }
+
+    public function notifications(){
+
+        return $this->hasMany('App\Notification')->withTimestamps();
+    }
+
+}
+
+********************************************************************************
+class Inter extends Model
+{
+    protected $table = "interfaces";
+
+    protected $fillable = ['name','quantity','remember_token','deleted_at',
+    'created_at', 'updated_at','node_id'];
+
+    //Relaciones***********************************************
+
+    public function node(){
+
+    	return $this->belongsTo('App\Node')->withTimestamps();
+    }
+
+    public function variables(){
+
+    	return $this->belongsToMany('App\Variable')->withTimestamps();
+    }
+}
+***********************************************************************************
+class Measure extends Model
+{
+    protected $table = "measures";
+	protected $fillable = ['value','date','time','variable_id',
+	'remember_token','deleted_at','created_at', 'updated_at'];
+
+	//Relaciones******************************************
+
+	public function notifications(){
+
+        return $this->hasMany('App\Notification')->withTimestamps();
+    }
+
+    public function variable(){
+
+    	return $this->belongsTo('App\Variable')->withTimestamps();	
+    }
+}
+
+**********************************************************************************
+class Node extends Model
+{
+    
+    protected $table = "nodes";
+
+    protected $fillable = ['mac_address','remember_token','deleted_at','created_at', 
+    'updated_at','doctor_id'];
+
+    //Relaciones**********************************
+
+    public function interfaces(){
+
+    	return $this->hasMany('App\Inter')->withTimestamps();
+    }
+
+    public function doctor(){
+
+    	return $this->belongsTo('App\Doctor')->withTimestamps();
+    }
+}
+
+*************************************************************************************
+class Notification extends Model
+{
+    protected $table = "notifications";
+	protected $fillable = ['description','type','doctor_id','patient_id','measure_id',
+	'remember_token','deleted_at','created_at', 'updated_at'];
+
+	//Relaciones****************************************
+
+	public function doctor(){
+    	return $this->belongsTo('App\Doctor');
+    }
+    public function patient(){
+    	return $this->belongsTo('App\Patient');
+    }
+    public function measure(){
+    	return $this->belongsTo('App\Measure');
+    }
+}
+
+******************************************************************************
+class Patient extends Model
+{
+    protected $table = "patients";
+
+    protected $fillable = ['name','lastname','email','password','age','sex','height','weight',
+    'telephone_number', 'address', 'short_description','photo','remember_token','deleted_at',
+    'created_at', 'updated_at'];
+
+    //Relaciones*****************************************
+
+    public function doctors(){
+
+    	return $this->belongsToMany('App\Doctor')->withTimestamps();
+    }
+
+    public function notifications(){
+
+        return $this->hasMany('App\Notification')->withTimestamps();
+    }
+
+    public function variables(){
+
+    	return $this->belongsToMany('App\Variable')->withTimestamps();
+    }
+}
+
+*************************************************************************************
+
+class Variable extends Model
+{
+    protected $table = "variables";
+	protected $fillable = ['name','range',
+	'remember_token','deleted_at','created_at', 'updated_at'];
+
+	//Relaciones*********************************
+
+	public function measures(){
+
+		return $this->hasMany('App\Measure')->withTimestamps();	
+	}
+
+	public function interfaces(){
+
+    	return $this->belongsToMany('App\Inter')->withTimestamps();
+    }
+
+    public function patients(){
+
+    	return $this->belongsToMany('App\Patient')->withTimestamps();
+    }
+
+}
+

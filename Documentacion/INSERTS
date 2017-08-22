@@ -1,0 +1,174 @@
+INSERTS USANDO TINKER:
+
+php artisan tinker
+
+---------------Doctors:--------------------------------------------------------------------------------------------------------------------
+
+ $doctor = ['name'=>'Gabriela','lastname'=>'Saldana','password'=> bcrypt('holi'), 'email'=>'ela.ri.bag@gmail.com','age'=> 21,'sex'=> 'F', 'specialty'=>'cardiologo','schedule'=>'L-V 8:00-20:00',
+ 'professional_id '=> bcrypt('ABG126'),'telephone_number'=> '50161633',
+ 'office_address'=>'Indios Verdes','photo'=>'/home/Documents/Laravel/Resources/Userphotos'];
+
+ \App\Doctor::create($doctor);
+
+Alternativamente *****************************************
+
+$doctor = new App\Admin();
+$doctor->name="Richi";
+$doctor->lastname="Orozco"; 
+$doctor->password=bcrypt('cotorichi');
+$doctor->email="digitalosx@gmail.com";
+$doctor->age=22;
+$doctor->sex="M";
+$doctor->specialty="neurocirujano";
+$doctor->schedule="L-V 7:00-19:00";
+$doctor->professional_id=bcrypt('cotorichi');
+$doctor->telephone_number="53876123";
+$doctor->office_address="Eduardo molina";
+$doctor->photo="/home/Documents/Laravel/Resources/Userphotos";
+
+
+-------------------------Patients:-------------------------------------------------------------------------------------------------------
+
+ $patient = ['name'=>'Gabriela','lastname'=>'Aguilar', 'password'=> bcrypt('holicrayoli'), 'email'=>'ela.ri.bag@outlook.com', 'age'=> 22, 'sex'=> 'F', 
+ 'height'=>'1.60','weight'=>'53', 'short_description'=> 'no presenta enfermedad alguna',
+ 'telephone_number'=> '50161633','address'=>'ExHacienda',
+ 'photo'=>'/home/Documents/Laravel/Resources/Userphotos'];
+
+  $patient = ['name'=>'Gabriela','lastname'=>'Nose', 'password'=> bcrypt('holicrayoli'), 'email'=>'gab.saldana95@outlook.com', 'age'=> 22, 'sex'=> 'F', 
+ 'height'=>'1.60','weight'=>'53', 'short_description'=> 'no presenta enfermedad alguna',
+ 'telephone_number'=> '50161633','address'=>'ExHacienda',
+ 'photo'=>'/home/Documents/Laravel/Resources/Userphotos'];
+
+ \App\Patient::create($patient);
+
+Alternativamente *****************************************
+
+$patient = new App\User();
+$patient->name="Richi";
+$patient->lastname="Orozco"; 
+$patient->password=bcrypt('cotorichi');
+$patient->email="digitalosx@gmail.com";
+$patient->age=22;
+$patient->sex="M";
+$patient->height="1.70";
+$patient->weight="60";
+$patient->short_description="no presenta enfermedades";
+$patient->telephone_number="5534281940";
+$patient->address="Eduardo molina";
+$patient->photo="/images/pacientes/patient_1502221195.png";
+
+--------------------Nodes:--------------------------------------------------------------------------------------------------------------------
+
+ $node = ['mac_address' => '00204AEE420D', 'admin_id' => 1];
+ $node = ['mac_address' => '00204AEE620F', 'admin_id' => 2];
+ $node = ['mac_address' => '00214AGE620A', 'admin_id' => 3];
+ \App\Node::create($node);
+
+Alternativamente*****************************************
+
+$node = new App\Node();
+$node->mac_address = "00214AG26T20A";
+$node->admin_id=2;
+$node->save();
+
+
+----------------------------Doctors_Patients:-------------------------------------------------------------------------------------------------
+
+No tiene modelo la tabla pivote.
+
+Alternativamente*****************************************
+
+Para establecer la relacion de muchos a muchos :
+seleccionamos un doctor al cual asignarle un paciente
+
+App\Admin::all();
+Lo obtenemos y revisamos sus relaciones con las demas tablas:
+$doctor = App\Admin::find(id);
+$doctor->patients
+$doctor->nodes
+Lo relacionamos
+$doctor->patients()->attach(id); 
+
+Se usan las funciones de relaciones definidas en los modelos:
+
+$patient = App\User::find(1);
+$patient->variables
+$patient->variables()->attach(2);
+
+$variable = App\Variable::find(1);
+$variable->interfaces()->attach(3)
+
+-----------------Interfaces:-----------------------------------------------------------------------------------------------------------------
+
+ $interface = ['name' => 'UART','quantity' => 1, 'node_id' => 2];
+ $interface = ['name' => 'I2C','quantity' => 2, 'node_id' => 1];
+
+\App\Inter::create($interface);
+
+Alternativamente*****************************************
+
+$inter = new App\Inter();
+$inter->name = "SPI";
+$inter->quantity= 1;
+$inter->node_id=3;
+$inter->save();
+
+-----------------------------------Variables:----------------------------------------------------------------------------------------------
+
+$variable = new App\Variable();
+$variable->name = "temperature";
+$variable->range= "34-37";
+$variable->save();
+
+$variable = new App\Variable();
+$variable->name = "pulse";
+$variable->range= "100-60";
+$variable->save();
+
+--------------------------------------------Measures:--------------------------------------------------------------------------------------
+
+$measure = new App\Measure();
+$measure->value = "35.6";
+$measure->date = "2017-07-13";
+$measure->time = "24:00:17";
+$measure->variable_id = 1;
+$measure->save();
+
+$measure = new App\Measure();
+$measure->value = "180";
+$measure->date = "2017-07-23";
+$measure->time = "13:00:17";
+$measure->variable_id = 2;
+$measure->save();
+
+--------------------------------------------Notifications:--------------------------------------------------------------------------------
+
+$notification = new App\Notification();
+$notification->description = "alta";
+$notification->type = "urgente";
+$notification->patient_id = 2;
+$notification->save();
+
+------------------------------------------------Slugs-------------------------------------------------------------------------------------
+php artisan make:migration add_slug_intertable
+
+Schema::table('nodes', function (Blueprint $table) {
+            $table->string('slug')->nullable();
+        });
+
+Schema::table('nodes', function (Blueprint $table) {
+            $table->dropColumn('slug');
+        });
+
+---------------------------------------MySQL inserts----------------------------------------------------------------------------------------
+insert into doctors(name, lastname,email,password,age,sex,specialty,schedule,professional_id,telephone_number,office_address,photo)
+values ("hdof", "lnfe" ,"gg@gmail.com","38742oe2fdg",20,"M","odnow","kdnwel","weind843082biuf","0384y503","lkdnwelnqf","elncel");
+
+
+insert into interfaces(name,quantity,node_id) values("kjdsf",2, 1);
+
+insert into nodes(mac_address,doctor_id) values ("aljsdYI93824B",2);
+
+insert into inter_variable(variable_id,inter_id) values(1,3);
+insert into inter_variable(variable_id,inter_id) values(2,1);
+
