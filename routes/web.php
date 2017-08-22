@@ -43,13 +43,12 @@ Route::group(['prefix'=>'patients'],  function(){
   Route::get('doctor','DoctorController@index')->name('doctor.index');
 
 });
+Route::get('doctor/create','DoctorController@create')->name('doctor.create');
+Route::post('doctor','DoctorController@store')->name('doctor.store');
 
-Route::group(['prefix'=>'doctors', 'middleware' => 'auth' ],  function(){
-
+Route::group(['prefix'=>'doctors', 'middleware' => 'auth' ],  function(){ //, 'middleware' => 'auth'
 	//Route::resource('doctor','DoctorController');
   //Route::get('doctor','DoctorController@index')->name('doctor.index');
-  Route::post('doctor','DoctorController@store')->name('doctor.store');
-  Route::get('doctor/create','DoctorController@create')->name('doctor.create');
   Route::get('doctor/{id}/destroy','DoctorController@destroy')->name('doctor.destroy');
   Route::put('doctor/{doctor}','DoctorController@update')->name('doctor.update');
   Route::get('doctor/{doctor}/edit','DoctorController@edit')->name('doctor.edit');
@@ -69,7 +68,7 @@ Route::group(['prefix'=>'notifications'],  function(){
   Route::get('notification/show/{id}', 'NotificationController@show')->name('notification.show');
 
 });
-
+/*
 Route::group(['prefix'=>'nodes'],  function(){
 	Route::resource('node','NodeController');
 	Route::get('node/{id}/destroy' ,[
@@ -77,3 +76,4 @@ Route::group(['prefix'=>'nodes'],  function(){
 		'as' => 'node.destroy'
 	]);
 });
+*/

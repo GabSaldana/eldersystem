@@ -66,7 +66,7 @@ class DoctorController extends Controller
   $doctor->save();
 
   flash("Se ha registrado " . $doctor->name)->success()->important();
-  return redirect()->route('doctor.index');
+  return redirect()->route('admin.login');
     }
 
     /**

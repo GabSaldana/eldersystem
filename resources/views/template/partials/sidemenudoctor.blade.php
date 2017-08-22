@@ -31,7 +31,7 @@
 							     </a>
 						    </li>
                      		<li class="">
-							    <a href="{{ route('node.index') }}">
+							    <a href="#">
 							     <span class="fa fa-dot-circle-o fa-2x icono-blanco"></span>&nbsp;@yield('Sub menu 2','Default')
 							    </a>
 						    </li>

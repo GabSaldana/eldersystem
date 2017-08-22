@@ -39,16 +39,6 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Recordar contraseña
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Entrar
@@ -57,6 +47,13 @@
                                 <a class="btn btn-link" href="{{ route('admin.password.request') }}">
                                     ¿Olvidaste contraseña?
                                 </a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                              <a class="btn btn-link" href="{{ route('doctor.create') }}">
+                              Registrate!
+                              </a>
                             </div>
                         </div>
                     </form>
