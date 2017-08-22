@@ -65,7 +65,6 @@ class PatientController extends Controller
 
       /****LLENANDO TABLA PIVOTE****/
       if(Auth::guard('admin')->check()){
-
           //dd(Auth::guard('admin')->user()->id);
           $iddoctor   = Auth::guard('admin')->user()->id;
           $idpaciente = $patient->id;
