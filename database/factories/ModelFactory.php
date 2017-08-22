@@ -1,5 +1,6 @@
 <?php
 
+use Faker\Generator;
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -12,13 +13,42 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
-    static $password;
+$factory->define(App\User::class, function(Generator $faker){
 
-    return [
+    $array = [
         'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
+        'lastname' => $faker->lastName,
+        'email' => $faker->unique()->email,
+        //'password' => bcrypt(str_random(10)),
+        'password' => bcrypt('123456'),
+        'age' => $faker->numberBetween($min = 8, $max = 90),
+        'sex' => $faker->randomElement($array = array ('F','M')),
+        'height' => $faker->randomFloat($nbMaxDecimals = NULL, $min = 1.40, $max = 1.90),
+        'weight' => $faker->randomFloat($nbMaxDecimals = NULL, $min = 40, $max = 100),
+        'telephone_number' => $faker->phoneNumber,
+        'address' => $faker->address,
+        'short_description' => $faker->paragraph($nbSentences = 2, $variableNbSentences = true),
+        'photo' => '/images/pacientes/001-pokeballs.png',
     ];
+    return $array;
+});
+
+$factory->define(App\Admin::class, function(Generator $faker){
+
+    $array = [
+        'name' => $faker->name,
+        'lastname' => $faker->lastName,
+        'email' => $faker->unique()->email,
+        //'password' => bcrypt(str_random(10)),
+        'password' => bcrypt('123456'),
+        'age' => $faker->numberBetween($min = 25, $max = 70),
+        'sex' => $faker->randomElement($array = array ('F','M')),
+        'specialty' => $faker->word,
+        'schedule' => 'L,M,M,J,V 8-18',
+        'professional_id' => $faker->regexify('[A-Z0-9._%+-]+[A-Z0-9.-]+.[A-Z]{8,8}'),
+        'telephone_number' => $faker->phoneNumber,
+        'office_address' => $faker->address,
+        'photo' => '/images/pacientes/001-pokeballs.png',
+    ];
+    return $array;
 });
