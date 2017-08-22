@@ -4,12 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "96098e473b028cdb2529580554a1ae3e",
-    "packages": [
-        {
-=======
-    "content-hash": "178165f34d7d57f2fc0bf9413c11c83e",
+    "content-hash": "67fc755dfbf7a8748b1bd6917d006c71",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -135,7 +130,6 @@
             "time": "2017-07-04T14:15:50+00:00"
         },
         {
->>>>>>> 577a8ebb671a534612cb2d21bfb89d9ed7cecdf9
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
             "source": {
@@ -169,8 +163,6 @@
             "time": "2014-10-24T07:27:01+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "doctrine/annotations",
             "version": "v1.4.0",
             "source": {
@@ -515,7 +507,6 @@
             "time": "2014-01-01T16:43:57+00:00"
         },
         {
->>>>>>> 577a8ebb671a534612cb2d21bfb89d9ed7cecdf9
             "name": "doctrine/inflector",
             "version": "v1.2.0",
             "source": {
@@ -583,8 +574,6 @@
             "time": "2017-07-22T12:18:28+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "doctrine/lexer",
             "version": "v1.0.1",
             "source": {
@@ -639,7 +628,6 @@
             "time": "2014-09-09T13:34:57+00:00"
         },
         {
->>>>>>> 577a8ebb671a534612cb2d21bfb89d9ed7cecdf9
             "name": "erusev/parsedown",
             "version": "1.6.3",
             "source": {
@@ -769,8 +757,6 @@
             "time": "2015-04-20T18:58:01+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "laracasts/flash",
             "version": "3.0.2",
             "source": {
@@ -825,7 +811,6 @@
             "time": "2017-06-22T19:01:19+00:00"
         },
         {
->>>>>>> 577a8ebb671a534612cb2d21bfb89d9ed7cecdf9
             "name": "laravel/framework",
             "version": "v5.4.33",
             "source": {
@@ -1018,8 +1003,6 @@
             "time": "2017-07-13T13:11:05+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "laravelcollective/html",
             "version": "v5.4.8",
             "source": {
@@ -1074,7 +1057,6 @@
             "time": "2017-05-22T06:35:07+00:00"
         },
         {
->>>>>>> 577a8ebb671a534612cb2d21bfb89d9ed7cecdf9
             "name": "league/flysystem",
             "version": "1.0.41",
             "source": {
@@ -3201,7 +3183,6 @@
         },
         {
             "name": "phpunit/php-token-stream",
-<<<<<<< HEAD
             "version": "2.0.1",
             "source": {
                 "type": "git",
@@ -3212,18 +3193,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/9a02332089ac48e704c70f6cefed30c224e3c0b0",
                 "reference": "9a02332089ac48e704c70f6cefed30c224e3c0b0",
-=======
-            "version": "2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "ecb0b2cdaa0add708fe6f329ef65ae0c5225130b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/ecb0b2cdaa0add708fe6f329ef65ae0c5225130b",
-                "reference": "ecb0b2cdaa0add708fe6f329ef65ae0c5225130b",
->>>>>>> 577a8ebb671a534612cb2d21bfb89d9ed7cecdf9
                 "shasum": ""
             },
             "require": {
@@ -3259,11 +3228,7 @@
             "keywords": [
                 "tokenizer"
             ],
-<<<<<<< HEAD
             "time": "2017-08-20T05:47:52+00:00"
-=======
-            "time": "2017-08-03T14:17:41+00:00"
->>>>>>> 577a8ebb671a534612cb2d21bfb89d9ed7cecdf9
         },
         {
             "name": "phpunit/phpunit",
