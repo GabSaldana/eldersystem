@@ -8,6 +8,7 @@ use App\Admin;
 use Laracasts\Flash\Flash;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class PatientController extends Controller
 {
@@ -63,11 +64,16 @@ class PatientController extends Controller
       $patient->save();
 
       /****LLENANDO TABLA PIVOTE****/
-      /*$iddoctor   = 8;//Auth::id()
-      $idpaciente = $patient->id;
-      DB::insert('insert into admin_user(admin_id, user_id) values (?,?)',
-      [$iddoctor,$idpaciente]);*/
-      //$doctor_patient = DB::select( DB::raw("SELECT * FROM doctor_patient") );
+      if(Auth::guard('admin')->check()){
+
+          //dd(Auth::guard('admin')->user()->id);
+          $iddoctor   = Auth::guard('admin')->user()->id;
+          $idpaciente = $patient->id;
+          DB::insert('insert into admin_user(admin_id, user_id) values (?,?)',
+          [$iddoctor,$idpaciente]);
+          $doctor_patient = DB::select( DB::raw("SELECT * FROM admin_user") );
+          //dd($doctor_patient);
+      }
 
       flash("Se ha registrado " . $patient->name)->success()->important();
       return redirect()->route('patient.index');

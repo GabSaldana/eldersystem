@@ -47,8 +47,8 @@
 					    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 					      <ul class="nav navbar-nav navbar-right">
-									<li><a href="{{ route('auth.login') }}"><span class="fa fa-user fa-2x icono-blanco"></span> Inicia Sesión</a></li>
-									<li><a href="#"><span class="fa fa-user fa-2x icono-blanco"></span> Registrate</a></li>
+									<!--li><a href="{{ route('auth.login') }}"><span class="fa fa-user fa-2x icono-blanco"></span> Inicia Sesión</a></li>
+									<li><a href="#"><span class="fa fa-user fa-2x icono-blanco"></span> Registrate</a></li-->
 					      </ul>
 					    </div><!-- /navbar-collapse -->
 					  </div><!-- / .container-fluid -->
