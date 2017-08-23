@@ -11,15 +11,15 @@
 					     <div class="profile-usertitle-job">{{ Auth::user()->email}}</div>
 				    </div>
 					<!-- END SIDEBAR USER TITLE -->
-					<!-- SIDEBAR MENU  -->
-
+					<!-- SIDEBAR MENU -->
 				    <div class="profile-usermenu">
 					    <ul class="nav">
-								<li class="">
-							    <a href="{{ route('doctor.show') }}">
+								<!--li class="">
+							    <a href="{!! route( 'doctor.show', Auth::id() ) !!}">
 							    	<span class="fa fa-user fa-2x icono-blanco"></span>&nbsp;@yield('Datos personales','Default')
 							    </a>
-						    </li >
+						    </li -->
+
 						    <li class="active">
 							    <a href="{{ route('patient.index') }}">
 							    	<span class="fa fa-list fa-2x icono-blanco"></span>&nbsp;@yield('Lista','Default')

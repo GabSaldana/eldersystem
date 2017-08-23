@@ -105,7 +105,7 @@
 							</div>
 						</div>
 						<h3>IOT </br>
-            El internet con ayuda de el pulso y la temperatura nos ayudará</h3>
+            El internet con ayuda de el pulso y la temperatura </h3>
 					</div>
 				</div>
 			</div>
