@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 use \Illuminate\Contracts\Auth\Guard;
 use Closure;
+use Auth;
 
 class Admin
 {
@@ -21,7 +22,7 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if($this->auth->user()->admin()){
+        if(Auth::guard('admin')){
             return $next($request);//si el usuario autentificado es admin prosigue
         }else{
 
