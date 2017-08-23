@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  background: #c1bdba;
+  background: #4DB6AC;
   font-family: 'Titillium Web', sans-serif;
 }
 
@@ -23,9 +23,9 @@ a:hover {
 
 .form {
   background: rgba(19, 35, 47, 0.9);
-  padding: 40px;
+  padding: 60px;
   max-width: 600px;
-  margin: 40px auto;
+  margin: 70px auto;
   border-radius: 4px;
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
 }
@@ -64,7 +64,7 @@ a:hover {
 }
 
 .tab-content > div:last-child {
-  display: none;
+  /*display: none;*/
 }
 
 h1 {
