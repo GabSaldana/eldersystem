@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col-xs-5 header-logo">
         <br>
-        <a href="#"><img src="img/logo.png" alt="" class="img-responsive logo"></a>
+        <a href="#"><img src="{{ asset('images/website/logo.png') }}" alt="" class="img-responsive logo"></a>
       </div>
 
       <div class="col-md-7">
@@ -43,14 +43,14 @@
 			        <!-- Wrapper for slides -->
 			        <div class="carousel-inner" role="listbox">
 			            <div class="item active">
-			            	<img src="img/slide-one.jpg" alt="">
+			            	<img src="{{ asset('images/website/slide-one.jpg') }}" alt="">
 			                <div class="carousel-caption">
 		               			<h1>PONTE EN LINEA</h1>
 		               			<p>Servicio de calidad para hombres &amp; mujeres</p>
 			                </div>
 			            </div>
 			            <div class="item">
-			            	<img src="img/slide-two.jpg" alt="">
+			            	<img src="{{ asset('images/website/slide-two.jpg') }}" alt="">
 			                <div class="carousel-caption">
                         <h1>PONTE EN LINEA</h1>
 		               			<p>Servicio de calidad para hombres &amp; mujeres</p>
@@ -79,7 +79,7 @@
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">
-								<img class="heart img-responsive" src="img/service1.png" alt="">
+								<img class="heart img-responsive" src="{{ asset('images/website/service1.png') }}" alt="">
 							</div>
 						</div>
 						<h3>Ritmo cardiaco</br>
@@ -90,7 +90,7 @@
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">
-								<img class="brain img-responsive" src="img/service2.png" alt="">
+								<img class="brain img-responsive" src="{{ asset('images/website/service2.png') }}" alt="">
 							</div>
 						</div>
 						<h3>Temperatura corporal</br>
@@ -101,7 +101,7 @@
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">
-								<img class="knee img-responsive" src="img/service3.png" alt="">
+								<img class="knee img-responsive" src="{{ asset('images/website/service3.png') }}" alt="">
 							</div>
 						</div>
 						<h3>IOT </br>

@@ -8,7 +8,7 @@
 	<link href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
 	<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
 	<!--API STYLES-->
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/prueba.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
 	<!-- Chosen -->
 	<link href="{{ asset('plugins/chosen/chosen.css') }}" rel="stylesheet">
 	<!--Trumbowyg-->
@@ -51,5 +51,9 @@
  <script src="{{ asset('plugins/chosen/chosen.jquery.js') }} "></script>
  <!--Trumbowyg-->
  <script src="{{ asset('plugins/trumbowyg/dist/trumbowyg.js') }} "></script>
+ <!--JS Sidemenu-->
+ <script src="{{ asset('js/sidemenu-js/modernizr.js') }} "></script>
+ <script src="{{ asset('js/sidemenu-js/smoothscroll.js') }} "></script>
+ <script src="{{ asset('js/sidemenu-js/custom.js') }} "></script>
 </body>
 </html>

@@ -9,7 +9,7 @@
 	<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
 	<!--API STYLES>
   <link rel="stylesheet" type="text/css" href="{{ asset('css/prueba.css') }}"-->
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/sidemenu-style.css') }}">
   <!--Fonts-->
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
@@ -35,9 +35,9 @@
  <script src="{{ asset('plugins/chosen/chosen.jquery.js') }} "></script>
  <!--Trumbowyg-->
  <script src="{{ asset('plugins/trumbowyg/dist/trumbowyg.js') }} "></script>
- <!--JS API-->
- <script src="{{ asset('js/js/modernizr.js') }} "></script>
- <script src="js/js/smoothscroll.js"></script>
- <script src="js/js/custom.js"></script>
+ <!--JS Sidemenu-->
+ <script src="{{ asset('js/sidemenu-js/modernizr.js') }} "></script>
+ <script src="{{ asset('js/sidemenu-js/smoothscroll.js') }} "></script>
+ <script src="{{ asset('js/sidemenu-js/custom.js') }} "></script>
 </body>
 </html>
