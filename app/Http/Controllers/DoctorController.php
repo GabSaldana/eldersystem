@@ -39,7 +39,7 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
+
           $this->validate($request, [
               'name'             => 'bail|required|min:6|max:120',
               'email'            => 'bail|required|max:255|email',
@@ -68,7 +68,7 @@ class DoctorController extends Controller
 
           flash("Se ha registrado " . $doctor->name)->success()->important();
           return redirect()->route('doctor.index');
-=======
+
       $this->validate($request, [
       'name'             => 'bail|required|min:6|max:120',
       'email'            => 'bail|required|max:255|email',
@@ -97,7 +97,7 @@ class DoctorController extends Controller
 
   flash("Se ha registrado " . $doctor->name)->success()->important();
   return redirect()->route('admin.login');
->>>>>>> d4670f21dfae20308013fde52fb4580c21303e0d
+
     }
 
     /**

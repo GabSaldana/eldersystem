@@ -47,12 +47,9 @@ Route::group(['prefix'=>'patients'],  function(){
 Route::get('doctor/create','DoctorController@create')->name('doctor.create');
 Route::post('doctor','DoctorController@store')->name('doctor.store');
 
-<<<<<<< HEAD
-Route::group(['prefix'=>'doctors' ],  function(){
 
-=======
-Route::group(['prefix'=>'doctors', 'middleware' => 'auth' ],  function(){ //, 'middleware' => 'auth'
->>>>>>> d4670f21dfae20308013fde52fb4580c21303e0d
+Route::group(['prefix'=>'doctors' ],  function(){ //, 'middleware' => 'auth'
+
 	//Route::resource('doctor','DoctorController');
   //Route::get('doctor','DoctorController@index')->name('doctor.index');
   Route::get('doctor/{id}/destroy','DoctorController@destroy')->name('doctor.destroy');
