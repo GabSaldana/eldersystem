@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Node;
 use App\Variable;
+use App\User;
 use Laracasts\Flash\Flash;
 use App\Http\Requests\UserRequest;
 use Auth;
@@ -25,7 +26,6 @@ class NodeController extends Controller
       $nodes = Node::orderBy('id','ASC')->paginate(5);
       return view('node.index')->with('nodes',$nodes);
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -79,8 +79,8 @@ class NodeController extends Controller
      */
     public function edit($id)
     {
-      $node = Node::find($id);
-      return view('node.edit')->with('node',$node);
+      $patient = User::find(13);
+      return view('node.edit')->with('variables',$patient);
     }
 
     /**
