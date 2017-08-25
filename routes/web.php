@@ -70,7 +70,7 @@ Route::group(['prefix'=>'notifications'],  function(){
   Route::get('notification/show/{id}', 'NotificationController@show')->name('notification.show');
 
 });
-Route::group(['prefix'=>'nodes'],  function(){
+Route::group(['prefix'=>'nodes' ],  function(){
 	//Route::resource('notification','NotificationController');
   Route::get('node','NodeController@index')->name('node.index');
   Route::post('node','NodeController@store')->name('node.store');

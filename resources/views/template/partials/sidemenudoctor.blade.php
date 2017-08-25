@@ -1,14 +1,15 @@
 @if(Auth::guard('admin')->check())
+
 <div class="profile-sidebar">
 					<!-- SIDEBAR USERPIC -->
 					<div class="profile-userpic">
-					        <img src="{{ Auth::user()->photo }}" class="img-responsive" >
+					        <img src="{{ Auth::guard('admin')->user()->photo }}" class="img-responsive" >
 				    </div>
 					<!-- END SIDEBAR USERPIC -->
 					<!-- SIDEBAR USER TITLE -->
 				    <div class="profile-usertitle" style="color:white;">
-					    <div class="profile-usertitle-name" >{{ Auth::user()->name}}</div>
-					     <div class="profile-usertitle-job">{{ Auth::user()->email}}</div>
+					    <div class="profile-usertitle-name" >{{ Auth::guard('admin')->user()->name }}</div>
+					     <div class="profile-usertitle-job">{{ Auth::guard('admin')->user()->email }}</div>
 				    </div>
 					<!-- END SIDEBAR USER TITLE -->
 					<!-- SIDEBAR MENU -->

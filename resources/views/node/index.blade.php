@@ -1,4 +1,4 @@
-@extends('template.mainpaciente')
+@extends('template.maindoctor')
 @section('Inicio','Inicio')
 @section('Datos personales','Datos personales')
 @section('Lista', 'Lista de pacientes')

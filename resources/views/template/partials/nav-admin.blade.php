@@ -11,7 +11,7 @@
       @if(Auth::guard('admin')->check())
       <ul class="nav navbar-nav navbar-right">
       			<li><a href="{{ route('admin.logout')}}" style=""><span class="fa fa-sign-out fa-2x icono-blanco "></span>
-      			{{ Auth::user()->name}}</a></li>
+      			{{ Auth::guard('admin')->user()->name }}</a></li>
     	</ul>
       @endif
     </div>
