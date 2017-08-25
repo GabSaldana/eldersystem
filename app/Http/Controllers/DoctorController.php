@@ -43,7 +43,7 @@ class DoctorController extends Controller
       'name'             => 'bail|required|min:6|max:120',
       'email'            => 'bail|required|max:255|email',
       'password'         => 'bail|min:6',
-      'telephone_number' => 'bail|integer',
+      'telephone_number' => 'bail',
       'photo'            => 'image|bail|required'
   ]);
 

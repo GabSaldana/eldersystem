@@ -47,6 +47,7 @@ Route::get('doctor/create','DoctorController@create')->name('doctor.create');
 Route::post('doctor','DoctorController@store')->name('doctor.store');
 Route::get('doctor/show/{id}', 'DoctorController@show')->name('doctor.show');
 Route::get('patient/show/{id}', 'PatientController@show')->name('patient.show');
+//Route::get('patient/create','PatientController@create')->name('patient.create');
 
 Route::group(['prefix'=>'doctors', 'middleware' => 'auth' ],  function(){ //, 'middleware' => 'auth'
 	//Route::resource('doctor','DoctorController');
