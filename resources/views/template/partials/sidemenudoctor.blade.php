@@ -3,7 +3,7 @@
 <div class="profile-sidebar">
 					<!-- SIDEBAR USERPIC -->
 					<div class="profile-userpic">
-					        <img src="{{ Auth::guard('admin')->user()->photo }}" class="img-responsive" >
+					        <img src="{{ asset(Auth::guard('admin')->user()->photo) }}" class="img-responsive" >
 				    </div>
 					<!-- END SIDEBAR USERPIC -->
 					<!-- SIDEBAR USER TITLE -->
