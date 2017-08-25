@@ -24,13 +24,13 @@
 							    	<span class="fa fa-list fa-2x icono-blanco"></span>&nbsp;@yield('Lista','Default')
 							    </a>
 						    </li>
-						    <li class="">
+						    <li class="notis">
 							    <a href="{{ route('notification.index') }}">
 							    <span class="fa fa-exclamation-circle fa-2x icono-blanco"></span>&nbsp;@yield('Sub menu 1','Default')
 							     </a>
 						    </li>
-                     		<li class="">
-							    <a href="#">
+                <li class="node">
+							    <a href="{{ route('node.index') }}">
 							     <span class="fa fa-dot-circle-o fa-2x icono-blanco"></span>&nbsp;@yield('Sub menu 2','Default')
 							    </a>
 						    </li>

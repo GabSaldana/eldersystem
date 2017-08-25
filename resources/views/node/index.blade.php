@@ -1,4 +1,4 @@
-@extends('template.maindoctor')
+@extends('template.mainpaciente')
 @section('Inicio','Inicio')
 @section('Datos personales','Datos personales')
 @section('Lista', 'Lista de pacientes')
@@ -7,15 +7,6 @@
 
 @section('content')
 
-<!-- BUSCADOR-->
-{!! Form::open(['route' => 'node.index', 'method' => 'GET', 'class' => 'navbar-form pull-right']) !!}
-<div class="form-group">
-	<div class="input-group">
-		<span class="input-group-addon" id="search" ><span class="fa fa-search" aria-hidden="true"> </span></span>
-		{!! Form::text('mac_address',null,['class' => 'form-control','placeholder' => 'Buscar nodo...', 'aria-describedby' => 'search']) !!}
-	</div>
-</div>
-{!! Form::close() !!}
 
 
 <a href="{{ route('node.create') }}" class="btn btn-info">Nuevo Nodo</a><hr>
@@ -33,6 +24,9 @@
 						<a href="{{ route('node.destroy', $node->id) }}"
 						onclick="return confirm('Seguro que deseas eliminarlo?')" class="btn btn-danger">
 							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+						</a>
+						<a href="{{ route('node.edit', $node->id)}}" class="btn btn-warning">
+							<span class="fa fa-pencil fa-lg" ></span>
 						</a>
 					</td>
 				</tr>

@@ -24,8 +24,7 @@ class Notification extends Model
   }
 
 protected $table = "notifications";
-protected $fillable = ['description','type','admin_id','user_id','measure_id',
-'remember_token','deleted_at','created_at', 'updated_at'];
+protected $fillable = ['description','type','admin_id','user_id','measure_id','remember_token','deleted_at','created_at', 'updated_at'];
 
 //Relaciones****************************************
 

@@ -17,7 +17,7 @@ class NodeController extends Controller
      */
     public function index(Request $request)
     {
-      $nodes = Node::search($request->mac_address)->orderBy('id','ASC')->paginate(5);
+      $nodes = Node::orderBy('id','ASC')->paginate(5);
       return view('node.index')->with('nodes',$nodes);
     }
 
@@ -39,18 +39,18 @@ class NodeController extends Controller
      */
     public function store(Request $request)
     {
-        if(Auth::check()){
+        //if(Auth::check()){
         $this->validate($request, [
           'mac_address' => 'bail|required'
         ]);
         $node = new Node($request->all());
-        $node->doctor_id=1;//Auth::id();
+        $node->admin_id=1;//Auth::id();
         //dd($node);
         $node->save();
 
         flash("Se ha creado un nodo")->success()->important();
-        return redirect()->route('node.index');
-      }
+        return redirect()->route('admin.login');
+      //}
     }
 
     /**

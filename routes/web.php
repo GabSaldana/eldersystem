@@ -70,6 +70,17 @@ Route::group(['prefix'=>'notifications'],  function(){
   Route::get('notification/show/{id}', 'NotificationController@show')->name('notification.show');
 
 });
+Route::group(['prefix'=>'nodes'],  function(){
+	//Route::resource('notification','NotificationController');
+  Route::get('node','NodeController@index')->name('node.index');
+  Route::post('node','NodeController@store')->name('node.store');
+  Route::get('node/create','NodeController@create')->name('node.create');
+  Route::get('node/{id}/destroy','NodeController@destroy')->name('node.destroy');
+  Route::put('node/{node}','NodeController@update')->name('node.update');
+  Route::get('node/{node}/edit','NodeController@edit')->name('node.edit');
+  Route::get('node/show/{id}', 'NodeController@show')->name('node.show');
+
+});
 /*
 Route::group(['prefix'=>'nodes'],  function(){
 	Route::resource('node','NodeController');
