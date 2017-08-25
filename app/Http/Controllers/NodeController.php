@@ -26,15 +26,6 @@ class NodeController extends Controller
       return view('node.index')->with('nodes',$nodes);
     }
 
-    public function indexuni(Request $request)
-    {
-      /*if(Auth::guard('admin')->check()){
-
-          dd(Auth::guard('admin')->user());
-      }*/
-      $nodes = Node::orderBy('id','ASC')->paginate(5);
-      return view('node.index')->with('nodes',$nodes);
-    }
 
     /**
      * Show the form for creating a new resource.
