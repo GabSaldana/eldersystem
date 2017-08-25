@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Node;
 use App\Variable;
+use App\User;
 use Laracasts\Flash\Flash;
 use App\Http\Requests\UserRequest;
 use Auth;
@@ -17,16 +18,6 @@ class NodeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-      /*if(Auth::guard('admin')->check()){
-
-          dd(Auth::guard('admin')->user());
-      }*/
-      $nodes = Node::orderBy('id','ASC')->paginate(5);
-      return view('node.index')->with('nodes',$nodes);
-    }
-
-    public function indexuni(Request $request)
     {
       /*if(Auth::guard('admin')->check()){
 
@@ -88,8 +79,8 @@ class NodeController extends Controller
      */
     public function edit($id)
     {
-      $node = Node::find($id);
-      return view('node.edit')->with('node',$node);
+      $patient = User::find(13);
+      return view('node.edit')->with('variables',$patient);
     }
 
     /**
