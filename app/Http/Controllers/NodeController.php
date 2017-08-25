@@ -27,6 +27,10 @@ class NodeController extends Controller
       return view('node.index')->with('nodes',$nodes);
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f8fac40890a5b4aed5809f1555508f16965046ac
     /**
      * Show the form for creating a new resource.
      *
