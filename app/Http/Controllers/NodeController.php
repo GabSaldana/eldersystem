@@ -73,7 +73,8 @@ class NodeController extends Controller
      */
     public function edit($id)
     {
-        //
+      $node = Node::find($id);
+      return view('node.edit')->with('node',$node);
     }
 
     /**
