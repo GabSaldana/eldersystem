@@ -20,13 +20,13 @@
 
 <body >
 
-		@include('template.partials.nav-admin')
+		@include('template.partials.nav')
 
 	<div class="container-fluid ">
   		<div class="row ">
 			<!-- MENU -->
 			<div class="col-md-3 sidemenu" >
-				@include('template.partials.sidemenudoctor')
+				@include('template.partials.sidemenu')
 			</div>
 			<!-- END MENU -->
 			<!--CONTENT-->
