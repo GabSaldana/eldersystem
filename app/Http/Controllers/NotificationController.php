@@ -42,12 +42,14 @@ class NotificationController extends Controller
      */
     public function store(Request $request)
     {
+
+      //dd($request);
       $this->validate($request, [
           'type' => 'bail|required',
           'description' => 'bail|required'
       ]);
       $notification = new Notification($request->all());
-      $notification -> user_id = $request->user_id;
+      $notification -> user_id = $request->patient_id;
       //$notification -> patient_id = \Auth::user()->id;
       $notification->save();
 

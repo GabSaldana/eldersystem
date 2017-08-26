@@ -34,7 +34,7 @@
                                     ¿Olvidaste contraseña?
                                   </a>
                                 <p class="forgot ">
-                                  <a class="btn btn-link" href="{{ route('doctor.create') }}">
+                                  <a class="btn btn-link" href="{{ route('doctor.add') }}">
                                       Registrate!!
                                   </a>
                                 </p>

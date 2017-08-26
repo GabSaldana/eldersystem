@@ -1,13 +1,8 @@
-@extends('template.maintemp')
-@section('title', 'Crear Paciente')
-@section('Inicio','Inicio')
-@section('Datos personales','Datos personales')
-@section('Lista', 'Lista de doctores')
-@section('Sub menu 1', 'Notificaciones')
-@section('Sub menu 2', 'Lista de Variables')
+
+@extends('layouts.app')
 
 @section('content')
-	{!! Form::open(['route' => 'patient.store', 'method' => 'POST', 'files'=>true]) !!}
+	{!! Form::open(['route' => 'doctor.store', 'method' => 'POST','files' => true]) !!}
 		<div class="form-group">
 			{!! Form::label('name','Nombre') !!}
 			{!! Form::text('name',null,['class' => 'form-control','placeholder' => 'Nombre(s)', 'required']) !!}
@@ -34,39 +29,33 @@
 			'placeholder' => 'Seleccione una opción...','required']) !!}
 		</div>
 		<div class="form-group">
-			{!! Form::label('height','Estatura') !!}
-			{!! Form::text('height',null,['class' => 'form-control', 'required']) !!}
+			{!! Form::label('specialty','Especialidad') !!}
+			{!! Form::text('specialty',null,['class' => 'form-control', 'required']) !!}
 		</div>
 		<div class="form-group">
-			{!! Form::label('weight','Peso') !!}
-			{!! Form::text('weight',null,['class' => 'form-control', 'required']) !!}
+			{!! Form::label('schedule','Horario') !!}
+			{!! Form::text('schedule',null,['class' => 'form-control', 'placeholder' => '(días hora) Ejemplo: L,M,M,J,V 9-13', 'required']) !!}
 		</div>
 		<div class="form-group">
+			{!! Form::label('professional_id','Cédula') !!}
+			{!! Form::text('professional_id',null,['class' => 'form-control', 'required']) !!}
+		</div>
+    <div class="form-group">
 			{!! Form::label('telephone_number','Numero de Telefono') !!}
 			{!! Form::tel('telephone_number',null,['class' => 'form-control', 'required']) !!}
 		</div>
 		<div class="form-group">
-			{!! Form::label('address','Direccion') !!}
-			{!! Form::text('address',null,['class' => 'form-control']) !!}
-		</div>
-		<div class="form-group">
-			{!! Form::label('short_description','Información médica') !!}
-			{!! Form::textarea('short_description',null,['class' => 'form-control textarea-content','placeholder' => 'Describa las características importantes acerca de su salud']) !!}
+			{!! Form::label('office_address','Direccion') !!}
+			{!! Form::text('office_address',null,['class' => 'form-control']) !!}
 		</div>
 		<div class="form-group">
     		{!! Form::label('photo', 'Foto') !!}
     		{!! Form::file('photo',null,['class' => 'form-control']) !!}
-  		</div>
+  	</div>
 
 		<div class="form-group">
 			{!! Form::submit('Registrar',['class' => 'btn btn-primary']) !!}
 		</div>
 
 	{!! Form::close() !!}
-@endsection
-
-@section('js')
-  <script>
-    $('.textarea-content').trumbowyg();
-  </script>
 @endsection

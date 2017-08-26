@@ -13,9 +13,8 @@
 	<link href="{{ asset('plugins/chosen/chosen.css') }}" rel="stylesheet">
 	<!--Trumbowyg-->
 	<link href="{{ asset('plugins/trumbowyg/dist/ui/trumbowyg.css') }}" rel="stylesheet">
-  <!--FONT AWESOME-->
-  <link href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-
+   <!--FONT AWESOME-->
+   <link href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
 </head>
 
 <body >
@@ -26,7 +25,7 @@
   		<div class="row ">
 			<!-- MENU -->
 			<div class="col-md-3 sidemenu" >
-				@include('template.partials.sidemenupaciente')
+				@include('template.partials.sidemenu')
 			</div>
 			<!-- END MENU -->
 			<!--CONTENT-->

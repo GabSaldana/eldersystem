@@ -21,10 +21,10 @@ $doctor->age=22;
 $doctor->sex="M";
 $doctor->specialty="neurocirujano";
 $doctor->schedule="L-V 7:00-19:00";
-$doctor->professional_id=bcrypt('cotorichi');
+$doctor->professional_id=bcrypt('123456');
 $doctor->telephone_number="53876123";
 $doctor->office_address="Eduardo molina";
-$doctor->photo="/home/Documents/Laravel/Resources/Userphotos";
+$doctor->photo="/images/pacientes/patient_1503418935.png";
 
 
 -------------------------Patients:-------------------------------------------------------------------------------------------------------
@@ -44,17 +44,17 @@ $doctor->photo="/home/Documents/Laravel/Resources/Userphotos";
 Alternativamente *****************************************
 
 $patient = new App\User();
-$patient->name="Richi";
-$patient->lastname="Orozco"; 
-$patient->password=bcrypt('cotorichi');
-$patient->email="digitalosx@gmail.com";
+$patient->name="Gabs";
+$patient->lastname="Saldana"; 
+$patient->password=bcrypt('123456');
+$patient->email="ela.ri.bag@gmail.com";
 $patient->age=22;
-$patient->sex="M";
-$patient->height="1.70";
-$patient->weight="60";
+$patient->sex="F";
+$patient->height="1.60";
+$patient->weight="50";
 $patient->short_description="no presenta enfermedades";
 $patient->telephone_number="5534281940";
-$patient->address="Eduardo molina";
+$patient->address="Ex hacienda de enmedio";
 $patient->photo="/images/pacientes/patient_1502221195.png";
 
 --------------------Nodes:--------------------------------------------------------------------------------------------------------------------
