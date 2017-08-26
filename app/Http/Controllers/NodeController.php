@@ -80,7 +80,7 @@ class NodeController extends Controller
     public function edit($id)
     {
       $patient = User::find(13);
-      return view('node.edit')->with('variables',$patient);
+      return view('node.edit')->with('patient',$patient);
     }
 
     /**
