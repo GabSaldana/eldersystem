@@ -43,7 +43,8 @@ Route::group(['prefix'=>'patients', 'middleware' => 'admin'],  function(){
 
 });
 
-Route::get('doctor/create','DoctorController@create')->name('doctor.create');
+//Route::get('doctor/create','DoctorController@create')->name('doctor.create');
+Route::get('doctor/add', 'DoctorController@add')->name('doctor.add');
 Route::post('doctor','DoctorController@store')->name('doctor.store');
 Route::get('doctor/show/{id}', 'DoctorController@show')->name('doctor.show');
 Route::get('patient/show/{id}', 'PatientController@show')->name('patient.show');
@@ -54,6 +55,7 @@ Route::group(['prefix'=>'doctors', 'middleware' => 'auth' ],  function(){ //, 'm
   //Route::get('doctor','DoctorController@index')->name('doctor.index');
   Route::get('doctor/{id}/destroy','DoctorController@destroy')->name('doctor.destroy');
   Route::put('doctor/{doctor}','DoctorController@update')->name('doctor.update');
+  Route::get('doctor/create','DoctorController@create')->name('doctor.create');
   Route::get('doctor/{doctor}/edit','DoctorController@edit')->name('doctor.edit');
   //Route::get('doctor/see', 'DoctorController@see')->name('doctor.see');
   Route::get('patient','PatientController@index')->name('patient.index');

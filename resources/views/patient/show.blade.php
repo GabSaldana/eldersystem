@@ -1,4 +1,4 @@
-@extends('template.mainpaciente')
+@extends('template.maintemp')
 @section('title', $patient->name.' '.$patient->lastname)
 
 @section('Inicio','Inicio')

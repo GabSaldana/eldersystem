@@ -20,6 +20,7 @@
 @else
 {{-- dd( Auth::guard('admin')->check() ) --}}
 {{-- dd('hi admin') --}}
+{{-- dd(Auth::guard('admin')->check()) --}}
 <nav class="navbar">
   		<div >
     		<div class="navbar-header">

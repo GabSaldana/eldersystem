@@ -31,6 +31,10 @@ class DoctorController extends Controller
         return view('doctor.create');
     }
 
+    public function add(){
+
+          return view('doctor.add');
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -39,34 +43,34 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-      $this->validate($request, [
-      'name'             => 'bail|required|min:6|max:120',
-      'email'            => 'bail|required|max:255|email',
-      'password'         => 'bail|min:6',
-      'telephone_number' => 'bail',
-      'photo'            => 'image|bail|required'
-  ]);
+            $this->validate($request, [
+            'name'             => 'bail|required|min:6|max:120',
+            'email'            => 'bail|required|max:255|email',
+            'password'         => 'bail|min:6',
+            'telephone_number' => 'bail',
+            'photo'            => 'image|bail|required'
+            ]);
 
-  /*Manipulación de images*/
-  $name = '';
-  if($request->file('photo') )
-  {
-    $file = $request->file('photo');
-    $name = 'doctor_' . time() . '.' . $file->getClientOriginalExtension();
-    $path =  public_path() . '/images/doctor/';
-    $file->move($path, $name);
+        /*Manipulación de images*/
+        $name = '';
+        if($request->file('photo') )
+        {
+          $file = $request->file('photo');
+          $name = 'doctor_' . time() . '.' . $file->getClientOriginalExtension();
+          $path =  public_path() . '/images/doctor/';
+          $file->move($path, $name);
 
-  }
+        }
 
-  $doctor = new Admin($request->all());
-  $doctor->password = bcrypt($request->password);
-  $name2 = 'images/doctor/'. $name;
-  $doctor->photo = $name2;
-  //dd($name2);
-  $doctor->save();
+        $doctor = new Admin($request->all());
+        $doctor->password = bcrypt($request->password);
+        $name2 = 'images/doctor/'. $name;
+        $doctor->photo = $name2;
+        //dd($name2);
+        $doctor->save();
 
-  flash("Se ha registrado " . $doctor->name)->success()->important();
-  return redirect()->route('admin.login');
+        flash("Se ha registrado " . $doctor->name)->success()->important();
+        return redirect()->route('admin.login');
     }
 
     /**
