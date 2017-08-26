@@ -26,7 +26,7 @@
   		<div class="row ">
 			<!-- MENU -->
 			<div class="col-md-3 sidemenu" >
-				@include('template.partials.sidemenupaciente')
+				@include('template.partials.sidemenu')
 			</div>
 			<!-- END MENU -->
 			<!--CONTENT-->
