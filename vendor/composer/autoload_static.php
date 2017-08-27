@@ -329,7 +329,7 @@ class ComposerStaticInita81e0db5a31492751cef61904cafbffb
         'AddInterfacesTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_12_183522_Add_Interfaces_Table.php',
         'AddMeasuresTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_14_040017_Add_Measures_Table.php',
         'AddNodesTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_12_183456_Add_Nodes_Table.php',
-        'AddNotificationsTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_14_040034_Add_Notifications_Table.php',
+        'AddNotificationsTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_14_221546_Add_Notifications_Table.php',
         'AddUserVariableTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_14_221539_Add_UserVariable_Table.php',
         'AddUsersTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_12_183435_Add_Users_Table.php',
         'AddVariableInterfaceTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_14_221545_Add_VariableInterface_Table.php',
