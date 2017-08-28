@@ -25,6 +25,7 @@
 				</td>
 			</tr>
 			@endforeach
+			<a href="{{ route('node.add') }}" class="btn btn-info">Añadir variable a paciente</a><hr>
 		</tbody>
 	</table>
 @endsection
