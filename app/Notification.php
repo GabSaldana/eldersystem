@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Support\Facades\DB;
+use Auth;
 
 class Notification extends Model
 {
@@ -43,4 +45,25 @@ protected $fillable = ['description','type','admin_id','user_id','measure_id','r
   public function scopeSearch($query, $type){
       return $query->where('type','like','%'.$type.'%');
   }
+
+  public function scopeSearchnotadmin($query, $id){
+      return $query
+      ->select('notifications.id','notifications.type','notifications.description','admin_user.user_id as user')
+      //from notifications
+      ->join('admin_user', 'admin_user.user_id', '=', 'notifications.user_id')
+      ->where('admin_user.admin_id','=',$id)
+      ->orderBy('notifications.id','ASC')
+      ;
+  }
+
+  public function scopeSearchnotuser($query, $id){
+      return $query
+      ->select('notifications.id','notifications.type','notifications.description','users.id as user')
+      //from notifications
+      ->join('users', 'users.id', '=', 'notifications.user_id')
+      ->where('users.id','=',$id)
+      ->orderBy('notifications.id','ASC')
+      ;
+  }
+
 }
