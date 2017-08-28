@@ -79,8 +79,8 @@ class NodeController extends Controller
      */
     public function edit($id)
     {
-      $patient = User::find(13);
-      return view('node.edit')->with('variables',$patient);
+      $user = User::find(1);
+      return view('node.edit')->with('user',$user);
     }
 
     /**
