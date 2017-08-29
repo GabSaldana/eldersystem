@@ -13,7 +13,7 @@
 			<th>Variable</th>
 		</thead>
 		<tbody>
-			@foreach($user->variables as $variables)
+			@foreach($user->variables as $variable)
 			<tr>
 				<td>{{ $variable -> pivot -> user_id }}</td>
 				<td>{{ $variable -> pivot -> variable_id }}</td>

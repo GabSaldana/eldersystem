@@ -8,6 +8,7 @@ use App\Variable;
 use App\User;
 use Laracasts\Flash\Flash;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\DB;
 use Auth;
 
 class NodeController extends Controller
@@ -79,6 +80,8 @@ class NodeController extends Controller
      */
     public function edit($id)
     {
+      //$user = User::orderBy('id','ASC')->paginate(5);
+      $interface = Interface::find($id);
       $user = User::find($id);
       return view('node.edit')->with('user',$user);
     }
@@ -100,13 +103,19 @@ class NodeController extends Controller
 
     public function update(Request $request)
     {
-        dd('hola');
+      /****LLENANDO TABLA PIVOTE****/
+      if(Auth::guard('admin')->check()){
+          //dd(Auth::guard('admin')->user()->id);
+          $idpaciente = $request -> patient_id;
+          $idvariable = $request -> variable_id;
+          DB::insert('insert into user_variable(user_id, variable_id) values (?,?)',
+          [$idpaciente,$idvariable]);
+          $patient_variable = DB::select( DB::raw("SELECT * FROM user_variable") );
+          //dd($patient_variable);
+          //return view();
+      }
     }
 
-    public function storeunique(Request $request)
-    {
-        dd('hola');
-    }
     /**
      * Remove the specified resource from storage.
      *

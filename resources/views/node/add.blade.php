@@ -9,7 +9,7 @@
 
 @section('content')
 
-{!! Form::open(['route' => 'node.storeunique', 'method' => 'POST']) !!}
+{!! Form::open(['route' => 'node.update', 'method' => 'POST']) !!}
 	<div class="form-group">
 		{!! Form::label('patient_id','Paciente') !!}
 		{!! Form::select('patient_id',$patient,['class' => 'form-control textarea-content']) !!}
