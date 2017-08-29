@@ -42,7 +42,6 @@ class NotificationController extends Controller
            return view('notification.index')->with('notifications',$notifications);
            //echo Notification::searchnot()->toSql();
 
-
          }else{
            //dd('user'.' '. Auth::guard('web')->user()->id);
            $actual_id = Auth::guard('web')->user()->id;
