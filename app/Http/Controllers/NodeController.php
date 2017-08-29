@@ -79,7 +79,7 @@ class NodeController extends Controller
      */
     public function edit($id)
     {
-      $user = User::find(1);
+      $user = User::find($id);
       return view('node.edit')->with('user',$user);
     }
 
@@ -93,14 +93,20 @@ class NodeController extends Controller
      public function add()
      {
        //llenaremos tabla user_variable
-         dd('hola');
+       $patient = User::orderBy('name','ASC')->pluck('name','id');
+       $variable = Variable::orderBy('name','ASC')->pluck('name','id');
+       return view('node.add')->with('patient',$patient)->with('variable',$variable);
      }
 
-    public function update(Request $request, $i)
+    public function update(Request $request)
     {
-        //dd('hola');
+        dd('hola');
     }
 
+    public function storeunique(Request $request)
+    {
+        dd('hola');
+    }
     /**
      * Remove the specified resource from storage.
      *
