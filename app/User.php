@@ -51,6 +51,19 @@ class User extends Authenticatable
         return $query->where('name','like','%'.$name.'%');
     }
 
+    public function scopeSearchuser($query, $id){//seleccionar los pacientes del doctor
+
+      return $query
+      ->select('users.*','admins.id as doctor_id','admins.name as doctor_name')
+      //from users
+      ->join('admin_user', 'admin_user.user_id', '=', 'users.id')
+      ->join('admins', 'admins.id', '=', 'admin_user.admin_id')
+      ->where('admin_user.admin_id','=',$id)
+      ->orderBy('users.id','ASC')
+      ;
+
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

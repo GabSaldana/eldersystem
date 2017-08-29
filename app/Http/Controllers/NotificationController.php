@@ -23,19 +23,7 @@ class NotificationController extends Controller
 
          if( Auth::guard('admin')->check() ){
            //dd('admin'.' '. Auth::guard('admin')->user()->id);
-
            $actual_id = Auth::guard('admin')->user()->id;
-
-           /*$notifications = DB::table('admins')
-           ->join('admin_user', 'admin_user.admin_id', '=', 'admins.id')
-           ->join('notifications', 'notifications.user_id', '=', 'admin_user.user_id')
-           ->join('users', 'users.id', '=', 'admin_user.user_id')
-           //->select('admin_user.user_id as patient','admin_user.admin_id as doctor','users.name','notifications.id as notification_id',
-           //'notifications.description as description')
-           ->where('admins.id', '=', $actual_id)
-           ->select('notifications.id','notifications.type','notifications.description')
-           ->orderBy('notifications.id','ASC')
-           ->get();*/
            $notifications = Notification::searchnotadmin($actual_id)->paginate(5);
            //dd($notifications);
            return view('notification.index')->with('notifications',$notifications);

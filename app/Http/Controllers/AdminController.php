@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
 
 class AdminController extends Controller
 {
@@ -24,7 +25,14 @@ class AdminController extends Controller
      */
     public function index(Request $request)
     {
-      $patients = User::search($request->name)->orderBy('id','ASC')->paginate(5);
-      return view('patient.index')->with('patients',$patients);
+      if( Auth::guard('admin')->check() ){
+        //dd('admin'.' '. Auth::guard('admin')->user()->id);
+        $actual_id = Auth::guard('admin')->user()->id;
+        $patients = User::searchuser($actual_id)->paginate(5);
+        //dd($patients);
+        return view('patient.index')->with('patients',$patients);
+       //echo Notification::searchnot()->toSql();
+
+      }
     }
 }

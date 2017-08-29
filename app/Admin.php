@@ -74,4 +74,17 @@ This correlates with settings in config/auth.php
     {
         $this->notify(new AdminResetPasswordNotification($token));
     }
+
+    public function scopeSearchadmin($query, $id){//seleccionar los doctores del paciente
+
+      return $query
+      ->select('admins.*','users.id as patient_id','users.name as patient_name')
+      //from users
+      ->join('admin_user', 'admin_user.admin_id', '=', 'admins.id')
+      ->join('users', 'users.id', '=', 'admin_user.user_id')
+      ->where('admin_user.user_id','=',$id)
+      ->orderBy('admins.id','ASC')
+      ;
+
+    }
 }

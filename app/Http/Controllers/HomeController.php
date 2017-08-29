@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Admin;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,14 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-      $doctors = Admin::search($request->name)->orderBy('id','ASC')->paginate(5);
-      return view('doctor.index')->with('doctors',$doctors);
+      if( Auth::guard('web')->check() ){
+        //dd('user'.' '. Auth::guard('web')->user()->id);
+        $actual_id = Auth::guard('web')->user()->id;
+        $doctors = Admin::searchadmin($actual_id)->paginate(5);
+        //dd($doctors);
+        return view('doctor.index')->with('doctors',$doctors);
+       //echo Admin::searchadmin($actual_id)->toSql();
+
+      }
     }
 }
