@@ -78,6 +78,7 @@ Route::group(['prefix'=>'nodes' ],  function(){
   Route::get('node','NodeController@index')->name('node.index');
   Route::post('node','NodeController@store')->name('node.store');
   Route::get('node/create','NodeController@create')->name('node.create');
+  Route::get('node/add','NodeController@add')->name('node.add');
   Route::get('node/{id}/destroy','NodeController@destroy')->name('node.destroy');
   Route::put('node/{node}','NodeController@update')->name('node.update');
   Route::get('node/{node}/edit','NodeController@edit')->name('node.edit');

@@ -90,9 +90,15 @@ class NodeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+     public function add()
+     {
+       //llenaremos tabla user_variable
+         dd('hola');
+     }
+
+    public function update(Request $request, $i)
     {
-        //
+        //dd('hola');
     }
 
     /**
