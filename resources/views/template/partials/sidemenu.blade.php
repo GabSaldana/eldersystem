@@ -21,7 +21,7 @@
 							    	<span class="fa fa-user fa-2x icono-blanco"></span>&nbsp;@yield('Datos personales','Default')
 							    </a>
 						    </li >
-						    <li class="active">
+						    <li class="">
 							    <a href="{{ route('patient.index') }}">
 							    	<span class="fa fa-list fa-2x icono-blanco"></span>&nbsp;@yield('Lista','Default')
 							    </a>
@@ -63,7 +63,7 @@
 							    	<span class="fa fa-user fa-2x icono-blanco"></span>&nbsp;@yield('Datos personales','Default')
 							    </a>
 						    </li -->
-						    <li class="active">
+						    <li class="">
 							    <a href="{{ route('doctor.index') }}">
 							    	<span class="fa fa-list fa-2x icono-blanco"></span>&nbsp;@yield('Lista','Default')
 							    </a>

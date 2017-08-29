@@ -43,6 +43,17 @@ a{
   border: 1px solid #B2DFDB;
 }
 
+.index-userpic img {
+  float: none;
+  margin: 0 auto;
+  width: 35%;
+  height: 35%;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+  border: 1px solid #B2DFDB;
+}
+
 .profile-usertitle {
   text-align: center;
   margin-top: 20px;
@@ -78,7 +89,6 @@ a{
 .profile-usermenu ul li.active a {
   color: #FFFFFF;
   background-color: #92D050;
-
   margin-left: -2px;
 }
 .profile-usermenu ul li.active {
@@ -98,4 +108,14 @@ a{
   padding: 20px;
   background: #FFFFFF;
   min-height: 460px;
+}
+
+.show{
+  position: relative;
+   -moz-box-shadow: 0px 3px 4px rgba(0, 0, 0,0.5);
+   -webkit-box-shadow: 0px 3px 4px rgba(0, 0, 0, .5);
+   box-shadow: 0px 3px 4px rgba(0, 0, 0, .5);
+   padding: 20px;
+   background: white;
+
 }

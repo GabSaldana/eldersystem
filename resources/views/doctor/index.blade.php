@@ -34,7 +34,7 @@
 			@foreach($doctors as $doctor)
 				<div class="col-md-4">
 					</br>
-          <div class="profile-userpic">{{ Html::image( asset($doctor->photo) , 'a picture',
+          <div class="index-userpic">{{ Html::image( asset($doctor->photo) , 'a picture',
 					 array('class' => 'thumb', 'width' => 50, 'height' => 50 )) }}
 				 </br><h4> {{$doctor->name .' '. $doctor->lastname}}</h4></br>
 				 </div>
