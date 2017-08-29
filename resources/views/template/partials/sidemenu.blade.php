@@ -1,7 +1,9 @@
 @if(Auth::guard('admin')->check())
 {{-- dd( Auth::guard('admin')->check() ) --}}
 {{-- dd('hi admin') --}}
+@section('Sub menu 2', 'Nodos')
 <div class="profile-sidebar">
+
 					<!-- SIDEBAR USERPIC -->
 					<div class="profile-userpic">
 					        <img src="{{ asset(Auth::guard('admin')->user()->photo) }}" class="img-responsive" >
@@ -43,6 +45,7 @@
 @else
 {{-- dd( Auth::guard('web')->check() ) --}}
 {{-- dd('hi user') --}}
+@section('Sub menu 2', 'Lista Variables')
 <div class="profile-sidebar">
 					<!-- SIDEBAR USERPIC -->
 					<div class="profile-userpic">

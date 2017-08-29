@@ -5,7 +5,6 @@
 @section('Datos personales','Datos personales')
 @section('Lista', 'Lista de doctores')
 @section('Sub menu 1', 'Notificaciones')
-@section('Sub menu 2', 'Lista de Variables')
 
 @section('content')
 
