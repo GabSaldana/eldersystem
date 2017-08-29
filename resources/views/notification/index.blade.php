@@ -34,20 +34,27 @@
 			<th>ID</th>
 			<th>Tipo</th>
 			<th>Descripción</th>
+			<th>Paciente</th>
+			<th>Foto de perfil paciente</th>
 		</thead>
 		<tbody>
 			@foreach($notifications as $notification)
-				<tr>
-					<td>{{ $notification->id }}</td>
-					<td>{{ $notification->type }}</td>
-					<td>{{ $notification->description }}</td>
-					<td>
-						<a href="{{ route('notification.destroy', $notification->id) }}"
-						onclick="return confirm('Seguro que deseas eliminarla?')" class="btn btn-danger">
-							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-						</a>
-					</td>
+				<tr class="shownot">
+						<td>{{ $notification->id }}</td>
+						<td>{{ $notification->type }}</td>
+						<td>{{ $notification->description }}</td>
+						<td>{{ $notification->name }}</td>
+						<td >{{ Html::image( asset($notification->photo) , 'a picture',
+						 array('class' => 'thumb', 'width' => 50, 'height' => 50 )) }}
+					 </td>
+						<td>
+							<a href="{{ route('notification.destroy', $notification->id) }}"
+							onclick="return confirm('Seguro que deseas eliminarla?')" class="btn btn-danger">
+								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+							</a>
+						</td>
 				</tr>
+			</br>
 			@endforeach
 		</tbody>
 	</table>

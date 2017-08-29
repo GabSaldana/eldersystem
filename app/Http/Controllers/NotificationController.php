@@ -36,9 +36,8 @@ class NotificationController extends Controller
            ->select('notifications.id','notifications.type','notifications.description')
            ->orderBy('notifications.id','ASC')
            ->get();*/
-
-           //dd($notifications);
            $notifications = Notification::searchnotadmin($actual_id)->paginate(5);
+           //dd($notifications);
            return view('notification.index')->with('notifications',$notifications);
            //echo Notification::searchnot()->toSql();
 
