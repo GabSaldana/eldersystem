@@ -10,7 +10,6 @@
 
 @section('content')
 
-
 <div class="container">
 	<div class="row">
 		<div class="col-md-6">
@@ -31,29 +30,14 @@
 	</div>
 </div>
 
-	<table class="table">
-		<thead>
-			<th>ID</th>
-			<th>Nombre</th>
-			<th>Apellido</th>
-			<th>Telefono</th>
-      <th>Horario</th>
-      <th>Dirección de la oficina</th>
-      <th>Foto</th>
-			<th>Accion</th>
-		</thead>
-		<tbody>
+<div class="row">
 			@foreach($doctors as $doctor)
-				<tr>
-					<td>{{ $doctor->id }}</td>
-					<td>{{ $doctor->name }}</td>
-					<td>{{ $doctor->lastname }}</td>
-					<td>{{ $doctor->telephone_number }}</td>
-          <td>{{ $doctor->schedule }}</td>
-          <td>{{ $doctor->office_address }}</td>
-          <td>{{ Html::image( asset($doctor->photo) , 'a picture',
+				<div class="col-md-4">
+					</br>
+          <div class="profile-userpic">{{ Html::image( asset($doctor->photo) , 'a picture',
 					 array('class' => 'thumb', 'width' => 50, 'height' => 50 )) }}
-				  </td>
+				 </br><h4> {{$doctor->name .' '. $doctor->lastname}}</h4></br>
+				 </div>
 					<td>
 						<a href="{{ route('doctor.destroy', $doctor->id) }}"
 						onclick="return confirm('Seguro que deseas eliminarlo?')" class="btn btn-danger">
@@ -65,13 +49,17 @@
 						<a href="{{ route('doctor.show', $doctor->id)}}" class="btn btn-primary">
 							<span class="fa fa-eye fa-lg" ></span>
 						</a>
+						</br>
 					</td>
-				</tr>
+				</div>
 			@endforeach
-		</tbody>
-	</table>
+</div>
+
+<div class="row">
 	<div class="text-center">
 		<!--Renderizando la paginacion, sin esto no aparece en la vista-->
 		{!!  $doctors->render() !!}
 	</div>
+</div>
+
 @endsection

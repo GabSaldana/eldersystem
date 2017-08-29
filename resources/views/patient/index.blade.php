@@ -26,23 +26,14 @@
 	</div>
 </div>
 
-	<table class="table">
-		<thead>
-			<th>ID</th>
-			<th>Nombre</th>
-			<th>Apellido</th>
-			<th>Telefono</th>
-			<th>Foto</th>
-			<th>Accion</th>
-		</thead>
-		<tbody>
+<div class="row">
 			@foreach($patients as $patient)
-				<tr>
-					<td>{{ $patient->id }}</td>
-					<td>{{ $patient->name }}</td>
-					<td>{{ $patient->lastname }}</td>
-					<td>{{ $patient->telephone_number }}</td>
-					<td>{{  Html::image(asset($patient->photo), 'a picture', array('width' => 50 , 'height' => 50, 'class' => 'thumb'))  }}</td>
+				<div class="col-md-4">
+					</br>
+					<div class="profile-userpic">{{ Html::image( asset($patient->photo) , 'a picture',
+					 array('class' => 'thumb', 'width' => 50, 'height' => 50 )) }}
+				 </br><h4> {{$patient->name .' '. $patient->lastname}}</h4></br>
+				 </div>
 					<td>
 						<a href="{{ route('patient.destroy', $patient->id) }}"
 						onclick="return confirm('Seguro que deseas eliminarlo?')" class="btn btn-danger">
@@ -54,13 +45,17 @@
 						<a href="{{ route('patient.show', $patient->id)}}" class="btn btn-primary">
 							<span class="fa fa-eye fa-lg" ></span>
 						</a>
+						</br>
 					</td>
-				</tr>
+				</div>
 			@endforeach
-		</tbody>
-	</table>
+</div>
+
+<div class="row">
 	<div class="text-center">
 		<!--Renderizando la paginacion, sin esto no aparece en la vista-->
 		{!!  $patients->render() !!}
 	</div>
+</div>
+
 @endsection
