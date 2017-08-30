@@ -80,8 +80,8 @@ class NodeController extends Controller
      */
     public function edit($id)
     {
-      //$user = User::orderBy('id','ASC')->paginate(5);
-      $interface = Interface::find($id);
+      //$des = Variable::searchnodevariable(1)->paginate(5);
+
       $user = User::find($id);
       return view('node.edit')->with('user',$user);
     }
