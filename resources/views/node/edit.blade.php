@@ -13,10 +13,10 @@
 			<th>Variable</th>
 		</thead>
 		<tbody>
-			@foreach($user->variables as $variable)
+			@foreach($nodes as $variable)
 			<tr>
-				<td>{{ $variable -> pivot -> user_id }}</td>
-				<td>{{ $variable -> pivot -> variable_id }}</td>
+				<td>{{ $variable -> user }}</td>
+				<td>{{ $variable -> name }}</td>
 				<td>
 					<a href="#"
 					onclick="return confirm('Seguro que deseas eliminarlo?')" class="btn btn-danger">
