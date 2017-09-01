@@ -52,3 +52,23 @@ $factory->define(App\Admin::class, function(Generator $faker){
     ];
     return $array;
 });
+
+$factory->define(App\Node::class, function(Generator $faker){
+
+    $array = [
+        'name' => $faker->name,
+        'lastname' => $faker->lastName,
+        'email' => $faker->unique()->email,
+        //'password' => bcrypt(str_random(10)),
+        'password' => bcrypt('123456'),
+        'age' => $faker->numberBetween($min = 25, $max = 70),
+        'sex' => $faker->randomElement($array = array ('F','M')),
+        'specialty' => $faker->word,
+        'schedule' => 'L,M,M,J,V 8-18',
+        'professional_id' => $faker->regexify('[A-Z0-9._%+-]+[A-Z0-9.-]+.[A-Z]{8,8}'),
+        'telephone_number' => $faker->phoneNumber,
+        'office_address' => $faker->address,
+        'photo' => '/images/pacientes/001-pokeballs.png',
+    ];
+    return $array;
+});

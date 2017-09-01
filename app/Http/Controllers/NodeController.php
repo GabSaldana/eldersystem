@@ -80,12 +80,12 @@ class NodeController extends Controller
      */
     public function edit($id)
     {
-      $user = User::find($id);
+      //$user = User::find($id);
       //return view('node.edit')->with('user',$user);
 
       $nodes = Node::searchvariable(1)->paginate(5);
-      //dd($notifications);
-      return view('node.edit')->with('$nodes',$nodes);
+      dd($nodes);
+      //return view('node.edit')->with('nodes',$nodes);
       //echo Node::searchvariable(1)->toSql();
     }
 

@@ -100,17 +100,23 @@ $variable->interfaces()->attach(3)
 
 -----------------Interfaces:-----------------------------------------------------------------------------------------------------------------
 
- $interface = ['name' => 'UART','quantity' => 1, 'node_id' => 2];
- $interface = ['name' => 'I2C','quantity' => 2, 'node_id' => 1];
+ $interface = ['name' => 'GPIO','quantity' => 2, 'node_id' => 1];
+ $interface = ['name' => 'UART','quantity' => 2, 'node_id' => 1];
 
 \App\Inter::create($interface);
 
 Alternativamente*****************************************
 
 $inter = new App\Inter();
-$inter->name = "SPI";
-$inter->quantity= 1;
-$inter->node_id=3;
+$inter->name = "GPIO";
+$inter->quantity= 2;
+$inter->node_id=1;
+$inter->save();
+
+$inter = new App\Inter();
+$inter->name = "UART";
+$inter->quantity= 2;
+$inter->node_id=1;
 $inter->save();
 
 -----------------------------------Variables:----------------------------------------------------------------------------------------------
