@@ -53,18 +53,21 @@ $factory->define(App\Admin::class, function(Generator $faker){
     return $array;
 });
 
+$factory->define(App\Node::class, function(Generator $faker){
+
+    $array = [
+      'mac_address' => $faker->regexify('[A-Z0-9]+:[A-Z0-9]+:[A-Z0-9]+:[A-Z0-9]{2,2}'),
+      'admin_id' => 1 ,
+    ];
+    return $array;
+});
 
 $factory->define(App\Inter::class, function(Generator $faker){
 
     $array = [
-<<<<<<< HEAD
-        'mac_address' => $faker->regexify('[A-Z0-9]+:[A-Z0-9]+:[A-Z0-9]+:[A-Z0-9]{2,2}'),
-        'admin_id' => 1 ,
-=======
-        'name' => $faker->randomElement($array = array ('UART','GPIO')),
-        'quantity' => '2',
-        'node_id' => '1',
->>>>>>> melina
+      'name' => $faker->randomElement($array = array ('UART','GPIO')),
+      'quantity' => '2',
+      'node_id' => '1',
     ];
     return $array;
 });
