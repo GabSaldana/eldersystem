@@ -43,14 +43,5 @@ class Variable extends Model
 
     return $this->belongsToMany('App\User')->withTimestamps();
   }
-  public function scopesearchnodevariable($query, $id){//seleccionar las variables del nodo ocupadas
-    return $query
-    ->select('variables.id','variables.name','inter_variable.interface_id as interface')
-    //from users
-    ->join('interfaces', 'interfaces.id', '=', 'variables.id')
-    ->join('inter_variable', 'interfaces.id', '=', 'variables.id')
-    ->where('interfaces.id','=',$id)
-    ->orderBy('users.id','ASC')
-    ;
-  }
+  
 }

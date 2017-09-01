@@ -43,4 +43,16 @@ class Node extends Model
 
       return $query->where('mac_address','like','%'.$type.'%');
   }
+  public function scopeSearchvariable($query, $id){//seleccionar las variables del nodo ocupadas
+    return $query
+    ->select('variables.name','user_variable.user_id as user')
+    //tabl aara mostrar variable y usuario solo de ese nodo
+    ->join('interfaces', 'interfaces.node_id', '=', 'nodes.id')
+    ->join('inter_variable', 'inter_variable.inter_id', '=', 'interfaces.id')
+    ->join('variables', 'variables.id', '=', 'inter_variable.inter_id')
+
+    ->where('inter_variable.inter_id','=',$id)
+    ->orderBy('variables.id','ASC')
+    ;
+  }
 }
