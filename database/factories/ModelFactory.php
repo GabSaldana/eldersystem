@@ -65,9 +65,21 @@ $factory->define(App\Node::class, function(Generator $faker){
 $factory->define(App\Inter::class, function(Generator $faker){
 
     $array = [
-      'name' => $faker->randomElement($array = array ('UART','GPIO')),
-      'quantity' => '2',
-      'node_id' => '1',
+      //'name' => $faker->randomElement($array = array ('UART','UART')),
+      'name' => $faker->randomElement($array = array ('GPIO','GPIO')),
+      'quantity' => 2,
+      'node_id' => 1,
+    ];
+    return $array;
+});
+
+$factory->define(App\Variable::class, function(Generator $faker){
+
+    $array = [
+      //'name' => 'Temperatura',
+      //'range' => '35.0-38.0',
+      'name' => 'Pulso cardiaco',
+      'range' => '60-100',
     ];
     return $array;
 });

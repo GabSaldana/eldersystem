@@ -334,7 +334,7 @@ class ComposerStaticInita81e0db5a31492751cef61904cafbffb
         'AddUservariableTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_01_174643_add_uservariable_table.php',
         'AddVariableinterfaceTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_01_174729_add_variableinterface_table.php',
         'AddVariablesTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_01_174505_add_variables_table.php',
-        'AdminSeeder' => __DIR__ . '/../..' . '/database/seeds/NotificationSeeder.php',
+        'AdminSeeder' => __DIR__ . '/../..' . '/database/seeds/AdminSeeder.php',
         'App\\Admin' => __DIR__ . '/../..' . '/app/Admin.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',

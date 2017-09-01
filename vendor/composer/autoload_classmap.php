@@ -16,7 +16,7 @@ return array(
     'AddUservariableTable' => $baseDir . '/database/migrations/2017_09_01_174643_add_uservariable_table.php',
     'AddVariableinterfaceTable' => $baseDir . '/database/migrations/2017_09_01_174729_add_variableinterface_table.php',
     'AddVariablesTable' => $baseDir . '/database/migrations/2017_09_01_174505_add_variables_table.php',
-    'AdminSeeder' => $baseDir . '/database/seeds/NotificationSeeder.php',
+    'AdminSeeder' => $baseDir . '/database/seeds/AdminSeeder.php',
     'App\\Admin' => $baseDir . '/app/Admin.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
