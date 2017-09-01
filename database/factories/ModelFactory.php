@@ -93,3 +93,16 @@ $factory->define(App\Notification::class, function(Generator $faker){
     ];
     return $array;
 });
+
+
+$factory->define(App\Measure::class, function(Generator $faker){
+date_default_timezone_set("America/Mexico_City");
+    $array = [
+      'value' => $faker->randomFloat($nbMaxDecimals = NULL, $min = 35, $max = 38) ,
+      'date' => date("Y/m/d") ,
+      'time' => date("h:i:s"),
+      'variable_id' => $faker->randomElement($array = array (1,2)),
+
+    ];
+    return $array;
+});

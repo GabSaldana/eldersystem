@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
         //$this->call(NodeSeeder::class);
         //$this->call(InterfaceSeeder::class);
         //$this->call(VariableSeeder::class);
-        $this->call(NotificationSeeder::class);
+        //$this->call(NotificationSeeder::class);
+        //$this->call(intervarSeeder::class);
+        $this->call(MeasureSeeder::class);
     }
 }

@@ -11,6 +11,18 @@ class InterfaceSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Inter::class, 1)->create();
+        //factory(App\Inter::class, 1)->create();
+        DB::table('interfaces')
+        ->insert([
+          'name' => 'GPIO',
+          'quantity' => 2,
+          'node_id' => 2,
+        ]);
+        DB::table('interfaces')
+        ->insert([
+          'name' => 'UART',
+          'quantity' => 2,
+          'node_id' => 2,
+        ]);
     }
 }
