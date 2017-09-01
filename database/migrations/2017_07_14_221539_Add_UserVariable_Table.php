@@ -18,7 +18,6 @@ class AddUserVariableTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('variable_id')->unsigned();
 

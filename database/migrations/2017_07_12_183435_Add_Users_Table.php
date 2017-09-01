@@ -31,6 +31,12 @@ class AddUsersTable extends Migration
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->integer('node_id')->unsigned();
+            $table->foreign('node_id')
+            ->references('id')
+            ->on('nodes')
+            ->onDelete('cascade');
         });
     }
 
