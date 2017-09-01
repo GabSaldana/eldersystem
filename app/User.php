@@ -30,7 +30,11 @@ class User extends Authenticatable
     'created_at', 'updated_at'];
 
     //Relaciones*****************************************
+    public function node(){
 
+      return $this->belongsTo('App\Node')->withTimestamps();
+    }
+    
     public function admins(){
 
     	return $this->belongsToMany('App\Admin')->withTimestamps();

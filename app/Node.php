@@ -30,6 +30,11 @@ class Node extends Model
 
   //Relaciones**********************************
 
+  public function users(){
+
+    return $this->hasMany('App\User')->withTimestamps();
+  }
+  
   public function interfaces(){
 
     return $this->hasMany('App\Inter')->withTimestamps();
