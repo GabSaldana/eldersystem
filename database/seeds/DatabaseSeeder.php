@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         //$this->call(AdminSeeder::class);
         //$this->call(NodeSeeder::class);
         //$this->call(InterfaceSeeder::class);
-        $this->call(VariableSeeder::class);
+        //$this->call(VariableSeeder::class);
+        $this->call(NotificationSeeder::class);
     }
 }

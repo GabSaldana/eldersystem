@@ -83,3 +83,13 @@ $factory->define(App\Variable::class, function(Generator $faker){
     ];
     return $array;
 });
+
+$factory->define(App\Notification::class, function(Generator $faker){
+
+    $array = [
+      'description' => $faker->paragraph($nbSentences = 2, $variableNbSentences = true),
+      'type' => $faker->randomElement($array = array ('Urgente','Normal')),
+      'user_id' => 1,
+    ];
+    return $array;
+});
