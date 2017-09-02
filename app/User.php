@@ -34,7 +34,7 @@ class User extends Authenticatable
 
       return $this->belongsTo('App\Node')->withTimestamps();
     }
-    
+
     public function admins(){
 
     	return $this->belongsToMany('App\Admin')->withTimestamps();

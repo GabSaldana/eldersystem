@@ -34,7 +34,7 @@ class Node extends Model
 
     return $this->hasMany('App\User')->withTimestamps();
   }
-  
+
   public function interfaces(){
 
     return $this->hasMany('App\Inter')->withTimestamps();
@@ -48,6 +48,16 @@ class Node extends Model
 
       return $query->where('mac_address','like','%'.$type.'%');
   }
+  public function scopeSearchnode($query, $id){//seleccionar los pacientes del doctor
+
+    return $query
+    ->select('nodes.*','admins.id as doctor_id')
+    ->join('admins', 'admins.id', '=', 'nodes.admin_id')
+    ->where('admins.id','=',$id)
+    ->orderBy('nodes.id','ASC')
+    ;
+
+  }
   public function scopeSearchvariable($query, $id){//seleccionar las variables del nodo ocupadas
     return $query
     ->select('variables.name','user_variable.user_id as user')
@@ -55,7 +65,7 @@ class Node extends Model
     ->join('interfaces', 'interfaces.node_id', '=', 'nodes.id')
     ->join('inter_variable', 'inter_variable.inter_id', '=', 'interfaces.id')
     ->join('variables', 'variables.id', '=', 'inter_variable.inter_id')
-
+    //falto patient_varible con variable id
     ->where('inter_variable.inter_id','=',$id)
     ->orderBy('variables.id','ASC')
     ;

@@ -24,8 +24,12 @@ class NodeController extends Controller
 
           dd(Auth::guard('admin')->user());
       }*/
-      $nodes = Node::orderBy('id','ASC')->paginate(5);
-      return view('node.index')->with('nodes',$nodes);
+      if( Auth::guard('admin')->check() ){
+        $actual_id = Auth::guard('admin')->user()->id;
+        $nodes = Node::searchnode($actual_id)->paginate(5);
+        //$nodes = Node::orderBy('id','ASC')->paginate(5);
+        return view('node.index')->with('nodes',$nodes);
+      }
     }
 
     /**
