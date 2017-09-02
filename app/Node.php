@@ -60,13 +60,13 @@ class Node extends Model
   }
   public function scopeSearchvariable($query, $id){//seleccionar las variables del nodo ocupadas
     return $query
-    ->select('variables.name','user_variable.user_id as user')
+    ->select('users.name as user','variables.name as variable')
     //tabl aara mostrar variable y usuario solo de ese nodo
-    ->join('interfaces', 'interfaces.node_id', '=', 'nodes.id')
-    ->join('inter_variable', 'inter_variable.inter_id', '=', 'interfaces.id')
-    ->join('variables', 'variables.id', '=', 'inter_variable.inter_id')
+    ->join('users', 'users.node_id', '=', 'nodes.id')
+    ->join('user_variable', 'user_variable.user_id', '=', 'users.id')
+    ->join('variables', 'variables.id', '=', 'user_variable.variable_id')
     //falto patient_varible con variable id
-    ->where('inter_variable.inter_id','=',$id)
+    ->where('nodes.id','=',$id)
     ->orderBy('variables.id','ASC')
     ;
   }
