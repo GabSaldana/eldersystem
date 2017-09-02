@@ -9,7 +9,7 @@
 
 
 
-<a href="{{ route('node.create') }}" class="btn btn-info">Nuevo Nodo</a><hr>
+
 	<table class="table">
 		<thead>
 			<th>ID</th>

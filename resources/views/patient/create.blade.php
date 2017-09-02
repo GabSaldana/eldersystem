@@ -9,6 +9,10 @@
 @section('content')
 	{!! Form::open(['route' => 'patient.store', 'method' => 'POST', 'files'=>true]) !!}
 		<div class="form-group">
+			{!! Form::label('mac_address','Nodo') !!}
+			{!! Form::text('mac_address',null,['class' => 'form-control', 'placeholder' => 'Dirección física: 127.0.0.1', 'required']) !!}
+		</div>
+		<div class="form-group">
 			{!! Form::label('name','Nombre') !!}
 			{!! Form::text('name',null,['class' => 'form-control','placeholder' => 'Nombre(s)', 'required']) !!}
 		</div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Admin;
+use App\Node;
 use Laracasts\Flash\Flash;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\DB;
@@ -50,12 +51,19 @@ class PatientController extends Controller
     public function store(Request $request)
     {
       $this->validate($request, [
+          'mac_address' => 'bail|required',
           'name' => 'bail|required|min:6|max:120',
           'email' => 'bail|required|max:255|email',
           'password' => 'bail|min:6',
           'telephone_number' => 'bail',
           'photo' => 'image|bail|required'
       ]);
+
+      $node = new Node();
+      $node->mac_address=$request->mac_address;
+      $node->admin_id=Auth::guard('admin')->user()->id;//Auth::id();
+      //dd($node);
+      $node->save();
 
       $name='' ;
       if($request->file('photo') )
@@ -69,6 +77,7 @@ class PatientController extends Controller
       $patient = new User($request->all());
       $patient->password = bcrypt($request->password);
       $patient->photo  = $name2;
+      $patient->node_id=$node->id;
       $patient->save();
 
       /****LLENANDO TABLA PIVOTE****/
