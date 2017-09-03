@@ -29,6 +29,7 @@ $factory->define(App\User::class, function(Generator $faker){
         'address' => $faker->address,
         'short_description' => $faker->paragraph($nbSentences = 2, $variableNbSentences = true),
         'photo' => '/images/pacientes/001-pokeballs.png',
+        'node_id' => 2,
     ];
     return $array;
 });
@@ -89,7 +90,7 @@ $factory->define(App\Notification::class, function(Generator $faker){
     $array = [
       'description' => $faker->paragraph($nbSentences = 2, $variableNbSentences = true),
       'type' => $faker->randomElement($array = array ('Urgente','Normal')),
-      'user_id' => 1,
+      'user_id' => 2,
     ];
     return $array;
 });
