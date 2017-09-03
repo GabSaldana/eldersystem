@@ -86,11 +86,12 @@ class NodeController extends Controller
     {
       //$user = User::find($id);
       //return view('node.edit')->with('user',$user);
-
-      $nodes = Node::searchvariable(1)->paginate(5);
-      dd($nodes);
-      //return view('node.edit')->with('nodes',$nodes);
+      if(Auth::guard('admin')->check()){
+        $nodes = Node::searchvariable(1)->paginate(5);
+      //dd($nodes);
+        return view('node.edit')->with('nodes',$nodes);
       //echo Node::searchvariable(1)->toSql();
+      }
     }
 
     /**
@@ -119,7 +120,7 @@ class NodeController extends Controller
           [$idpaciente,$idvariable]);
           $patient_variable = DB::select( DB::raw("SELECT * FROM user_variable") );
           //dd($patient_variable);
-          //return view();
+          return view('node.edit');
       }
     }
 
@@ -136,5 +137,15 @@ class NodeController extends Controller
 
       flash('El nodo a sido borrado' )->warning()->important();
       return redirect()->route('node.index');
+    }
+
+    public function destroyvar($variable, $user)
+    {
+      dd('hola');
+      //dd($variable);
+      //dd($user);
+      //$variable->users()->detach($user);
+      //flash('La variable ha sido borrada' )->warning()->important();
+      //return redirect()->route('node.edit');
     }
 }

@@ -13,13 +13,16 @@
 			<th>Variable</th>
 		</thead>
 		<tbody>
-			@foreach($nodes as $variable)
+			@foreach($nodes as $node)
 			<tr>
-				<td>{{ $variable -> user }}</td>
-				<td>{{ $variable -> name }}</td>
+				<td>{{ $node -> user }}</td>
+				<td>{{ $node -> variable }}</td>
 				<td>
-					<a href="#"
-					onclick="return confirm('Seguro que deseas eliminarlo?')" class="btn btn-danger">
+				<!--	{!! Form::open(['action' => ['NodeController@destroyvar', $node->variable, $node->user], 'method' => 'delete']) !!}
+  					{!! Form::submit('Delete') !!}
+					{!! Form::close() !!}-->
+					<a href="{{ url('node/'.$node->variable.'/'.$node->user.'/destroyvar') }}"
+					onclick="return confirm('Eliminar esta variable?')" class="btn btn-danger">
 						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 					</a>
 				</td>

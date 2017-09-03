@@ -80,6 +80,7 @@ Route::group(['prefix'=>'nodes' ],  function(){
   Route::get('node/create','NodeController@create')->name('node.create');
   Route::get('node/add','NodeController@add')->name('node.add');
   Route::get('node/{id}/destroy','NodeController@destroy')->name('node.destroy');
+  Route::get('node/{variable}/{user}/destroyvar','NodeController@destroyvar')->name('node.destroyvar');
   Route::post('node','NodeController@update')->name('node.update');
   Route::get('node/{node}/edit','NodeController@edit')->name('node.edit');
   Route::get('node/show/{id}', 'NodeController@show')->name('node.show');
