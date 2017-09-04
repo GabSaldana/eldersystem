@@ -1,7 +1,14 @@
 @if(Auth::guard('admin')->check())
 {{-- dd( Auth::guard('admin')->check() ) --}}
-{{-- dd('hi admin') --}}
+{{-- dd( Auth::guard('admin')->user()->id ) --}}
+{{--dd('hi admin') --}}
+
+@section('Inicio','Inicio')
+@section('Datos personales','Datos personales')
+@section('Lista', 'Lista de pacientes')
+@section('Sub menu 1', 'Notificaciones')
 @section('Sub menu 2', 'Nodos')
+
 <div class="profile-sidebar">
 
 					<!-- SIDEBAR USERPIC -->
@@ -19,7 +26,7 @@
 				    <div class="profile-usermenu">
 					    <ul class="nav">
 								<li class="">
-							    <a href="{!! route( 'doctor.show', Auth::id() ) !!}">
+							    <a href="{!! route( 'doctor.show', Auth::guard('admin')->user()->id ) !!}">
 							    	<span class="fa fa-user fa-2x icono-blanco"></span>&nbsp;@yield('Datos personales','Default')
 							    </a>
 						    </li >
@@ -45,7 +52,13 @@
 @else
 {{-- dd( Auth::guard('web')->check() ) --}}
 {{-- dd('hi user') --}}
-@section('Sub menu 2', 'Lista Variables')
+
+@section('Inicio','Inicio')
+@section('Datos personales','Datos personales')
+@section('Lista', 'Lista de doctores')
+@section('Sub menu 1', 'Notificaciones')
+@section('Sub menu 2', 'Mediciones')
+
 <div class="profile-sidebar">
 					<!-- SIDEBAR USERPIC -->
 					<div class="profile-userpic">

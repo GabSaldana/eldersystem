@@ -1,11 +1,6 @@
 @extends('template.maintemp')
+
 @section('title', 'Crear Notificacion')
-
-@section('Inicio','Inicio')
-@section('Datos personales','Datos personales')
-@section('Lista', 'Lista de doctores')
-@section('Sub menu 1', 'Notificaciones')
-
 
 @section('content')
 	{!! Form::open(['route' => 'notification.store', 'method' => 'POST', 'files'=>true]) !!}

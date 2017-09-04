@@ -17,7 +17,7 @@ class DoctorController extends Controller
      */
     public function index(Request $request)
     {
-      
+
       if( Auth::guard('web')->check() ){
         //dd('user'.' '. Auth::guard('web')->user()->id);
         $actual_id = Auth::guard('web')->user()->id;
@@ -52,7 +52,7 @@ class DoctorController extends Controller
     public function store(Request $request)
     {
             $this->validate($request, [
-            'name'             => 'bail|required|min:6|max:120',
+            'name'             => 'bail|required|min:3|max:120',
             'email'            => 'bail|required|max:255|email',
             'password'         => 'bail|min:6',
             'telephone_number' => 'bail',
@@ -115,10 +115,10 @@ class DoctorController extends Controller
     public function update(Request $request, $id)
     {
       $this->validate($request, [
-         'name'             => 'bail|required|min:6|max:120',
+         'name'             => 'bail|required|min:3|max:120',
          'email'            => 'bail|required|max:255|email',
          'password'         => 'bail|min:6',
-         'telephone_number' => 'bail|integer',
+         'telephone_number' => 'bail',
          'photo'            => 'bail|required'
        ]);
 

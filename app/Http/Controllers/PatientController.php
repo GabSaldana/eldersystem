@@ -52,7 +52,7 @@ class PatientController extends Controller
     {
       $this->validate($request, [
           'mac_address' => 'bail|required',
-          'name' => 'bail|required|min:6|max:120',
+          'name' => 'bail|required|min:3|max:120',
           'email' => 'bail|required|max:255|email',
           'password' => 'bail|min:6',
           'telephone_number' => 'bail',
@@ -129,10 +129,10 @@ class PatientController extends Controller
     public function update(Request $request, $id)
     {
       $this->validate($request, [
-          'name' => 'bail|required|min:6|max:120',
+          'name' => 'bail|required|min:3|max:120',
           'email' => 'bail|required|max:255|email',
           'password' => 'bail|min:6',
-          'telephone_number' => 'bail|integer',
+          'telephone_number' => 'bail',
           'photo' => 'bail|required'
       ]);
       $patient = User::find($id);

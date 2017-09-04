@@ -1,9 +1,6 @@
 @extends('template.maintemp')
-@section('Inicio','Inicio')
-@section('Datos personales','Datos personales')
-@section('Lista', 'Lista de pacientes')
-@section('Sub menu 1', 'Notificaciones')
-@section('Sub menu 2', 'Nodos')
+
+@section('title', 'Lista de pacientes')
 
 @section('content')
 

@@ -1,11 +1,7 @@
 @extends('template.maintemp')
-@section('title', 'Crear Doctor')
 
-@section('Inicio','Inicio')
-@section('Datos personales','Datos personales')
-@section('Lista', 'Lista de pacientes')
-@section('Sub menu 1', 'Notificaciones')
-@section('Sub menu 2', 'Nodos')
+@section('title', 'Ver Doctor')
+
 @section('title', 'Editar Doctor '.$doctor->name.' '.$doctor->lastname)
 
 @section('content')
