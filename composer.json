@@ -11,6 +11,7 @@
         "cviebrock/eloquent-sluggable": "^4.2",
         "doctrine/dbal": "v2.4.2",
         "laracasts/flash": "^3.0",
+        "khill/lavacharts" : "3.0.*",
         "laravelcollective/html": "^5.4.0"
     },
     "require-dev": {
