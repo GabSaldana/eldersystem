@@ -59,6 +59,7 @@ class PatientController extends Controller
           'photo' => 'image|bail|required'
       ]);
 
+      //Se crea el nodo, se le asigna a un doctor y se guarda
       $node = new Node();
       $node->mac_address=$request->mac_address;
       $node->admin_id=Auth::guard('admin')->user()->id;//Auth::id();
@@ -73,6 +74,7 @@ class PatientController extends Controller
         $path =  public_path() . '/images/pacientes/';
         $file->move($path, $name);
       }
+      //se crea un paciente y se le asigna el nodo recien creado
       $name2='/images/pacientes/'.$name;
       $patient = new User($request->all());
       $patient->password = bcrypt($request->password);
@@ -80,7 +82,7 @@ class PatientController extends Controller
       $patient->node_id=$node->id;
       $patient->save();
 
-      /****LLENANDO TABLA PIVOTE****/
+      /****LLENANDO TABLA PIVOTE se le asigna ese paciente al medico****/
       if(Auth::guard('admin')->check()){
           //dd(Auth::guard('admin')->user()->id);
           $iddoctor   = Auth::guard('admin')->user()->id;

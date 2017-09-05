@@ -86,12 +86,3 @@ Route::group(['prefix'=>'nodes' ],  function(){
   Route::get('node/show/{id}', 'NodeController@show')->name('node.show');
 
 });
-/*
-Route::group(['prefix'=>'nodes'],  function(){
-	Route::resource('node','NodeController');
-	Route::get('node/{id}/destroy' ,[
-		'uses' => 'NodeController@destroy',
-		'as' => 'node.destroy'
-	]);
-});
-*/

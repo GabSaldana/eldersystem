@@ -19,7 +19,11 @@
 				<!--	{!! Form::open(['action' => ['NodeController@destroyvar', $node->variable, $node->user], 'method' => 'delete']) !!}
   					{!! Form::submit('Delete') !!}
 					{!! Form::close() !!}-->
-					<a href="{{ url('node/'.$node->variable.'/'.$node->user.'/destroyvar') }}"
+					<!--a href="{{ url('node/'.$node->variable.'/'.$node->user.'/destroyvar') }}"
+					onclick="return confirm('Eliminar esta variable?')" class="btn btn-danger">
+						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+					</a-->
+					<a href="{{ route('node.destroyvar',['variable'=>$node->variable,'user'=>$node->user]) }}"
 					onclick="return confirm('Eliminar esta variable?')" class="btn btn-danger">
 						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 					</a>

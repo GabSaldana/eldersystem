@@ -9,6 +9,7 @@ use App\User;
 use Laracasts\Flash\Flash;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Auth;
 
 class NodeController extends Controller
@@ -84,10 +85,11 @@ class NodeController extends Controller
      */
     public function edit($id)
     {
+      Session::put('node', $id);
       //$user = User::find($id);
       //return view('node.edit')->with('user',$user);
       if(Auth::guard('admin')->check()){
-        $nodes = Node::searchvariable(1)->paginate(5);
+        $nodes = Node::searchvariable($id)->paginate(5);
       //dd($nodes);
         return view('node.edit')->with('nodes',$nodes);
       //echo Node::searchvariable(1)->toSql();
@@ -104,8 +106,10 @@ class NodeController extends Controller
      public function add()
      {
        //llenaremos tabla user_variable
+
        $patient = User::orderBy('name','ASC')->pluck('name','id');
        $variable = Variable::orderBy('name','ASC')->pluck('name','id');
+       $node_session = Session::get('node');
        return view('node.add')->with('patient',$patient)->with('variable',$variable);
      }
 
@@ -116,11 +120,16 @@ class NodeController extends Controller
           //dd(Auth::guard('admin')->user()->id);
           $idpaciente = $request -> patient_id;
           $idvariable = $request -> variable_id;
+
           DB::insert('insert into user_variable(user_id, variable_id) values (?,?)',
           [$idpaciente,$idvariable]);
           $patient_variable = DB::select( DB::raw("SELECT * FROM user_variable") );
           //dd($patient_variable);
-          return view('node.edit');
+          $node_session = Session::get('node');
+          //dd($node_session);
+          $nodes = Node::searchvariable($node_session)->paginate(5);
+          return view('node.edit')->with('nodes',$nodes);
+
       }
     }
 
@@ -141,10 +150,14 @@ class NodeController extends Controller
 
     public function destroyvar($variable, $user)
     {
-      dd('hola');
+      //dd('hola');
       //dd($variable);
       //dd($user);
       //$variable->users()->detach($user);
+      // delete the relationships with Tags (Pivot table) first.
+      //$user->variables()->detach();
+      // delete the record from the account table.
+      //$variable->delete($variable);
       //flash('La variable ha sido borrada' )->warning()->important();
       //return redirect()->route('node.edit');
     }

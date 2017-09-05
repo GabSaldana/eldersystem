@@ -65,6 +65,16 @@ class User extends Authenticatable
       ->where('admin_user.admin_id','=',$id)
       ->orderBy('users.id','ASC')
       ;
+    }
+
+    public function scopeUsernode($query,$id){
+
+      return $query
+      ->select('users.*','users.node_id')
+      //from users
+      ->where('node_id','=',$id)
+      ->orderBy('users.id','ASC')
+      ;
 
     }
 
