@@ -23,7 +23,7 @@
 					onclick="return confirm('Eliminar esta variable?')" class="btn btn-danger">
 						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 					</a-->
-					<a href="{{ route('node.destroyvar',['variable'=>$node->variable,'user'=>$node->user]) }}"
+					<a href="{{ route('node.destroyvar',['variable'=>$node->idvar,'user'=>$node->idusr]) }}"
 					onclick="return confirm('Eliminar esta variable?')" class="btn btn-danger">
 						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 					</a>
