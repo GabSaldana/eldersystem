@@ -106,10 +106,11 @@ class NodeController extends Controller
      public function add()
      {
        //llenaremos tabla user_variable
-
-       $patient = User::orderBy('name','ASC')->pluck('name','id');
-       $variable = Variable::orderBy('name','ASC')->pluck('name','id');
        $node_session = Session::get('node');
+       //seleccionamos al ususario perteneciente a ese nodo, es para el solo el nodo
+       $patient = User::usernode($node_session)->pluck('name','id');
+       //dd($patient);
+       $variable = Variable::orderBy('name','ASC')->pluck('name','id');
        return view('node.add')->with('patient',$patient)->with('variable',$variable);
      }
 
@@ -150,15 +151,17 @@ class NodeController extends Controller
 
     public function destroyvar($variable, $user)
     {
-      //dd('hola');
+
       //dd($variable);
       //dd($user);
-      //$variable->users()->detach($user);
-      // delete the relationships with Tags (Pivot table) first.
-      //$user->variables()->detach();
-      // delete the record from the account table.
-      //$variable->delete($variable);
-      //flash('La variable ha sido borrada' )->warning()->important();
-      //return redirect()->route('node.edit');
+      $var = Variable::find($variable);
+      $usr = User::find($user);
+      //dd($usr);
+      $usr->variables()->detach($var->id);
+      flash('La variable ha sido borrada' )->warning()->important();
+      $node_session = Session::get('node');
+      //dd($node_session);
+      $nodes = Node::searchvariable($node_session)->paginate(5);
+      return view('node.edit')->with('nodes',$nodes);
     }
 }

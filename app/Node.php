@@ -60,7 +60,7 @@ class Node extends Model
   }
   public function scopeSearchvariable($query, $id){//seleccionar las variables del nodo ocupadas
     return $query
-    ->select('users.name as user','variables.name as variable')
+    ->select('users.name as user','variables.name as variable','variables.id as idvar','users.id as idusr')
     //tabl aara mostrar variable y usuario solo de ese nodo
     ->join('users', 'users.node_id', '=', 'nodes.id')
     ->join('user_variable', 'user_variable.user_id', '=', 'users.id')
