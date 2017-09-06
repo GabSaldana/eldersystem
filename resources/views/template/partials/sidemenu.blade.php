@@ -90,7 +90,7 @@
 							     </a>
 						    </li>
                      		<li class="">
-							    <a href="#">
+							    <a href="{!! route('measure.show', Auth::id() ) !!}">
 							     <span class="fa fa-dot-circle-o fa-2x icono-blanco"></span>&nbsp;@yield('Sub menu 2','Default')
 							    </a>
 						    </li>

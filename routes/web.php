@@ -84,5 +84,6 @@ Route::group(['prefix'=>'nodes' ],  function(){
   Route::post('node','NodeController@update')->name('node.update');
   Route::get('node/{node}/edit','NodeController@edit')->name('node.edit');
   Route::get('node/show/{id}', 'NodeController@show')->name('node.show');
-
 });
+
+Route::get('measure/show/{id}', 'PatientController@meashow')->name('measure.show');

@@ -124,6 +124,30 @@ class PatientController extends Controller
       return view('patient.show',["lava"=>$lava])->with('patient',$patient);
     }
 
+    public function meashow($id)
+    {
+      $lava=new Lavacharts;
+      $measure=$lava->DataTable();
+      $data=User::select('value','time')
+      ->join('admin_user', 'admin_user.user_id', '=', 'users.id')
+      ->join('admins', 'admins.id', '=', 'admin_user.admin_id')
+      ->where('admin_user.admin_id','=',$id)
+      ->orderBy('users.id','ASC')
+      ->get();
+
+      $measure->addStringColumn("Hora")->addNumberColumn("Valor");
+      foreach ($data as $key => $value) {
+        $measure->addRow([
+          $value['time'],$value['value'],
+        ]);
+      }
+      $lava->AreaChart('Medicion',$measure,[
+        'title'=>'Mediciones'
+      ]);
+      $patient = User::find($id);
+      return view('patient.show',["lava"=>$lava])->with('patient',$patient);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

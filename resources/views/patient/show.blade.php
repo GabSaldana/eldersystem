@@ -5,8 +5,10 @@
 @section('content')
 
 <div class="row">
-	<div id="areachart" style="width:100%;margin:0 auto;"></div>
+	@if(Auth::guard('admin')->check())
+		<div id="areachart" style="width:100%;margin:0 auto;"></div>
 		<?=$lava->render("AreaChart","Medicion","areachart");?>
+	@endif
 	<div class="col-md-2">
 
 	</div>
