@@ -110,6 +110,7 @@ class PatientController extends Controller
       $lava=new Lavacharts;
       $measure=$lava->DataTable();
       $data=Measure::select('value','time')->get();
+
       $measure->addStringColumn("Hora")
               ->addNumberColumn("Valor");
           foreach ($data as $key => $value) {
@@ -128,13 +129,9 @@ class PatientController extends Controller
     {
       $lava=new Lavacharts;
       $measure=$lava->DataTable();
-      $data=User::select('value','time')
-      ->join('admin_user', 'admin_user.user_id', '=', 'users.id')
-      ->join('admins', 'admins.id', '=', 'admin_user.admin_id')
-      ->where('admin_user.admin_id','=',$id)
-      ->orderBy('users.id','ASC')
-      ->get();
-
+      $data = User::searchmeasure($id);
+      //dd($data);
+      //echo User::searchmeasure($id)->toSql();
       $measure->addStringColumn("Hora")->addNumberColumn("Valor");
       foreach ($data as $key => $value) {
         $measure->addRow([
@@ -142,10 +139,14 @@ class PatientController extends Controller
         ]);
       }
       $lava->AreaChart('Medicion',$measure,[
-        'title'=>'Mediciones'
+        'title'=>'Mediciones',
+        'legend' => [
+          'position' => 'in'
+        ]
       ]);
-      $patient = User::find($id);
-      return view('patient.show',["lava"=>$lava])->with('patient',$patient);
+      return view('measure.show',["lava"=>$lava]);
+
+
     }
 
     /**
