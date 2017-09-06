@@ -5,14 +5,15 @@
 @section('content')
 
 <div class="row">
-
+	<div id="areachart" style="width:100%;margin:0 auto;"></div>
+		<?=$lava->render("AreaChart","Medicion","areachart");?>
 	<div class="col-md-2">
+
 	</div>
 	<div class="col-md-8 show ">
-
-		<div class="form-group text-center">
+			<div class="form-group text-center">
 				{{Html::image(asset($patient->photo), 'a picture', array('width' => 200 , 'height' => 200, 'class' => 'thumb'))}}
-		</div>
+			</div>
 			<div class="form-group ">
 				{!! Form::label('email','Correo Electronico: '.$patient->email) !!}
 			</div>

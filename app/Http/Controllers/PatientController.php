@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Admin;
 use App\Node;
+use App\Measure;
+use Khill\Lavacharts\Lavacharts;
 use Laracasts\Flash\Flash;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\DB;
@@ -105,8 +107,21 @@ class PatientController extends Controller
      */
     public function show($id)
     {
+      $lava=new Lavacharts;
+      $measure=$lava->DataTable();
+      $data=Measure::select('value','time')->get();
+      $measure->addStringColumn("Hora")
+              ->addNumberColumn("Valor");
+          foreach ($data as $key => $value) {
+            $measure->addRow([
+              $value['time'],$value['value'],
+            ]);
+          }
+        $lava->AreaChart('Medicion',$measure,[
+          'title'=>'Mediciones'
+        ]);
       $patient = User::find($id);
-      return view('patient.show')->with('patient',$patient);
+      return view('patient.show',["lava"=>$lava])->with('patient',$patient);
     }
 
     /**
