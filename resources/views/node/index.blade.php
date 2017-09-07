@@ -11,7 +11,7 @@
 		</thead>
 		<tbody>
 			@foreach($nodes as $node)
-				<tr>
+				<tr class="shownot">
 					<td>{{ $node->id }}</td>
 					<td>{{ $node->mac_address }}</td>
 					<td>
