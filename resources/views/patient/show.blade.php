@@ -5,10 +5,6 @@
 @section('content')
 
 <div class="row">
-	@if(Auth::guard('admin')->check())
-		<div id="areachart" style="width:100%;margin:0 auto;"></div>
-		<?=$lava->render("AreaChart","Medicion","areachart");?>
-	@endif
 	<div class="col-md-2">
 
 	</div>
@@ -40,9 +36,26 @@
 			<div class="form-group ">
 				{!! Form::label('short_description','Información médica: '.$patient->short_description) !!}
 			</div>
+			@if(Auth::guard('admin')->check())
+				<h4 style="text-align:center">Mediciones</h4>
+				<div id="areachart1" style="width:100%;margin:0 auto;"></div>
+				<div id="areachart2" style="width:100%;margin:0 auto;"></div>
 
+				@for($i=1; $i <= $count; $i++)
+					<?=$lava->render('AreaChart','Medicion'.$i,'areachart'.$i);?>
+				@endfor
+			@endif
 	</div>
-	<div class="col-md-2">
+	<div>
+		@if(Auth::guard('admin')->check())
+			<h4 style="text-align:center">Mediciones</h4>
+			<div id="areachart1" style="width:100%;margin:0 auto;"></div>
+			<div id="areachart2" style="width:100%;margin:0 auto;"></div>
+
+			@for($i=1; $i <= $count; $i++)
+				<?=$lava->render('AreaChart','Medicion'.$i,'areachart'.$i);?>
+			@endfor
+		@endif
 	</div>
 
 </div>
