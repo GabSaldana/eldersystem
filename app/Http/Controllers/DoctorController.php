@@ -105,6 +105,13 @@ class DoctorController extends Controller
       return view('doctor.edit')->with('doctor',$doctor);
     }
 
+    public function see($id)
+    {
+
+      $doctor = Admin::find($id);
+      return view('doctor.see')->with('doctor',$doctor);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -114,41 +121,82 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $this->validate($request, [
-         'name'             => 'bail|required|min:3|max:120',
-         'email'            => 'bail|required|max:255|email',
-         'password'         => 'bail|min:6',
-         'telephone_number' => 'bail',
-         'photo'            => 'bail|required'
-       ]);
+          //dd('update');
+          $this->validate($request, [
+             'name'             => 'bail|required|min:3|max:120',
+             'email'            => 'bail|required|max:255|email',
+             'password'         => 'bail|min:6',
+             'telephone_number' => 'bail',
+             'photo'            => 'bail|required'
+           ]);
 
-     $doctor = Admin::find($id);
-     $doctor->name = $request->name;
-     $doctor->lastname = $request->lastname;
-     $doctor->email = $request->email;
-     $doctor->age = $request->age;
-     $doctor->sex = $request->sex;
-     $doctor->specialty = $request->specialty;
-     $doctor->schedule = $request->schedule;
-     $doctor->telephone_number = $request->telephone_number;
-     $doctor->office_address = $request->office_address;
+         $doctor = Admin::find($id);
+         $doctor->name = $request->name;
+         $doctor->lastname = $request->lastname;
+         $doctor->email = $request->email;
+         $doctor->age = $request->age;
+         $doctor->sex = $request->sex;
+         $doctor->specialty = $request->specialty;
+         $doctor->schedule = $request->schedule;
+         $doctor->telephone_number = $request->telephone_number;
+         $doctor->office_address = $request->office_address;
 
-     /*Manipulación de images*/
-     $name = '';
-     if($request->file('photo') ){
+         /*Manipulación de images*/
+         $name = '';
+         if($request->file('photo') ){
 
-       $file = $request->file('photo');
-       $name = 'doctor_' . time() . '.' . $file->getClientOriginalExtension();
-       $path =  public_path() . '/images/doctor/';
-       $file->move($path, $name);
-     }
+           $file = $request->file('photo');
+           $name = 'doctor_' . time() . '.' . $file->getClientOriginalExtension();
+           $path =  public_path() . '/images/doctor/';
+           $file->move($path, $name);
+         }
 
-     $name2 = 'images/doctor/'. $name;
-     $doctor->photo = $name2;
-     $doctor->save();
+         $name2 = 'images/doctor/'. $name;
+         $doctor->photo = $name2;
+         $doctor->save();
 
-     flash('El usuario ' . $doctor->name. ' '. $doctor->lastname.' ha sido editado')->warning()->important();
-     return redirect()->route('doctor.index');
+         flash('El usuario ' . $doctor->name. ' '. $doctor->lastname.' ha sido editado')->warning()->important();
+         return redirect()->route('doctor.index');
+    }
+
+    public function updatesee(Request $request, $id)
+    {
+          //dd('updatesee');
+          $this->validate($request, [
+             'name'             => 'bail|required|min:3|max:120',
+             'email'            => 'bail|required|max:255|email',
+             'password'         => 'bail|min:6',
+             'telephone_number' => 'bail',
+             'photo'            => 'bail|required'
+           ]);
+
+         $doctor = Admin::find($id);
+         $doctor->name = $request->name;
+         $doctor->lastname = $request->lastname;
+         $doctor->email = $request->email;
+         $doctor->age = $request->age;
+         $doctor->sex = $request->sex;
+         $doctor->specialty = $request->specialty;
+         $doctor->schedule = $request->schedule;
+         $doctor->telephone_number = $request->telephone_number;
+         $doctor->office_address = $request->office_address;
+
+         /*Manipulación de images*/
+         $name = '';
+         if($request->file('photo') ){
+
+           $file = $request->file('photo');
+           $name = 'doctor_' . time() . '.' . $file->getClientOriginalExtension();
+           $path =  public_path() . '/images/doctor/';
+           $file->move($path, $name);
+         }
+
+         $name2 = 'images/doctor/'. $name;
+         $doctor->photo = $name2;
+         $doctor->save();
+
+         flash('El usuario ' . $doctor->name. ' '. $doctor->lastname.' ha sido editado')->warning()->important();
+         return redirect()->route('patient.index');
     }
 
     /**

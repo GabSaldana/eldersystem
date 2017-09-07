@@ -3,14 +3,16 @@
 @section('title', 'Editar Paciente '.$patient->name.' '.$patient->lastname)
 
 @section('content')
+
 <div class="row">
 	<div class="col-md-2">
 	</div>
 	<div class="col-md-8 show">
-		{!! Form::open(['route' => ['patient.update', $patient->id], 'method' => 'PUT','files'=>true]) !!}
+
+		{!! Form::open(['route' => ['patient.updatesee', $patient->id], 'method' => 'PUT','files'=>true]) !!}
 			<div class="form-group text-center">
-	    		 {{Html::image(asset($patient->photo), 'a picture', array('width' => 200 , 'height' => 200, 'class' => 'thumb'))}}
-	  		</div>
+					 {{Html::image(asset($patient->photo), 'a picture', array('width' => 200 , 'height' => 200, 'class' => 'thumb'))}}
+				</div>
 			<div class="form-group">
 				{!! Form::label('name','Nombre') !!}
 				{!! Form::text('name',$patient->name,['class' => 'form-control','placeholder' => 'Nombre(s)', 'required']) !!}
@@ -53,9 +55,9 @@
 				{!! Form::textarea('short_description',$patient->short_description,['class' => 'form-control','placeholder' => 'Describa las características importantes acerca de su salud']) !!}
 			</div>
 			<div class="form-group">
-	    		{!! Form::label('photo', 'Foto') !!}
-	    		{!! Form::file('photo',null,['class' => 'form-control']) !!}
-	  		</div>
+					{!! Form::label('photo', 'Foto') !!}
+					{!! Form::file('photo',null,['class' => 'form-control']) !!}
+				</div>
 			<div class="form-group">
 				{!! Form::submit('Editar',['class' => 'btn btn-primary']) !!}
 			</div>
@@ -65,6 +67,5 @@
 	<div class="col-md-2">
 	</div>
 </div>
-
 
 @endsection

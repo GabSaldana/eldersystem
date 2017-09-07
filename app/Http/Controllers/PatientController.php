@@ -210,6 +210,12 @@ class PatientController extends Controller
       return view('patient.edit')->with('patient',$patient);
     }
 
+    public function see($id)
+    {
+      $patient = User::find($id);
+      return view('patient.see')->with('patient',$patient);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -219,43 +225,81 @@ class PatientController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $this->validate($request, [
-          'name' => 'bail|required|min:3|max:120',
-          'email' => 'bail|required|max:255|email',
-          'password' => 'bail|min:6',
-          'telephone_number' => 'bail',
-          'photo' => 'bail|required'
-      ]);
-      $patient = User::find($id);
-      $patient->name = $request->name;
-      $patient->lastname = $request->lastname;
-      $patient->email = $request->email;
-      $patient->age = $request->age;
-      $patient->sex = $request->sex;
-      $patient->height = $request->height;
-      $patient->weight = $request->weight;
-      $patient->telephone_number = $request->telephone_number;
-      $patient->address = $request->address;
-      $patient->short_description = $request->short_description;
+          $this->validate($request, [
+              'name' => 'bail|required|min:3|max:120',
+              'email' => 'bail|required|max:255|email',
+              'password' => 'bail|min:6',
+              'telephone_number' => 'bail',
+              'photo' => 'bail|required'
+          ]);
+          $patient = User::find($id);
+          $patient->name = $request->name;
+          $patient->lastname = $request->lastname;
+          $patient->email = $request->email;
+          $patient->age = $request->age;
+          $patient->sex = $request->sex;
+          $patient->height = $request->height;
+          $patient->weight = $request->weight;
+          $patient->telephone_number = $request->telephone_number;
+          $patient->address = $request->address;
+          $patient->short_description = $request->short_description;
 
-      $name='' ;
+          $name='' ;
 
-      if($request->file('photo') ){
+          if($request->file('photo') ){
 
-        $file = $request->file('photo');
-        $name = 'patient_' . time() . '.' . $file->getClientOriginalExtension();
-        $path =  public_path() . '/images/pacientes/';
-        $file->move($path, $name);
-      }
-      $name2='/images/pacientes/'.$name;
+            $file = $request->file('photo');
+            $name = 'patient_' . time() . '.' . $file->getClientOriginalExtension();
+            $path =  public_path() . '/images/pacientes/';
+            $file->move($path, $name);
+          }
+          $name2='/images/pacientes/'.$name;
 
-      $patient->photo  = $name2;
-      $patient->save();
+          $patient->photo  = $name2;
+          $patient->save();
 
-      flash('El usuario ' . $patient->name. ' '. $patient->lastname.' ha sido editado')->warning()->important();
-      return redirect()->route('patient.index');
+          flash('El usuario ' . $patient->name. ' '. $patient->lastname.' ha sido editado')->warning()->important();
+          return redirect()->route('patient.index');
     }
 
+    public function updatesee(Request $request, $id)
+    {
+          $this->validate($request, [
+              'name' => 'bail|required|min:3|max:120',
+              'email' => 'bail|required|max:255|email',
+              'password' => 'bail|min:6',
+              'telephone_number' => 'bail',
+              'photo' => 'bail|required'
+          ]);
+          $patient = User::find($id);
+          $patient->name = $request->name;
+          $patient->lastname = $request->lastname;
+          $patient->email = $request->email;
+          $patient->age = $request->age;
+          $patient->sex = $request->sex;
+          $patient->height = $request->height;
+          $patient->weight = $request->weight;
+          $patient->telephone_number = $request->telephone_number;
+          $patient->address = $request->address;
+          $patient->short_description = $request->short_description;
+
+          $name='' ;
+
+          if($request->file('photo') ){
+
+            $file = $request->file('photo');
+            $name = 'patient_' . time() . '.' . $file->getClientOriginalExtension();
+            $path =  public_path() . '/images/pacientes/';
+            $file->move($path, $name);
+          }
+          $name2='/images/pacientes/'.$name;
+
+          $patient->photo  = $name2;
+          $patient->save();
+
+          flash('El usuario ' . $patient->name. ' '. $patient->lastname.' ha sido editado')->warning()->important();
+          return redirect()->route('doctor.index');
+    }
     /**
      * Remove the specified resource from storage.
      *

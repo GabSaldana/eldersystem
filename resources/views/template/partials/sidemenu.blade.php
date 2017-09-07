@@ -26,7 +26,7 @@
 				    <div class="profile-usermenu">
 					    <ul class="nav">
 								<li class="">
-							    <a href="{!! route( 'doctor.show', Auth::guard('admin')->user()->id ) !!}">
+							    <a href="{!! route( 'doctor.see', Auth::guard('admin')->user()->id ) !!}">
 							    	<span class="fa fa-user fa-2x icono-blanco"></span>&nbsp;@yield('Datos personales','Default')
 							    </a>
 						    </li >
@@ -75,7 +75,7 @@
 				    <div class="profile-usermenu">
 					    <ul class="nav">
 								<li class="">
-							    <a href="{!! route( 'patient.show', Auth::id() ) !!}">
+							    <a href="{!! route( 'patient.see', Auth::id() ) !!}">
 							    	<span class="fa fa-user fa-2x icono-blanco"></span>&nbsp;@yield('Datos personales','Default')
 							    </a>
 						    </li -->

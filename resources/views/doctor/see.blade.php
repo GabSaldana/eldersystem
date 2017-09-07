@@ -10,8 +10,8 @@
 	<div class="col-md-2">
 	</div>
 	<div class="col-md-8 show">
-		{!! Form::open(['route' => ['doctor.update', $doctor->id], 'method' => 'PUT', 'files' => true ]) !!}
 
+		{!! Form::open(['route' => ['doctor.updatesee', $doctor->id], 'method' => 'PUT', 'files' => true ]) !!}
 			<div class="form-group text-center">
 				{{ Html::image( asset($doctor->photo) , 'a picture',
 				 array('class' => 'thumb', 'width' => 200, 'height' => 200 )) }}

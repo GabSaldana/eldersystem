@@ -50,6 +50,16 @@ Route::get('doctor/show/{id}', 'DoctorController@show')->name('doctor.show');
 Route::get('patient/show/{id}', 'PatientController@show')->name('patient.show');
 //Route::get('patient/create','PatientController@create')->name('patient.create');
 
+Route::group(['prefix'=>'patients' ],  function(){
+  Route::get('patient/{patient}/see','PatientController@see')->name('patient.see');
+  Route::put('patient/{patient}/updatesee','PatientController@updatesee')->name('patient.updatesee');
+});
+
+Route::group(['prefix'=>'doctors' ],  function(){
+  Route::get('doctor/{doctor}/see','DoctorController@see')->name('doctor.see');
+  Route::put('doctor/{doctor}/updatesee','DoctorController@updatesee')->name('doctor.updatesee');
+});
+
 Route::group(['prefix'=>'doctors', 'middleware' => 'auth' ],  function(){ //, 'middleware' => 'auth'
 	//Route::resource('doctor','DoctorController');
   //Route::get('doctor','DoctorController@index')->name('doctor.index');
@@ -57,6 +67,7 @@ Route::group(['prefix'=>'doctors', 'middleware' => 'auth' ],  function(){ //, 'm
   Route::put('doctor/{doctor}','DoctorController@update')->name('doctor.update');
   Route::get('doctor/create','DoctorController@create')->name('doctor.create');
   Route::get('doctor/{doctor}/edit','DoctorController@edit')->name('doctor.edit');
+
   //Route::get('doctor/see', 'DoctorController@see')->name('doctor.see');
   Route::get('patient','PatientController@index')->name('patient.index');
 
