@@ -127,26 +127,57 @@ class PatientController extends Controller
 
     public function meashow($id)
     {
-      $lava=new Lavacharts;
-      $measure=$lava->DataTable();
-      $data = User::searchmeasure($id);
-      //dd($data);
-      //echo User::searchmeasure($id)->toSql();
-      $measure->addStringColumn("Hora")->addNumberColumn("Valor");
+      //$data = User::searchmeasure($id);
+      $count = DB::table('user_variable')
+      ->where('user_variable.user_id','=',$id)
+      ->count();
+      for ($i = 1; $i <= $count; $i++){
+       if($i==1){
+        $lava=new Lavacharts;
+        $measure=$lava->DataTable();
+        $data = Measure::select('value','time')
+        ->join('variables', 'variables.id', '=', 'measures.variable_id')
+        ->where('variables.id','=',$i)
+        ->get();
+        //echo $data;
+        //echo "----------------";
+        $measure->addStringColumn("Hora")->addNumberColumn("Valor");
+        foreach ($data as $key => $value) {
+          $measure->addRow([
+            $value['time'],$value['value'],
+          ]);
+        }
+        $lava->AreaChart('Medicion',$measure,[
+          'title'=>'1er Variable',
+          'legend' => [
+            'position' => 'in'
+          ]
+        ]);
+       }
+       else{self::areaChart2($lava,$i);}
+      }
+      return view('measure.show',["lava"=>$lava]);
+    }
+
+    private static function areaChart2($lava,$i){
+      $measuration=$lava->DataTable();
+      $data = Measure::select('value','time')
+      ->join('variables', 'variables.id', '=', 'measures.variable_id')
+      ->where('variables.id','=',$i)
+      ->get();
+
+      $measuration->addStringColumn("Hora")->addNumberColumn("Valor");
       foreach ($data as $key => $value) {
-        $measure->addRow([
+        $measuration->addRow([
           $value['time'],$value['value'],
         ]);
       }
-      $lava->AreaChart('Medicion',$measure,[
-        'title'=>'Mediciones',
+      $lava->AreaChart('Medicion2',$measuration,[
+        'title'=>'2da Variable',
         'legend' => [
           'position' => 'in'
         ]
       ]);
-      return view('measure.show',["lava"=>$lava]);
-
-
     }
 
     /**
