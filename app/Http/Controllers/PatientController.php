@@ -147,7 +147,7 @@ class PatientController extends Controller
             $value['time'],$value['value'],
           ]);
         }
-        $lava->AreaChart('Medicion',$measure,[
+        $lava->AreaChart('Medicion1',$measure,[
           'title'=>'1er Variable',
           'legend' => [
             'position' => 'in'
@@ -156,7 +156,7 @@ class PatientController extends Controller
        }
        else{self::areaChart2($lava,$i);}
       }
-      return view('measure.show',["lava"=>$lava]);
+      return view('measure.show',["lava"=>$lava])->with('count',$count);
     }
 
     private static function areaChart2($lava,$i){
