@@ -28,7 +28,10 @@ class HomeController extends Controller
       if( Auth::guard('web')->check() ){
         //dd('user'.' '. Auth::guard('web')->user()->id);
         $actual_id = Auth::guard('web')->user()->id;
-        $doctors = Admin::searchadmin($actual_id)->paginate(5);
+        $name= $request->name;
+        $argument = $actual_id . '/' . $name ;
+        dd($argument);
+        $doctors = Admin::searchadmin($argument)->paginate(5);
         //dd($doctors);
         return view('doctor.index')->with('doctors',$doctors);
        //echo Admin::searchadmin($actual_id)->toSql();
