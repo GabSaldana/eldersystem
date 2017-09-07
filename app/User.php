@@ -82,6 +82,19 @@ class User extends Authenticatable
 
     }
 
+    public function scopeSearchmeasure($query,$id){
+
+      return $query
+      ->select('measures.value','measures.time')
+      ->join('admin_user', 'admin_user.user_id', '=', 'users.id')
+      ->join('variables', 'variables.id', '=', 'admin_user.variable_id')
+      ->join('measures', 'measures.variable_id', '=', 'variables.id')
+      ->where('users.id','=',$id)
+      ->orderBy('users.id','ASC')
+      ;
+
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Admin;
 use App\Node;
+use App\Measure;
+use Khill\Lavacharts\Lavacharts;
 use Laracasts\Flash\Flash;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\DB;
@@ -108,8 +110,92 @@ class PatientController extends Controller
      */
     public function show($id)
     {
+      $count = DB::table('user_variable')
+      ->where('user_variable.user_id','=',$id)
+      ->count();
+      for ($i = 1; $i <= $count; $i++){
+       if($i==1){
+        $lava=new Lavacharts;
+        $measure=$lava->DataTable();
+        $data = Measure::select('value','time')
+        ->join('variables', 'variables.id', '=', 'measures.variable_id')
+        ->where('variables.id','=',$i)
+        ->get();
+        //echo $data;
+        //echo "----------------";
+        $measure->addStringColumn("Hora")->addNumberColumn("Valor");
+        foreach ($data as $key => $value) {
+          $measure->addRow([
+            $value['time'],$value['value'],
+          ]);
+        }
+        $lava->AreaChart('Medicion1',$measure,[
+          'title'=>'1er Variable',
+          'legend' => [
+            'position' => 'in'
+          ]
+        ]);
+       }
+       else{self::areaChart2($lava,$i);}
+      }
+
       $patient = User::find($id);
-      return view('patient.show')->with('patient',$patient);
+      return view('patient.show',["lava"=>$lava])->with('patient',$patient)->with('count',$count);
+    }
+
+    public function meashow($id)
+    {
+      //$data = User::searchmeasure($id);
+      $count = DB::table('user_variable')
+      ->where('user_variable.user_id','=',$id)
+      ->count();
+      for ($i = 1; $i <= $count; $i++){
+       if($i==1){
+        $lava=new Lavacharts;
+        $measure=$lava->DataTable();
+        $data = Measure::select('value','time')
+        ->join('variables', 'variables.id', '=', 'measures.variable_id')
+        ->where('variables.id','=',$i)
+        ->get();
+        //echo $data;
+        //echo "----------------";
+        $measure->addStringColumn("Hora")->addNumberColumn("Valor");
+        foreach ($data as $key => $value) {
+          $measure->addRow([
+            $value['time'],$value['value'],
+          ]);
+        }
+        $lava->AreaChart('Medicion1',$measure,[
+          'title'=>'1er Variable',
+          'legend' => [
+            'position' => 'in'
+          ]
+        ]);
+       }
+       else{self::areaChart2($lava,$i);}
+      }
+      return view('measure.show',["lava"=>$lava])->with('count',$count);
+    }
+
+    private static function areaChart2($lava,$i){
+      $measuration=$lava->DataTable();
+      $data = Measure::select('value','time')
+      ->join('variables', 'variables.id', '=', 'measures.variable_id')
+      ->where('variables.id','=',$i)
+      ->get();
+
+      $measuration->addStringColumn("Hora")->addNumberColumn("Valor");
+      foreach ($data as $key => $value) {
+        $measuration->addRow([
+          $value['time'],$value['value'],
+        ]);
+      }
+      $lava->AreaChart('Medicion2',$measuration,[
+        'title'=>'2da Variable',
+        'legend' => [
+          'position' => 'in'
+        ]
+      ]);
     }
 
     /**
