@@ -13,6 +13,9 @@
 				{{Html::image(asset($patient->photo), 'a picture', array('width' => 200 , 'height' => 200, 'class' => 'thumb'))}}
 			</div>
 			<div class="form-group ">
+				{!! Form::label('name','Nombre: '.$patient->name) !!}
+			</div>
+			<div class="form-group ">
 				{!! Form::label('email','Correo Electronico: '.$patient->email) !!}
 			</div>
 			<div class="form-group ">
