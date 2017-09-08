@@ -113,6 +113,7 @@ class PatientController extends Controller
       $count = DB::table('user_variable')
       ->where('user_variable.user_id','=',$id)
       ->count();
+      if($count!=0){
       for ($i = 1; $i <= $count; $i++){
        if($i==1){
         $lava=new Lavacharts;
@@ -141,6 +142,11 @@ class PatientController extends Controller
 
       $patient = User::find($id);
       return view('patient.show',["lava"=>$lava])->with('patient',$patient)->with('count',$count);
+      }
+      else{
+        $patient = User::find($id);
+        return view('patient.show')->with('patient',$patient)->with('count',$count);
+      }
     }
 
     public function meashow($id)
@@ -309,7 +315,10 @@ class PatientController extends Controller
     public function destroy($id)
     {
       $patient = User::find($id);
+      $node = Node::find($patient->node_id);
+      $node->delete();
       $patient->delete();
+
 
       flash('El usuario '.$patient->name.' '.$patient->lastname.' a sido borrado' )->warning()->important();
       return redirect()->route('patient.index');
