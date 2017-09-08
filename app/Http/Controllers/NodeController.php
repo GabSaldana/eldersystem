@@ -143,6 +143,8 @@ class NodeController extends Controller
     public function destroy($id)
     {
       $node = Node::find($id);
+      $patient = User::usernodo($id);
+      $patient->delete();
       $node->delete();
 
       flash('El nodo a sido borrado' )->warning()->important();

@@ -74,12 +74,20 @@ class User extends Authenticatable
     public function scopeUsernode($query,$id){
 
       return $query
+      ->select('users.*')
+      ->where('users.node_id','=',$id)
+      ->orderBy('users.id','ASC')
+      ;
+    }
+
+    public function scopeUsernodo($query,$id){
+
+      return $query
       ->select('users.*','users.node_id')
       //from users
       ->where('node_id','=',$id)
       ->orderBy('users.id','ASC')
       ;
-
     }
 
     public function scopeSearchmeasure($query,$id){
