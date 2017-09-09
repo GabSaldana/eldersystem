@@ -55,18 +55,18 @@ class User extends Authenticatable
         return $query->where('name','like','%'.$name.'%');
     }
 
-    public function scopeSearchuser($query,$argument){//seleccionar los pacientes del doctor
+    public function scopeSearchuser($query,$id){//seleccionar los pacientes del doctor
 
       //$name = 'Pa';
-      $id  = strtok($argument, '/');
-      $name = strtok('/');
+      //$id  = strtok($argument, '/');
+      //$name = strtok('/');
       return $query
       ->select('users.*','admins.id as doctor_id','admins.name as doctor_name')
       //from users
       ->join('admin_user', 'admin_user.user_id', '=', 'users.id')
       ->join('admins', 'admins.id', '=', 'admin_user.admin_id')
       ->where('admin_user.admin_id','=',$id)
-      ->where('users.name','like','%'.$name.'%')
+      //->where('users.name','like','%'.$name.'%')
       ->orderBy('users.id','ASC')
       ;
     }
@@ -76,6 +76,15 @@ class User extends Authenticatable
       return $query
       ->select('users.*')
       ->where('users.node_id','=',$id)
+      ->orderBy('users.id','ASC')
+      ;
+    }
+
+    public function scopeUser($query,$id){
+
+      return $query
+      ->select('users.*')
+      ->where('users.id','=',$id)
       ->orderBy('users.id','ASC')
       ;
     }
