@@ -74,6 +74,7 @@ class User extends Authenticatable
     public function scopeUsernode($query,$id){
 
       return $query
+<<<<<<< HEAD
       ->select('users.*')
       ->where('users.node_id','=',$id)
       ->orderBy('users.id','ASC')
@@ -93,9 +94,12 @@ class User extends Authenticatable
 
       return $query
       ->select('users.*','users.node_id')
+=======
+      ->select('name','id')
+>>>>>>> gabs
       //from users
       ->where('node_id','=',$id)
-      ->orderBy('users.id','ASC')
+      ->orderBy('id','ASC')
       ;
     }
 
