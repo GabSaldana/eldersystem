@@ -43,5 +43,14 @@ class Variable extends Model
 
     return $this->belongsToMany('App\User')->withTimestamps();
   }
-  
+
+  public function scopevar($query,$id){
+
+    return $query
+    ->select('variables.*')
+    ->where('id','=',$id)
+    ->orderBy('variables.id','ASC')
+    ;
+  }
+
 }

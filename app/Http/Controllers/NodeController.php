@@ -108,22 +108,64 @@ class NodeController extends Controller
        //llenaremos tabla user_variable
        $node_session = Session::get('node');
        //seleccionamos al ususario perteneciente a ese nodo, es para el solo el nodo
-       $patient = User::usernode($node_session)->pluck('name','id');;
-       /*$nodepatient_id = DB::select('select * from users where node_id = ?', [$node_session]);
-       foreach ($nodepatient_id as $user) {
-          $id = $user->id;
-          $name = $user->name;
-          //dd ($id . ' ' . $name);
-          $uservar =  DB::select('select * from user_variable where user_id = ?', [$id]);
-          //dd($uservar);
-           foreach ($uservar as $var){
-             $var_id = $var->variable_id;
-             $user_id = $var->user_id;
-             //echo $var_id . ' ' . $user_id ;
-           }
-        }*/
+       //$patient = User::usernode($node_session)->pluck('name','id');
+       $usr_id = User::usernode($node_session)->get();
+       $usr_id = $usr_id[0]->id;
+       //dd($usr_id);
+       $patient=null;
+       $variable=null;
+       /****** Rebisamos la cantidad de variables asignadas al paciente *********/
+        $cantidad = DB::table('user_variable')
+        ->select(DB::raw('count(*) as count'))
+        ->where('user_id', '=', $usr_id)
+        ->get();
 
-       $variable = Variable::orderBy('name','ASC')->pluck('name','id');
+        if($cantidad[0]->count == 2){//***********************esta llena
+            //echo 'llena ' . $cantidad[0]->count . '</br>';
+            flash('El paciente'.' notiene disponibilidad para agregar más variables' )->warning()->important();
+            $nodes = Node::searchvariable($node_session)->paginate(5);
+            return view('node.edit')->with('nodes',$nodes);
+            //no mandar nada al select
+        }elseif($cantidad[0]->count == 0){//**********************esta vacia
+           //mandar ambas variables al select
+           //echo 'espacio para 2 variables</br>';
+           $patient = User::usernode($node_session)->pluck('name','id');
+           $variable = Variable::orderBy('name','ASC')->pluck('name','id');
+        }elseif($cantidad[0]->count == 1){//*****************esta medio llena
+            //echo 'total ' . $cantidad[0]->count . '</br>';
+            $cantidad_temp = DB::table('user_variable')
+            ->select(DB::raw('count(*) as count'))
+            ->where('user_id', '=', $usr_id)
+            ->where('variable_id', '=' , 1)
+            ->get();
+            if($cantidad_temp[0]->count == 0){//no tiene variable temperatura
+                //echo 'puedes agregar una temp';
+                $patient = User::usernode($node_session)->pluck('name','id');
+                $variable = Variable::var(1)->pluck('name','id');
+            }elseif($cantidad_temp[0]->count == 1){//no puedes agregar mas temp
+                //echo 'temp: ' . $cantidad_temp[0]->count . '</br>' ;
+            }else{
+              //echo 'no puedes tener mas de una temp';
+            }
+            $cantidad_pul = DB::table('user_variable')
+            ->select(DB::raw('count(*) as count'))
+            ->where('user_id', '=', $usr_id)
+            ->where('variable_id', '=' , 2)
+            ->get();
+            if($cantidad_pul[0]->count == 0){//no tiene variable pulso
+                //echo 'puedes agregar una pul';
+                $patient = User::usernode($node_session)->pluck('name','id');
+                $variable = Variable::var(2)->pluck('name','id');
+            }elseif($cantidad_pul[0]->count == 1){//no puedes agregar mas pul
+                //echo 'temp: ' . $cantidad_pul[0]->count . '</br>' ;
+            }else{
+              //echo 'no puedes tener mas de un pul';
+            }
+
+        }else{
+          echo 'no vale';
+        }
+        //dd($variable);
        return view('node.add')->with('patient',$patient)->with('variable',$variable);
      }
 
