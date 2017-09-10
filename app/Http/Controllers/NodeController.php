@@ -108,8 +108,21 @@ class NodeController extends Controller
        //llenaremos tabla user_variable
        $node_session = Session::get('node');
        //seleccionamos al ususario perteneciente a ese nodo, es para el solo el nodo
-       $patient = User::usernode($node_session)->pluck('name','id');
-       //dd($patient);
+       $patient = User::usernode($node_session)->pluck('name','id');;
+       /*$nodepatient_id = DB::select('select * from users where node_id = ?', [$node_session]);
+       foreach ($nodepatient_id as $user) {
+          $id = $user->id;
+          $name = $user->name;
+          //dd ($id . ' ' . $name);
+          $uservar =  DB::select('select * from user_variable where user_id = ?', [$id]);
+          //dd($uservar);
+           foreach ($uservar as $var){
+             $var_id = $var->variable_id;
+             $user_id = $var->user_id;
+             //echo $var_id . ' ' . $user_id ;
+           }
+        }*/
+
        $variable = Variable::orderBy('name','ASC')->pluck('name','id');
        return view('node.add')->with('patient',$patient)->with('variable',$variable);
      }

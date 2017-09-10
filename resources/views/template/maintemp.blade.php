@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Este template sirve para el resto de las vistas excepto la página principal-->
 <html lang="es">
 <head>
   <title>@yield('title')</title>
@@ -54,5 +55,7 @@
  <script src="{{ asset('js/sidemenu-js/modernizr.js') }} "></script>
  <script src="{{ asset('js/sidemenu-js/smoothscroll.js') }} "></script>
  <script src="{{ asset('js/sidemenu-js/custom.js') }} "></script>
+ @yield('js')
+
 </body>
 </html>
