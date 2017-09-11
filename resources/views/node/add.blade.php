@@ -22,7 +22,7 @@
 @endsection
 
 @section('js')
-<script>
+<!--script>
 $(document).ready(function(){
 	$('#patient_id').click(function(){//cuando se le da click a una de las opciones se acciona
 		var user_id = String($('#patient_id :selected').val());
@@ -31,5 +31,5 @@ $(document).ready(function(){
 	});
 });
 
-</script>
+</script-->
 @endsection
