@@ -14,7 +14,8 @@
   @yield('content')
 
   <!--script src="{{ asset('plugins/jquery/jquery-3.1.1.js') }}"></script-->
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <!--script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script-->
+  <script src="{{ asset('plugins/jquery/jquery-2.1.3.min.js') }}"></script>
   <!--script src="js/login-js/index.js"></script-->
   <script src="{{ asset('js/login-js/index.js') }}"></script>
 

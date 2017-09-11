@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Este template sirve para la página principal-->
 <html lang="es">
 <head>
   <title>@yield('title')</title>

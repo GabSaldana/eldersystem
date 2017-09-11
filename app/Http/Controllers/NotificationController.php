@@ -47,9 +47,24 @@ class NotificationController extends Controller
      */
     public function create()
     {
-      $patient = User::orderBy('name','ASC')->pluck('name','id');
-
-      return view('notification.create')->with('patient',$patient);
+      if( Auth::guard('admin')->check() ){
+        //dd('doctor'. ':' .' ' .Auth::guard('admin')->user()->name);
+        $actual_id = Auth::guard('admin')->user()->id;
+        $patient = User::searchuser($actual_id)->pluck('name','id');
+        //dd($actual_id);
+        //echo User::searchuser($actual_id)->toSql();
+        //dd($patient);
+        return view('notification.create')->with('patient',$patient);
+      }else{
+        $actual_id = Auth::guard('web')->user()->id;
+        $patient = User::user($actual_id)->pluck('name','id');
+        return view('notification.create')->with('patient',$patient);
+        //dd('patient');
+        //dd($patient);
+      }
+      /*Notificacion para calquier paciente*/
+      //$patient = User::orderBy('name','ASC')->pluck('name','id');
+      //return view('notification.create')->with('patient',$patient);
     }
 
     /**

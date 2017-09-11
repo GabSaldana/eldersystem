@@ -7,8 +7,10 @@ html {
 }
 
 body {
-  background: #4DB6AC;
-  font-family: 'Titillium Web', sans-serif;
+  /*background: #4DB6AC;*/
+  background: url("/images/website/pattern.png");
+  background-repeat: repeat;
+  font-family: 'Oxygen', sans-serif;
 }
 
 a {
