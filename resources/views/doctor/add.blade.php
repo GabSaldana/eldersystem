@@ -7,7 +7,7 @@
 			{!! Form::label('name','Nombre') !!}
 			<div class="cols-sm-10">
 					<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+							<span class="input-group-addon"><i class="fa fa-user-circle" aria-hidden="true"></i></span>
 							{!! Form::text('name',null,['class' => 'form-control','placeholder' => 'Nombre(s)', 'required']) !!}
 				</div>
 			</div>
@@ -16,7 +16,7 @@
 			{!! Form::label('lastname','Apellidos') !!}
 			<div class="cols-sm-10">
 					<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+							<span class="input-group-addon"><i class="fa fa-align-justify" aria-hidden="true"></i></span>
 								{!! Form::text('lastname',null,['class' => 'form-control', 'required']) !!}
 				</div>
 			</div>
@@ -25,7 +25,7 @@
 			{!! Form::label('email','Correo Electronico') !!}
 			<div class="cols-sm-10">
 					<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+							<span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
 			{!! Form::email('email',null,['class' => 'form-control','placeholder' => 'ejemplo@algo.com (no usar ñ)', 'required']) !!}
 				</div>
 			</div>
@@ -34,7 +34,7 @@
 			{!! Form::label('password','Contraseña') !!}
 			<div class="cols-sm-10">
 					<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+							<span class="input-group-addon"><i class="fa fa-lock " aria-hidden="true"></i></span>
 								{!! Form::password('password',['class' => 'form-control','placeholder' => '*******', 'required']) !!}
 					</div>
 			</div>
@@ -80,7 +80,7 @@
 			{!! Form::label('professional_id','Cédula') !!}
 			<div class="cols-sm-10">
 					<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+							<span class="input-group-addon"><i class="fa fa-address-card" aria-hidden="true"></i></span>
 			{!! Form::text('professional_id',null,['class' => 'form-control', 'required']) !!}
 					</div>
 				</div>
@@ -89,7 +89,7 @@
 			{!! Form::label('telephone_number','Numero de Telefono') !!}
 			<div class="cols-sm-10">
 					<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+							<span class="input-group-addon"><i class="fa fa-mobile" aria-hidden="true"></i></span>
 			{!! Form::tel('telephone_number',null,['class' => 'form-control', 'required']) !!}
 					</div>
 				</div>
@@ -98,7 +98,7 @@
 			{!! Form::label('office_address','Direccion') !!}
 			<div class="cols-sm-10">
 					<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+							<span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
 			{!! Form::text('office_address',null,['class' => 'form-control']) !!}
 					</div>
 				</div>
@@ -107,7 +107,8 @@
     		{!! Form::label('photo', 'Foto') !!}
 				<div class="cols-sm-10">
 						<div class="input-group">
-								<label class="btn btn-success btn-md">
+							<span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
+								<label class="btn btn-success btn-md btn-block">
     							Subir foto <input id ="photo" name="photo" type="file" style="display: none;">
 								</label>
 						</div>
@@ -115,7 +116,7 @@
   	</div>
 
 		<div class="form-group">
-			{!! Form::submit('Registrar',['class' => 'btn btn-primary btn-lg btn-block login-button']) !!}
+			{!! Form::submit('Registrar',['class' => 'btn btn-info btn-lg btn-block login-button']) !!}
 		</div>
 
 	{!! Form::close() !!}
