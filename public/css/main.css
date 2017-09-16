@@ -104,10 +104,12 @@ a{
 
 /* Profile Content */
 .profile-content {
-  width: 75%;
+
   padding: 20px;
   background: #FFFFFF;
-  min-height: 460px;
+  min-height: 500px;
+  min-width: 600px;
+
 }
 
 .show{

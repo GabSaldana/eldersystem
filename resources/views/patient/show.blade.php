@@ -39,15 +39,11 @@
 			<div class="form-group ">
 				{!! Form::label('short_description','Información médica: '.$patient->short_description) !!}
 			</div>
-			@if(Auth::guard('admin')->check())
-				<h4 style="text-align:center">Mediciones</h4>
-				<div id="areachart1" style="width:100%;margin:0 auto;"></div>
-				<div id="areachart2" style="width:100%;margin:0 auto;"></div>
-
-				@for($i=1; $i <= $count; $i++)
-					<?=$lava->render('AreaChart','Medicion'.$i,'areachart'.$i);?>
-				@endfor
-			@endif
+			<div class="form-group">
+				<a href="{{ route('measure.show', $patient->id) }}" class="btn btn-primary btn-lg btn-block">Ver varibales&nbsp;&nbsp;
+					<span class="fa fa-line-chart" aria-hidden="true" ></span>
+				</a>
+			</div>
 	</div>
 
 </div>
