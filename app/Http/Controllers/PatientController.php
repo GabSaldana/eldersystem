@@ -27,13 +27,11 @@ class PatientController extends Controller
         //dd('admin'.' '. Auth::guard('admin')->user()->id);
         $actual_id = Auth::guard('admin')->user()->id;
         $name= $request->name;
-        $argument = $actual_id . '/' . $name ;
-        dd($argument);
-        $patients = User::searchuser($argument)->paginate(5);
+        //dd($name);
+        $patients = User::searchuser($actual_id)->search($name)->paginate(5);
         //dd($patients);
         return view('patient.index')->with('patients',$patients);
-       //echo User::searchuser($actual_id)->search($request->name)->toSql();
-
+       //echo Notification::searchnot()->toSql();
       }
     }
 

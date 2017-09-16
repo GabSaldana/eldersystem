@@ -11,7 +11,7 @@
 		</div>
 		<div class="col-md-6">
 			<!-- BUSCADOR-->
-			{!! Form::open(['route' => 'patient.index', 'method' => 'GET', 'class' => 'navbar-form pull-center']) !!}
+			{!! Form::open(['route' => 'admin.dashboard', 'method' => 'GET', 'class' => 'navbar-form pull-center']) !!}
 			<div class="form-group">
 				<div class="input-group">
 					<span class="input-group-addon" id="search" ><span class="fa fa-search" aria-hidden="true"> </span></span>

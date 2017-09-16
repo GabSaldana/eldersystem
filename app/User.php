@@ -50,14 +50,14 @@ class User extends Authenticatable
     	return $this->belongsToMany('App\Variable')->withTimestamps();
     }
 
-    public function scopeSearch($query, $name){
-
-        return $query->where('name','like','%'.$name.'%');
+    public function scopeSearch($query,$name){
+        //$name = 'X';
+        return $query->where('users.name','like','%'.$name.'%')->orderBy('users.id','ASC');
     }
 
     public function scopeSearchuser($query,$id){//seleccionar los pacientes del doctor
 
-      //$name = 'Pa';
+      //$name = 'X';
       //$id  = strtok($argument, '/');
       //$name = strtok('/');
       return $query
@@ -67,7 +67,7 @@ class User extends Authenticatable
       ->join('admins', 'admins.id', '=', 'admin_user.admin_id')
       ->where('admin_user.admin_id','=',$id)
       //->where('users.name','like','%'.$name.'%')
-      ->orderBy('users.id','ASC')
+      //->orderBy('users.id','ASC')
       ;
     }
 
