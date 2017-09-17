@@ -24,7 +24,11 @@ class NotificationController extends Controller
          if( Auth::guard('admin')->check() ){
            //dd('admin'.' '. Auth::guard('admin')->user()->id);
            $actual_id = Auth::guard('admin')->user()->id;
-           $notifications = Notification::searchnotadmin($actual_id)->paginate(5);
+           //dd($request->type);
+           $value ='';
+           $value = $request->type;
+           //dd($request->type);
+           $notifications = Notification::searchnotadmin($actual_id)->searchval($value)->paginate(5);
            //dd($notifications);
            return view('notification.index')->with('notifications',$notifications);
            //echo Notification::searchnot()->toSql();
@@ -32,8 +36,10 @@ class NotificationController extends Controller
          }else{
            //dd('user'.' '. Auth::guard('web')->user()->id);
            $actual_id = Auth::guard('web')->user()->id;
+           $value ='';
+           $value = $request->type;
            //echo Notification::searchnotuser(1)->toSql();
-           $notifications = Notification::searchnotuser($actual_id)->paginate(5);
+           $notifications = Notification::searchnotuser($actual_id)->searchval($value)->paginate(5);
            //dd($notifications);
            return view('notification.index')->with('notifications',$notifications);
          }
