@@ -18,9 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index');
 Route::get('users/logout','Auth\LoginController@userlogout')->name('user.logout');
+Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
 
 Route::prefix('admin')->group( function(){
-  Route::get('/', 'AdminController@index')->name('admin.dashboard');
+
   Route::get('/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
   Route::post('/login','Auth\AdminLoginController@login')->name('admin.login.submit');
   Route::get('/logout','Auth\AdminLoginController@logout')->name('admin.logout');
@@ -39,8 +40,7 @@ Route::group(['prefix'=>'patients', 'middleware' => 'admin'],  function(){
   Route::get('patient/{id}/destroy','PatientController@destroy')->name('patient.destroy');
   Route::put('patient/{patient}','PatientController@update')->name('patient.update');
   Route::get('patient/{patient}/edit','PatientController@edit')->name('patient.edit');
-  Route::get('doctor','DoctorController@index')->name('doctor.index');
-
+  Route::get('patient','PatientController@index')->name('patient.index');
 });
 
 //Route::get('doctor/create','DoctorController@create')->name('doctor.create');
@@ -67,10 +67,9 @@ Route::group(['prefix'=>'doctors', 'middleware' => 'auth' ],  function(){ //, 'm
   Route::put('doctor/{doctor}','DoctorController@update')->name('doctor.update');
   Route::get('doctor/create','DoctorController@create')->name('doctor.create');
   Route::get('doctor/{doctor}/edit','DoctorController@edit')->name('doctor.edit');
-
   //Route::get('doctor/see', 'DoctorController@see')->name('doctor.see');
-  Route::get('patient','PatientController@index')->name('patient.index');
-
+  //Route::get('patient','PatientController@index')->name('patient.index');
+  Route::get('doctor','DoctorController@index')->name('doctor.index');
 });
 
 Route::group(['prefix'=>'notifications'],  function(){

@@ -56,11 +56,6 @@ This correlates with settings in config/auth.php
         return $this->hasMany('App\Notification')->withTimestamps();
     }
 
-    public function scopeSearch($query, $name){
-
-        return $query->where('name','like','%'.$name.'%');
-    }
-
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -75,6 +70,11 @@ This correlates with settings in config/auth.php
         $this->notify(new AdminResetPasswordNotification($token));
     }
 
+    public function scopeSearch($query,$name){
+        //$name = 'X';
+        return $query->where('admins.name','like','%'.$name.'%')->orderBy('admins.id','ASC');
+    }
+
     public function scopeSearchadmin($query, $id){//seleccionar los doctores del paciente
 
       return $query
@@ -83,7 +83,7 @@ This correlates with settings in config/auth.php
       ->join('admin_user', 'admin_user.admin_id', '=', 'admins.id')
       ->join('users', 'users.id', '=', 'admin_user.user_id')
       ->where('admin_user.user_id','=',$id)
-      ->orderBy('admins.id','ASC')
+      //->orderBy('admins.id','ASC')
       ;
 
     }
