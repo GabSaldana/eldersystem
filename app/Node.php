@@ -70,4 +70,14 @@ class Node extends Model
     ->orderBy('variables.id','ASC')
     ;
   }
+
+  public function scopeSearchnodeid($query, $macaddress){
+      return $query
+      ->select('nodes.id as node','users.id as user')
+      //from nodes
+      ->join('users', 'users.node_id', '=', 'nodes.id')
+      ->where('nodes.mac_address','=',$macaddress)
+      //->orderBy('notifications.id','ASC')
+      ;
+  }
 }
