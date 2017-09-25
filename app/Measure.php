@@ -38,4 +38,6 @@ public function notifications(){
 
     return $this->belongsTo('App\Variable')->withTimestamps();
   }
+
+
 }

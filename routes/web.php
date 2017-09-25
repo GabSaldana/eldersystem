@@ -99,9 +99,7 @@ Route::group(['prefix'=>'nodes' ],  function(){
 
 Route::group(['prefix'=>'measures'],  function(){
 
-  Route::get('measure/{temp}/{pulso}','MeasureController@store')->name('measure.store');
-  //Route::get('measure/{id}/destroy','MeasureController@destroy')->name('measure.destroy');
-  //Route::put('measure/{measure}','MeasureController@update')->name('measure.update');
+  Route::get('measure/{node}/{temp}/{pulso}','MeasureController@store')->name('measure.store');
 
 });
 
