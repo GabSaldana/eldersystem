@@ -32,17 +32,20 @@ class MeasureController extends Controller
       $date = date("Y/m/d");
       $time = date("h:i:s");
       $variables = 'nodo:' . $macaddress. ' temperatura:' . $temperatura . ' pulso cardiaco:' . $pulso_cardiaco ;
-      echo  $variables . '</br>';
+      //echo  $variables . '</br>';
 
       /*OBTENIEDNO EL ID DEL USUARIO ASIGNADO AL NODO*/
       //$node = Node::searchnodeid($macaddress)->pluck('node','user');
       $node =  DB::table('nodes')
             ->join('users', 'users.node_id', '=', 'nodes.id')
-            ->select('nodes.id as node', 'users.id as user')
+            ->where('nodes.mac_address','=',$macaddress)
+            ->select('nodes.id as node', 'users.id as user','nodes.mac_address')
             ->get();
       //echo Node::searchnodeid($macaddress)->toSql();
+      //dd($node);
       $node_id= $node[0]->node;
       $user_id= $node[0]->user;
+      //dd($node_id );
 
       //$user = $node->
       //$notification =
@@ -55,7 +58,7 @@ class MeasureController extends Controller
       //dd($measures);
 
       if($temperatura < 35 ){
-        echo 'estas frio'. '</br>';
+        //echo 'estas frio'. '</br>';
         DB::table('notifications')->insert(
           ['description' => 'Tu temperatura esta por debajo de lo normal',
            'type' => 'POR DEBAJO',
@@ -63,7 +66,7 @@ class MeasureController extends Controller
         );
 
       }elseif($temperatura > 38){
-        echo 'estas que ardes'. '</br>';
+        //echo 'estas que ardes'. '</br>';
         DB::table('notifications')->insert(
           ['description' => 'Tu temperatura esta por encima de lo normal',
            'type' => 'POR ENCIMA',
