@@ -73,10 +73,10 @@ class Node extends Model
 
   public function scopeSearchnodeid($query, $macaddress){
       return $query
-      ->select('nodes.id as node','users.id as user')
       //from nodes
       ->join('users', 'users.node_id', '=', 'nodes.id')
       ->where('nodes.mac_address','=',$macaddress)
+      ->select('nodes.id as node','users.id as user');
       //->orderBy('notifications.id','ASC')
       ;
   }
