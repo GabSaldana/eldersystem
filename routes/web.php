@@ -83,6 +83,7 @@ Route::group(['prefix'=>'notifications'],  function(){
   Route::get('notification/show/{id}', 'NotificationController@show')->name('notification.show');
 
 });
+
 Route::group(['prefix'=>'nodes' ],  function(){
 	//Route::resource('notification','NotificationController');
   Route::get('node','NodeController@index')->name('node.index');
@@ -94,6 +95,14 @@ Route::group(['prefix'=>'nodes' ],  function(){
   Route::post('node','NodeController@update')->name('node.update');
   Route::get('node/{node}/edit','NodeController@edit')->name('node.edit');
   Route::get('node/show/{id}', 'NodeController@show')->name('node.show');
+});
+
+Route::group(['prefix'=>'measures'],  function(){
+
+  Route::get('measure/{temp}/{pulso}','MeasureController@store')->name('measure.store');
+  //Route::get('measure/{id}/destroy','MeasureController@destroy')->name('measure.destroy');
+  //Route::put('measure/{measure}','MeasureController@update')->name('measure.update');
+
 });
 
 Route::get('measure/show/{id}', 'PatientController@meashow')->name('measure.show');
