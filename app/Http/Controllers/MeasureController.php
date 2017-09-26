@@ -34,7 +34,7 @@ class MeasureController extends Controller
       echo  $variables . '</br>';
 
       /*OBTENIEDNO EL ID DEL USUARIO ASIGNADO AL NODO*/
-      
+
       /*ALMCENANDO LAS VARIABLES EN LA BASE DE DATOS*/
       /*DB::insert('insert into measures(value,date,time,variable_id) values (?,?,?,?)',
       [$temperatura, $date, $time, 1]);
