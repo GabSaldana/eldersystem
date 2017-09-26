@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Notification;
 use App\Measure;
+use App\Node;
 use Laracasts\Flash\Flash;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\DB;
@@ -31,23 +32,62 @@ class MeasureController extends Controller
       $date = date("Y/m/d");
       $time = date("h:i:s");
       $variables = 'nodo:' . $macaddress. ' temperatura:' . $temperatura . ' pulso cardiaco:' . $pulso_cardiaco ;
-      echo  $variables . '</br>';
+      //echo  $variables . '</br>';
 
       /*OBTENIEDNO EL ID DEL USUARIO ASIGNADO AL NODO*/
-
+      $node =  DB::table('nodes')
+            ->join('users', 'users.node_id', '=', 'nodes.id')
+            ->where('nodes.mac_address','=',$macaddress)
+            ->select('nodes.id as node', 'users.id as user','nodes.mac_address')
+            ->get();
+      //echo Node::searchnodeid($macaddress)->toSql();
+      //dd($node);
+      $node_id= $node[0]->node;
+      $user_id= $node[0]->user;
+      //dd($node_id );
       /*ALMCENANDO LAS VARIABLES EN LA BASE DE DATOS*/
-      /*DB::insert('insert into measures(value,date,time,variable_id) values (?,?,?,?)',
+      DB::insert('insert into measures(value,date,time,variable_id) values (?,?,?,?)',
       [$temperatura, $date, $time, 1]);
       DB::insert('insert into measures(value,date,time,variable_id) values (?,?,?,?)',
       [$pulso_cardiaco, $date, $time, 2]);
-      $measures = DB::select( DB::raw("SELECT * FROM measures") );*/
+      $measures = DB::select( DB::raw("SELECT * FROM measures") );
       //dd($measures);
 
-      if($temperatura < 35 ){
-        echo 'estas frio'. '</br>';
+      /*COMPARANDO RANGOS DE TEMPERATURA*/
+      if($temperatura < 35.0 ){
+        //echo 'estas frio'. '</br>';
+        DB::table('notifications')->insert(
+          ['description' => 'Tu temperatura de: '.$temperatura.' esta por debajo de lo normal',
+           'type' => 'POR DEBAJO',
+           'user_id' => $user_id]
+        );
 
-      }elseif($temperatura > 38){
-        echo 'estas que ardes'. '</br>';
+      }elseif($temperatura > 38.0){
+        //echo 'estas que ardes'. '</br>';
+        DB::table('notifications')->insert(
+          ['description' => 'Tu temperatura de: '.$temperatura.' esta por encima de lo normal',
+           'type' => 'POR ENCIMA',
+           'user_id' => $user_id]
+        );
+      }else{
+        echo 'normal'. '</br>';
+      }
+      /*COMPARANDO RANGOS DE PULSO CARDIACO*/
+      if($pulso_cardiaco < 60 ){
+        //echo 'estas frio'. '</br>';
+        DB::table('notifications')->insert(
+          ['description' => 'Tus pulsaciones por minuto son de: '.$pulso_cardiaco.' y estan por debajo de lo normal',
+           'type' => 'POR DEBAJO',
+           'user_id' => $user_id]
+        );
+
+      }elseif($pulso_cardiaco > 100){
+        //echo 'estas que ardes'. '</br>';
+        DB::table('notifications')->insert(
+          ['description' => 'Tus pulsaciones por minuto son de: '.$pulso_cardiaco.' y estan por encima de lo normal',
+           'type' => 'POR ENCIMA',
+           'user_id' => $user_id]
+        );
       }else{
         echo 'normal'. '</br>';
       }

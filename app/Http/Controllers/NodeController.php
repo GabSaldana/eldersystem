@@ -213,6 +213,7 @@ class NodeController extends Controller
       //dd($user);
       $var = Variable::find($variable);
       $usr = User::find($user);
+
       //dd($usr);
       $usr->variables()->detach($var->id);
       flash('La variable ha sido borrada' )->warning()->important();
