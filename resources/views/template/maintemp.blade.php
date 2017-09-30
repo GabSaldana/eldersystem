@@ -10,6 +10,7 @@
 	<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
 	<!--API STYLES-->
   <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/navi.css') }}">
 	<!-- Chosen -->
 	<link href="{{ asset('plugins/chosen/chosen.css') }}" rel="stylesheet">
 	<!--Trumbowyg-->
