@@ -26,7 +26,7 @@
 
 	<table class="table">
 		<thead>
-			<th>ID</th>
+			<!--th>ID</th-->
 			<th>Tipo</th>
 			<th>Descripción</th>
 			<th>Paciente</th>
@@ -35,7 +35,7 @@
 		<tbody>
 			@foreach($notifications as $notification)
 				<tr class="shownot">
-						<td>{{ $notification->id }}</td>
+						<!--td>{{ $notification->id }}</td-->
 						<td>{{ $notification->type }}</td>
 						<td>{{ $notification->description }}</td>
 						<td>{{ $notification->name }}</td>
@@ -51,7 +51,7 @@
 				</tr>
 
 			@endforeach
-		
+
 		</tbody>
 	</table>
 	<div class="text-center">
