@@ -2,36 +2,7 @@
 
 @section('title','Inicio')
 
-<header class="top-header">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-5 header-logo">
-        <br>
-        <!--a href="#"><img src="{{ asset('images/website/logo.png') }}" alt="" class="img-responsive logo"></a-->
-      </div>
-
-      <div class="col-md-7">
-        <nav class="navbar navbar-default">
-          <div class="container-fluid nav-bar">
-            @if (Route::has('login'))
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-               @if (Auth::check())
-               @else
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ url('/login') }}"><span class="fa fa-user fa-2x icono-blanco"></span> Inicia Sesión</a></li>
-                <li><a href="https://www.facebook.com/gab.saldana"><span class="fa fa-facebook-official fa-2x icono-blanco"></span> Visitanos</a></li>
-              </ul>
-              @endif
-          </div><!-- / .container-fluid -->
-           @endif
-        </nav>
-      </div>
-    </div>
-  </div>
-</header> <!-- end of header area -->
+@include('template.partials.navwebsite')
 
 <div class="container-fluid">
 
@@ -43,17 +14,17 @@
 			        <!-- Wrapper for slides -->
 			        <div class="carousel-inner" role="listbox">
 			            <div class="item active">
-			            	<img src="{{ asset('images/website/slide-one.jpg') }}" alt="">
+			            	<img src="{{ asset('images/website/slide-one.png') }}" alt="">
 			                <div class="carousel-caption">
 		               			<h1>PONTE EN LINEA</h1>
-		               			<p>Servicio de calidad para hombres &amp; mujeres</p>
+		               			<p>Servicio desde la comodidad de tu casa</p>
 			                </div>
 			            </div>
 			            <div class="item">
 			            	<img src="{{ asset('images/website/slide-two.jpg') }}" alt="">
 			                <div class="carousel-caption">
-                        <h1>PONTE EN LINEA</h1>
-		               			<p>Servicio de calidad para hombres &amp; mujeres</p>
+                        <h1 >PONTE EN LINEA</h1>
+		               			<p>Servicio desde la comodidad de tu casa</p>
 			                </div>
 			            </div>
 			        </div>
@@ -83,7 +54,7 @@
 							</div>
 						</div>
 						<h3>Ritmo cardiaco</br>
-            El pulso cardiaco es de nuestros signos más importantes...</h3>
+            Observa como late...</h3>
 					</div>
 				</div>
 				<div class="col-md-4 ">
@@ -94,7 +65,7 @@
 							</div>
 						</div>
 						<h3>Temperatura corporal</br>
-            LA temperatura es el signo vital</h3>
+            Mide y envía...</h3>
 					</div>
 				</div>
 				<div class="col-md-4 ">
@@ -105,7 +76,7 @@
 							</div>
 						</div>
 						<h3>IOT </br>
-            El internet con ayuda de el pulso y la temperatura </h3>
+            Al otro lado del mundo...</h3>
 					</div>
 				</div>
 			</div>

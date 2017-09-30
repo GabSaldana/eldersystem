@@ -6,7 +6,8 @@
     		<div class="navbar-header">
     			<div class="">
     				<a class="navbar-brand brand" href="#">
-      					<span class="fa fa-heartbeat fa-2x icono-blanco"  aria-hidden="true"></span>
+      					<!--span class="fa fa-heartbeat fa-2x icono-blanco"  aria-hidden="true"></span-->
+                <img src="{{ asset('images/website/025-cardiogram.png') }}" alt="" class="image-responsive index-userpic">
       				</a>
     			</div>
     		</div>

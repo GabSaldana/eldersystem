@@ -8,9 +8,9 @@
 	<!--BOOTSTRAP STYLES-->
 	<link href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
 	<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
-	<!--API STYLES>
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/prueba.css') }}"-->
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/sidemenu-style.css') }}">
+	<!--API STYLES-->
+  <!--link rel="stylesheet" type="text/css" href="{{ asset('css/sidemenu-style.css') }}"-->
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/nav.css') }}">
   <!--Fonts-->
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
