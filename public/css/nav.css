@@ -1,0 +1,191 @@
+/**********************************
+Responsive navbar-brand image CSS
+- Remove navbar-brand padding for firefox bug workaround
+- add 100% height and width auto ... similar to how bootstrap img-responsive class works
+***********************************/
+
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>img {
+  height: 170%;
+  padding: 10px;
+  width: auto;
+}
+
+
+/* EXAMPLE 9 - Center with Flexbox and Text*/
+.brand-centered {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  left: 0;
+  top: 20;
+}
+.brand-centered .navbar-brand {
+  display: flex;
+  align-items: center;
+}
+.navbar-toggle {
+    z-index: 1;
+}
+
+
+
+
+/* CSS Transform Align Navbar Brand Text ... This could also be achieved with table / table-cells */
+.navbar-alignit .navbar-header {
+	  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  height: 50px;
+}
+.navbar-alignit .navbar-brand {
+	top: 50%;
+	display: block;
+	position: relative;
+	height: auto;
+	transform: translate(0,-50%);
+	margin-right: 15px;
+  margin-left: 15px;
+}
+
+ul.nav {
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+}
+li a.active {
+    color: #42b3e5 !important;
+}
+
+/*service area*/
+
+.service {
+    background-color:  #009688;
+    background-repeat: repeat-y;
+    margin-top: 40px;
+}
+.service h2 {
+    font-size: 90px;
+    color: #fff;
+    margin-top: 70px;
+    margin-bottom: 0;
+}
+.service h4 {
+    font-size: 24px;
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 70px;
+    display: block;
+}
+.single-service-img {
+    width: 205px;
+    height: 125px;
+    background: #fff;
+    position: relative;
+    left: 50%;
+    margin-left: -100px;
+}
+.single-service-img:before {
+    content: "";
+    position: absolute;
+    top: -42px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 102px solid transparent;
+    border-right: 104px solid transparent;
+    border-bottom: 42px solid #fff;
+}
+.single-service-img:after {
+    content: "";
+    position: absolute;
+    bottom: -42px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 102px solid transparent;
+    border-right: 102px solid transparent;
+    border-top: 42px solid #fff;
+    z-index: 10;
+}
+.service-img {
+    width: 200px;
+    height: 123px;
+    background: #3a9ecb;
+    position: relative;
+    top: 1px;
+    left: 2px;
+}
+.service-img:before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 40px solid #3a9ecb;
+}
+.service-img:after {
+    content: "";
+    position: absolute;
+    bottom: -39px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-top: 40px solid #3a9ecb;
+    z-index: 999;
+}
+.single-service h3 {
+    margin-top: 60px;
+    color: #fff;
+    padding-bottom: 90px;
+}
+.service-img img.heart {
+    left: 20%;
+    top: 18%;
+}
+.service-img img.brain {
+    left: 26%;
+    top: 11%;
+}
+.service-img img.knee {
+    left: 38%;
+}
+.service-img img.bone {
+    left: 25%;
+    top: 14%;
+}
+.service-img img {
+    position: absolute;
+}
+
+.carousel-caption h1 {
+    background-color:#fff;
+    /*color:#009688;*/
+    color:#F44336;
+    opacity: 0.9;
+    font-weight: bold;
+    font-size: 70px;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+.carousel-caption p {
+    font-size: 30px;
+    background-color:#fff;
+    opacity: 0.8;
+    color:#F44336;
+    text-transform: uppercase;
+    margin-top: 0;
+}
+
+.navbar-nav>li>.dropdown-menu {
+	z-index: 9999;
+}
