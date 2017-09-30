@@ -30,13 +30,13 @@
 			<th>Tipo</th>
 			<th>Descripción</th>
 			<th>Paciente</th>
-			<th>Foto de perfil paciente</th>
+			<!--th>Foto de perfil paciente</th-->
 		</thead>
 		<tbody>
 			@foreach($notifications as $notification)
 				<tr class="shownot">
 						<!--td>{{ $notification->id }}</td-->
-						<td>{{ $notification->type }}</td>
+						<td><b>{{ $notification->type }}</b></td>
 						<td>{{ $notification->description }}</td>
 						<td>{{ $notification->name }}</td>
 						<td >{{ Html::image( asset($notification->photo) , 'a picture',

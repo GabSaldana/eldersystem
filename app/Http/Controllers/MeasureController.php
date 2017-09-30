@@ -57,7 +57,7 @@ class MeasureController extends Controller
       if($temperatura < 35.0 ){
         //echo 'estas frio'. '</br>';
         DB::table('notifications')->insert(
-          ['description' => 'Tu temperatura de: '.$temperatura.' esta por debajo de lo normal',
+          ['description' => 'Tu temperatura es de: '.$temperatura.' °C, esta por debajo de lo normal',
            'type' => 'POR DEBAJO',
            'user_id' => $user_id]
         );
@@ -65,7 +65,7 @@ class MeasureController extends Controller
       }elseif($temperatura > 38.0){
         //echo 'estas que ardes'. '</br>';
         DB::table('notifications')->insert(
-          ['description' => 'Tu temperatura de: '.$temperatura.' esta por encima de lo normal',
+          ['description' => 'Tu temperatura es de: '.$temperatura.' °C, esta por encima de lo normal',
            'type' => 'POR ENCIMA',
            'user_id' => $user_id]
         );
@@ -76,7 +76,7 @@ class MeasureController extends Controller
       if($pulso_cardiaco < 60 ){
         //echo 'estas frio'. '</br>';
         DB::table('notifications')->insert(
-          ['description' => 'Tus pulsaciones por minuto son de: '.$pulso_cardiaco.' y estan por debajo de lo normal',
+          ['description' => 'Tus pulsaciones por minuto son de: '.$pulso_cardiaco.' bpms, estan por debajo de lo normal',
            'type' => 'POR DEBAJO',
            'user_id' => $user_id]
         );
@@ -84,7 +84,7 @@ class MeasureController extends Controller
       }elseif($pulso_cardiaco > 100){
         //echo 'estas que ardes'. '</br>';
         DB::table('notifications')->insert(
-          ['description' => 'Tus pulsaciones por minuto son de: '.$pulso_cardiaco.' y estan por encima de lo normal',
+          ['description' => 'Tus pulsaciones por minuto son de: '.$pulso_cardiaco.' bpms, estan por encima de lo normal',
            'type' => 'POR ENCIMA',
            'user_id' => $user_id]
         );
