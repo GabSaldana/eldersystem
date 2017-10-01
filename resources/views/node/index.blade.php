@@ -6,13 +6,13 @@
 
 	<table class="table">
 		<thead>
-			<th>ID</th>
+			<!--th>ID</th-->
 			<th>Dirección Fisica</th>
 		</thead>
 		<tbody>
 			@foreach($nodes as $node)
 				<tr class="shownot">
-					<td>{{ $node->id }}</td>
+					<!--td>{{ $node->id }}</td-->
 					<td>{{ $node->mac_address }}</td>
 					<td>
 						<a href="{{ route('node.destroy', $node->id) }}"

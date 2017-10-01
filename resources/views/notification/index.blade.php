@@ -7,8 +7,8 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-6">
-			<!--Link hacia el formulario de Doctor-->
-			<a href="{{ route('notification.create') }}" class="btn btn-info">Nueva notificacion</a><hr>
+			<!--Link hacia el formulario de Notificacion nueva-->
+			<!--a href="{{ route('notification.create') }}" class="btn btn-info">Nueva notificacion</a><hr-->
 		</div>
 		<div class="col-md-6">
 			<!-- BUSCADOR-->
