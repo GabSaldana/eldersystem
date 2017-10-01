@@ -7,7 +7,7 @@
 <div class="form">
     <div class="tab-content">
                 <div id="login">
-                  <h1>Bienvenido!</h1>
+                  <h1>Bienvenido doctor!</h1>
                     <form  method="POST" action="{{ route('admin.login.submit') }}">
                         {{ csrf_field() }}
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} field-wrap">
@@ -30,7 +30,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                
+
                                 <p class="forgot ">
                                   <a class="btn btn-link" href="{{ route('doctor.add') }}">
                                       Registrate!!

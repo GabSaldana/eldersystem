@@ -30,7 +30,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                
+
                                 <p class="forgot ">
                                   <a class="btn btn-link" href="{{ route('admin.login') }}">
                                       ¿Eres doctor?
