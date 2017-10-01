@@ -16,7 +16,7 @@
 			<div class="form-group">
 				<div class="input-group">
 					<span class="input-group-addon" id="search" ><span class="fa fa-search" aria-hidden="true"> </span></span>
-					{!! Form::text('type',null,['class' => 'form-control','placeholder' => 'Buscar notificacion...', 'aria-describedby' => 'search']) !!}
+					{!! Form::text('type',null,['class' => 'form-control','placeholder' => 'Busca por tipo o paciente', 'aria-describedby' => 'search']) !!}
 				</div>
 			</div>
 			{!! Form::close() !!}
