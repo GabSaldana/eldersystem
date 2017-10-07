@@ -63,7 +63,7 @@ a{
 }*/
 
 .index-userpic img {
-
+  padding: 3px;
   float: none;
   margin: 0 auto;
   opacity: 1;

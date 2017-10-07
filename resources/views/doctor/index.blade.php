@@ -42,8 +42,8 @@
 						<!--a href="{{ route('doctor.edit', $doctor->id)}}" class="btn btn-warning">
 							<span class="fa fa-pencil fa-lg" ></span>
 						</a-->
-						<a href="{{ route('doctor.show', $doctor->id)}}" class="btn btn-primary">
-							<span class="fa fa-eye fa-lg" ></span>
+						<a  href="{{ route('doctor.show', $doctor->id)}}" class=" acolor btn ">
+							<span class=" fa fa-eye fa-lg" ></span>
 						</a>
 						</br>
 					</td>
@@ -59,4 +59,12 @@
 	</div>
 </div>
 
+@endsection
+@section('js')
+  <script>
+	var colors = [ '#0091EA', '#3F51B5', '#0097A7'];
+	$('.acolor').each(function() {
+    $(this).css('background-color', colors[Math.floor(Math.random() * colors.length)]);
+	});
+  </script>
 @endsection
