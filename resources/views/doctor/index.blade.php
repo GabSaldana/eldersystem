@@ -8,7 +8,7 @@
 	<div class="row">
 		<div class="col-md-6">
 			<!--Link hacia el formulario de Doctor-->
-			<a href="{{ route('doctor.create') }}" class="btn btn-info">Nuevo Doctor</a><hr>
+			<!--a href="{{ route('doctor.create') }}" class="btn btn-info">Nuevo Doctor</a><hr-->
 		</div>
 		<div class="col-md-6">
 			<!-- BUSCADOR-->
@@ -28,23 +28,26 @@
 			@foreach($doctors as $doctor)
 				<div class="col-md-4">
 					</br>
-          <div class="index-userpic">{{ Html::image( asset($doctor->photo) , 'a picture',
+					<center>
+          <div class="index-userpic" >{{ Html::image( asset($doctor->photo) , 'a picture',
 					 array('class' => 'thumb', 'width' => 50, 'height' => 50 )) }}
-				 </br><h4> {{$doctor->name .' '. $doctor->lastname}}</h4></br>
-				 </div>
+				 	</br><h4> {{$doctor->name }}</h4><h4> {{$doctor->lastname }}</h4>
+			 		</div>
+
 					<td>
-						<a href="{{ route('doctor.destroy', $doctor->id) }}"
+						<!--a href="{{ route('doctor.destroy', $doctor->id) }}"
 						onclick="return confirm('Seguro que deseas eliminarlo?')" class="btn btn-danger">
 							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-						</a>
-						<a href="{{ route('doctor.edit', $doctor->id)}}" class="btn btn-warning">
+						</a-->
+						<!--a href="{{ route('doctor.edit', $doctor->id)}}" class="btn btn-warning">
 							<span class="fa fa-pencil fa-lg" ></span>
-						</a>
+						</a-->
 						<a href="{{ route('doctor.show', $doctor->id)}}" class="btn btn-primary">
 							<span class="fa fa-eye fa-lg" ></span>
 						</a>
 						</br>
 					</td>
+					</center>
 				</div>
 			@endforeach
 </div>

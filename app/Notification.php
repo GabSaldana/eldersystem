@@ -52,7 +52,7 @@ protected $fillable = ['description','type','admin_id','user_id','measure_id','r
   public function scopeSearchnotadmin($query, $id){
       return $query
       ->select('notifications.id','notifications.type','notifications.description','admin_user.user_id as user',
-      'users.photo as photo','users.name as name')
+      'users.photo as photo','users.name as name','users.lastname as lastname')
       //from notifications
       ->join('admin_user', 'admin_user.user_id', '=', 'notifications.user_id')
       ->join('users', 'users.id', '=', 'notifications.user_id')
@@ -64,7 +64,7 @@ protected $fillable = ['description','type','admin_id','user_id','measure_id','r
   public function scopeSearchnotuser($query, $id){
       return $query
       ->select('notifications.id','notifications.type','notifications.description','users.id as user',
-      'users.photo as photo','users.name as name')
+      'users.photo as photo','users.name as name','users.lastname as lastname')
       //from notifications
       ->join('users', 'users.id', '=', 'notifications.user_id')
       ->where('users.id','=',$id)

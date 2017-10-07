@@ -24,21 +24,23 @@
 	</div>
 </div>
 
-	<table class="table">
-		<thead>
+	<table class="table ">
+		<thead style="font-size:16px;" class="shownot colorhead">
 			<!--th>ID</th-->
 			<th>Tipo</th>
 			<th>Descripción</th>
 			<th>Paciente</th>
+			<th></th>
+			<th></th>
 			<!--th>Foto de perfil paciente</th-->
-		</thead>
+		</thead></br>
 		<tbody>
 			@foreach($notifications as $notification)
-				<tr class="shownot">
+				<tr class="shownot colorow">
 						<!--td>{{ $notification->id }}</td-->
-						<td><b>{{ $notification->type }}</b></td>
+						<td ><b>{{ $notification->type }}</b></td>
 						<td>{{ $notification->description }}</td>
-						<td>{{ $notification->name }}</td>
+						<td>{{ $notification->name .' '. $notification->lastname }}</td>
 						<td >{{ Html::image( asset($notification->photo) , 'a picture',
 						 array('class' => 'thumb', 'width' => 50, 'height' => 50 )) }}
 					 </td>
@@ -58,4 +60,19 @@
 		<!--Renderizando la paginacion, sin esto no aparece en la vista-->
 		{!!  $notifications->render() !!}
 	</div>
+@endsection
+
+@section('js')
+  <script>
+	/*ROJO, AZUL VERDE, NARANJA, MORADO*/
+	var colors2 = ['#F44336', '#0091EA', '#3F51B5', '#9C27B0', '#43A047', '#F57C00'];
+	$('.colorhead').css('color','#FFFFFF');
+	$('.colorhead').css('background-color', colors2[Math.floor(Math.random() * colors2.length)]);
+
+	var colors = ['#FFF'];
+	$('.colorow').each(function() {
+		$('.colorow').css('color','#004D40');
+    $(this).css('background-color', colors[Math.floor(Math.random() * colors.length)]);
+	});
+  </script>
 @endsection
