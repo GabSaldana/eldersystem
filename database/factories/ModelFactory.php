@@ -29,7 +29,7 @@ $factory->define(App\User::class, function(Generator $faker){
         'address' => $faker->address,
         'short_description' => $faker->paragraph($nbSentences = 2, $variableNbSentences = true),
         'photo' => '/images/pacientes/001-pokeballs.png',
-        'node_id' => 2,
+        'node_id' => 13,
     ];
     return $array;
 });
