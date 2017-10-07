@@ -112,7 +112,7 @@ class PatientController extends Controller
       ->where('user_variable.user_id','=',$id)
       ->count();
       if($count!=0){
-      for ($i = 1; $i <= $count; $i++){
+      /*for ($i = 1; $i <= $count; $i++){
        if($i==1){
         $lava=new Lavacharts;
         $measure=$lava->DataTable();
@@ -134,12 +134,12 @@ class PatientController extends Controller
             'position' => 'in'
           ]
         ]);
-       }
-       else{self::areaChart2($lava,$i);}
       }
+       else{self::areaChart2($lava,$i);}
+      }*/
 
       $patient = User::find($id);
-      return view('patient.show',["lava"=>$lava])->with('patient',$patient)->with('count',$count);
+      return view('patient.show')->with('patient',$patient)->with('count',$count);
       }
       else{
         $patient = User::find($id);
@@ -150,7 +150,7 @@ class PatientController extends Controller
     public function meashow($id)
     {
       //$data = User::searchmeasure($id);
-      $count = DB::table('user_variable')
+    /*  $count = DB::table('user_variable')
       ->where('user_variable.user_id','=',$id)
       ->count();
       for ($i = 1; $i <= $count; $i++){
@@ -177,8 +177,9 @@ class PatientController extends Controller
         ]);
        }
        else{self::areaChart2($lava,$i);}
-      }
-      return view('measure.show',["lava"=>$lava])->with('count',$count);
+      }*/
+      //return view('measure.show',["lava"=>$lava])->with('count',$count);
+      return view('measure.show');
     }
 
     private static function areaChart2($lava,$i){
