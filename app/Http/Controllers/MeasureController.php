@@ -62,7 +62,7 @@ class MeasureController extends Controller
            'user_id' => $user_id]
         );
 
-      }elseif($temperatura >= 35.1 && $temperatura <= 38.0){
+      }elseif($temperatura >= 37.1 && $temperatura <= 38.0){
         //echo 'estas que ardes'. '</br>';
         DB::table('notifications')->insert(
           ['description' => 'Tu temperatura es de: '.$temperatura.' °C, esta por encima de lo normal',
