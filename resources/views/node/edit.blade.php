@@ -5,14 +5,15 @@
 @section('content')
 
 	<table class="table">
-		<thead>
+		<thead class="colorhead">
 			<th>Paciente</th>
 			<th>Variable</th>
+			<th></th>
 		</thead>
 		<tbody>
 
 			@foreach($nodes as $node)
-			<tr>
+			<tr class="colorow">
 				<td>{{ $node -> user }}</td>
 				<td>{{ $node -> variable }}</td>
 				<td>
@@ -33,4 +34,19 @@
 			<a href="{{ route('node.add') }}" class="btn btn-info">Añadir variable a paciente</a><hr>
 		</tbody>
 	</table>
+@endsection
+
+@section('js')
+  <script>
+	/*ROJO, AZUL VERDE, NARANJA, MORADO*/
+	var colors2 = ['#F44336', '#0091EA', '#3F51B5', '#9C27B0', '#43A047', '#F57C00'];
+	$('.colorhead').css('color','#FFFFFF');
+	$('.colorhead').css('background-color', colors2[Math.floor(Math.random() * colors2.length)]);
+
+	var colors = ['#FFF'];
+	$('.colorow').each(function() {
+		$('.colorow').css('color','#004D40');
+    $(this).css('background-color', colors[Math.floor(Math.random() * colors.length)]);
+	});
+  </script>
 @endsection
