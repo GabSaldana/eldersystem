@@ -20,7 +20,7 @@
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6 show">
-     <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/331178/charts/1?average=15&bgcolor=%23ffffff&color=%23d62020&days=1&dynamic=true&title=Temperatura+corporal&type=bar&xaxis=Hora&yaxis=Temperatura+%C2%B0C&yaxismax=40&yaxismin=20"></iframe>
+     <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/331178/charts/1?average=15&bgcolor=%23ffffff&color=%23d62020&days=1&dynamic=true&title=Temperatura+corporal+promedio+al+d%C3%ADa&type=bar&xaxis=Hora&yaxis=Temperatura+%C2%B0C&yaxismax=40&yaxismin=20"></iframe>
     </div>
     <div class="col-md-3"></div>
   </div>
@@ -40,7 +40,7 @@
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6 show" >
-      <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/338831/charts/1?average=20&bgcolor=%23ffffff&color=%23d62020&days=1&dynamic=true&title=Promedio+de+pulsos+por+minuto&type=bar&xaxis=Hora&yaxis=BPM"></iframe>
+      <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/338831/charts/1?average=20&bgcolor=%23ffffff&color=%23d62020&days=1&dynamic=true&title=Promedio+de+pulsos+por+minuto+al+d%C3%ADa&type=bar&xaxis=Hora&yaxis=BPM"></iframe>
     </div>
     <div class="col-md-3"></div>
   </div>
