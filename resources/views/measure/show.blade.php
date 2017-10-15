@@ -16,15 +16,15 @@
     <div class="col-md-3"></div>
   </div>
 </br>
-  <!--div class="row">
+<div class="row"><!--PRIMERA VARIABLE DE TEMPERATURA PROMEDIO-->
+  <div class="row">
     <div class="col-md-3"></div>
-    <div class="col-md-6 show" style=" background-color:#a3ccff;">
-      <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/338831/charts/1?bgcolor=%23ffffff&color=%23d62020&days=1&dynamic=true&results=20&title=Pulsos+por+minuto&type=bar&xaxis=Hora&yaxis=BPM"></iframe>
+    <div class="col-md-6 show" >
+      <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/338831/charts/1?average=20&bgcolor=%23ffffff&color=%23d62020&days=2&dynamic=true&title=Promedio+de+pulsos+por+minuto&type=bar&xaxis=Hora&yaxis=BPM"></iframe>
     </div>
     <div class="col-md-3"></div>
   </div>
 </br>
-</div-->
 
 <div class="row"><!--PRIMERA VARIABLE DE TPULSO-->
   <div class="row">
