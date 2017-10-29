@@ -57,7 +57,7 @@ class MeasureController extends Controller
       if($temperatura <= 35.0 && $temperatura >= 33.0){
         //echo 'estas frio'. '</br>';
         DB::table('notifications')->insert(
-          ['description' => 'Tu temperatura es de: '.$temperatura.' °C, esta por debajo de lo normal',
+          ['description' => $date.' '.$time.' Tu temperatura es de: '.$temperatura.' °C, esta por debajo de lo normal',
            'type' => 'POR DEBAJO',
            'user_id' => $user_id]
         );
@@ -65,7 +65,7 @@ class MeasureController extends Controller
       }elseif($temperatura >= 37.1 && $temperatura <= 38.0){
         //echo 'estas que ardes'. '</br>';
         DB::table('notifications')->insert(
-          ['description' => 'Tu temperatura es de: '.$temperatura.' °C, esta por encima de lo normal',
+          ['description' =>  $date.' '.$time.' Tu temperatura es de: '.$temperatura.' °C, esta por encima de lo normal',
            'type' => 'POR ENCIMA',
            'user_id' => $user_id]
         );
@@ -76,7 +76,7 @@ class MeasureController extends Controller
       if($pulso_cardiaco >= 40.0 && $pulso_cardiaco <= 59.0 ){
         //echo 'estas frio'. '</br>';
         DB::table('notifications')->insert(
-          ['description' => 'Tus pulsaciones por minuto son de: '.$pulso_cardiaco.' bpms, estan por debajo de lo normal',
+          ['description' =>  $date.' '.$time.' Tus pulsaciones por minuto son de: '.$pulso_cardiaco.' bpms, estan por debajo de lo normal',
            'type' => 'POR DEBAJO',
            'user_id' => $user_id]
         );
@@ -84,7 +84,7 @@ class MeasureController extends Controller
       }elseif($pulso_cardiaco <= 175 && $pulso_cardiaco >= 101){
         //echo 'estas que ardes'. '</br>';
         DB::table('notifications')->insert(
-          ['description' => 'Tus pulsaciones por minuto son de: '.$pulso_cardiaco.' bpms, estan por encima de lo normal',
+          ['description' =>  $date.' '.$time.' Tus pulsaciones por minuto son de: '.$pulso_cardiaco.' bpms, estan por encima de lo normal',
            'type' => 'POR ENCIMA',
            'user_id' => $user_id]
         );
