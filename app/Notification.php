@@ -45,7 +45,8 @@ protected $fillable = ['description','type','admin_id','user_id','measure_id','r
   public function scopeSearchval($query, $value){
       return $query->where('users.name','like','%'.$value.'%')
       ->orWhere('notifications.type','like','%'.$value.'%')
-      ->orderBy('notifications.id','ASC')
+      ->orWhere('notifications.description','like','%'.$value.'%')
+      ->orderBy('notifications.id','DESC')
       ;
   }
 
@@ -57,7 +58,7 @@ protected $fillable = ['description','type','admin_id','user_id','measure_id','r
       ->join('admin_user', 'admin_user.user_id', '=', 'notifications.user_id')
       ->join('users', 'users.id', '=', 'notifications.user_id')
       ->where('admin_user.admin_id','=',$id)
-      //->orderBy('notifications.id','ASC')
+      //->orderBy('notifications.id','DESC')
       ;
   }
 
