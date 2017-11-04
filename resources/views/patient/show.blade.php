@@ -8,7 +8,7 @@
 	<div class="col-md-2">
 
 	</div>
-	<div class="col-md-8 show ">
+	<div class="col-md-8 show" style="color:#616161;">
 			<div class="form-group text-center">
 				{{Html::image(asset($patient->photo), 'a picture', array('width' => 200 , 'height' => 200, 'class' => 'thumb'))}}
 			</div>
@@ -22,13 +22,17 @@
 				{!! Form::label('age','Edad: '.$patient->age) !!}
 			</div>
 			<div class="form-group ">
-				{!! Form::label('sex','Genero: '.$patient->sex) !!}
+				@if($patient->sex == 'M')
+						{!! Form::label('sex','Genero: '.'Masculino') !!}
+				@else
+						{!! Form::label('sex','Genero: '.'Femenino') !!}
+				@endif
 			</div>
 			<div class="form-group ">
-				{!! Form::label('height','Estatura: '.$patient->height) !!}
+				{!! Form::label('height','Estatura: '.$patient->height . ' cm') !!}
 			</div>
 			<div class="form-group ">
-				{!! Form::label('weight','Peso: '.$patient->weight) !!}
+				{!! Form::label('weight','Peso: '.$patient->weight . ' kg') !!}
 			</div>
 			<div class="form-group ">
 				{!! Form::label('telephone_number','Numero de Telefono: '.$patient->telephone_number) !!}
