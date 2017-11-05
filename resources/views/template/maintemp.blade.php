@@ -11,6 +11,7 @@
 	<!--API STYLES-->
   <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('css/navi.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/card.css') }}">
 	<!-- Chosen -->
 	<link href="{{ asset('plugins/chosen/chosen.css') }}" rel="stylesheet">
 	<!--Trumbowyg-->

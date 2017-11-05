@@ -34,7 +34,7 @@
 				 	</br><h4> {{$doctor->name }}</h4><h4> {{$doctor->lastname }}</h4>
 			 		</div>
 
-					<td>
+					<td >
 						<!--a href="{{ route('doctor.destroy', $doctor->id) }}"
 						onclick="return confirm('Seguro que deseas eliminarlo?')" class="btn btn-danger">
 							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
@@ -42,7 +42,7 @@
 						<!--a href="{{ route('doctor.edit', $doctor->id)}}" class="btn btn-warning">
 							<span class="fa fa-pencil fa-lg" ></span>
 						</a-->
-						<a  href="{{ route('doctor.show', $doctor->id)}}" class=" acolor btn ">
+						<a  href="{{ route('doctor.show', $doctor->id)}}" class=" acolor btn-circle ">
 							<span class=" fa fa-eye fa-lg" ></span>
 						</a>
 						</br>

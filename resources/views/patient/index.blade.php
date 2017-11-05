@@ -32,15 +32,15 @@
 					 array('class' => 'thumb', 'width' => 50, 'height' => 50 )) }}
 				 </br><h4> {{$patient->name .' '. $patient->lastname}}</h4></br>
 				 </div>
-					<td>
+					<td >
 						<a href="{{ route('patient.destroy', $patient->id) }}"
-						onclick="return confirm('Seguro que deseas eliminarlo?')" class="btn btn-danger">
+						onclick="return confirm('Seguro que deseas eliminarlo?')" class="btn-circle btn-danger">
 							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 						</a>
-						<a href="{{ route('patient.edit', $patient->id)}}" class="btn btn-warning">
+						<a href="{{ route('patient.edit', $patient->id)}}" class="btn-circle btn-warning">
 							<span class="fa fa-pencil fa-lg" ></span>
 						</a>
-						<a href="{{ route('patient.show', $patient->id)}}" class="btn btn-primary">
+						<a href="{{ route('patient.show', $patient->id)}}" class="btn-circle btn-primary">
 							<span class="fa fa-eye fa-lg" ></span>
 						</a>
 						</br>

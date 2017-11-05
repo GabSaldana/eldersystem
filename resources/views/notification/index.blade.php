@@ -45,10 +45,12 @@
 						 array('class' => 'thumb', 'width' => 50, 'height' => 50 )) }}
 					 </td>
 						<td>
-							<a href="{{ route('notification.destroy', $notification->id) }}"
-							onclick="return confirm('Seguro que deseas eliminarla?')" class="btn btn-danger">
-								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-							</a>
+							<div style="margin-top:12px;">
+								<a href="{{ route('notification.destroy', $notification->id) }}"
+								onclick="return confirm('Seguro que deseas eliminarla?')" class="btn-circle btn-danger">
+									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+								</a>
+							</div>
 						</td>
 				</tr>
 
