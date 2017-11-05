@@ -7,10 +7,12 @@
 <div class="row">
 	<div class="col-md-2">
 	</div>
-	<div class="col-md-8 show">
+	<div class="col-md-8 show card hovercard" style="color:#616161;">
+		<div class="cardheader">
 
+		</div>
 		{!! Form::open(['route' => ['patient.updatesee', $patient->id], 'method' => 'PUT','files'=>true]) !!}
-			<div class="form-group text-center">
+			<div class="form-group text-center avatar">
 					 {{Html::image(asset($patient->photo), 'a picture', array('width' => 200 , 'height' => 200, 'class' => 'thumb'))}}
 				</div>
 			<div class="form-group">

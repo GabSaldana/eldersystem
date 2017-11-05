@@ -62,7 +62,7 @@
 @endsection
 @section('js')
   <script>
-	var colors = [ '#0091EA', '#3F51B5', '#0097A7'];
+	var colors = [ '#0091EA'];
 	$('.acolor').each(function() {
     $(this).css('background-color', colors[Math.floor(Math.random() * colors.length)]);
 	});

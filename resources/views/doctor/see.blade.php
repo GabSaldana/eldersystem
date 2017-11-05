@@ -9,10 +9,12 @@
 <div class="row">
 	<div class="col-md-2">
 	</div>
-	<div class="col-md-8 show">
+	<div class="col-md-8 show card hovercard" style="color:#616161;">
+		<div class="cardheader">
 
+		</div>
 		{!! Form::open(['route' => ['doctor.updatesee', $doctor->id], 'method' => 'PUT', 'files' => true ]) !!}
-			<div class="form-group text-center">
+			<div class="form-group text-center avatar">
 				{{ Html::image( asset($doctor->photo) , 'a picture',
 				 array('class' => 'thumb', 'width' => 200, 'height' => 200 )) }}
 			</div>
@@ -20,7 +22,7 @@
 				{!! Form::label('name','Nombre') !!}
 				{!! Form::text('name',$doctor->name,['class' => 'form-control','placeholder' => 'Nombre(s)', 'required']) !!}
 			</div>
-			<div class="form-group">
+			<div class="form-group ">
 				{!! Form::label('lastname','Apellidos') !!}
 				{!! Form::text('lastname',$doctor->lastname,['class' => 'form-control', 'required']) !!}
 			</div>
