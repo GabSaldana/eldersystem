@@ -14,7 +14,7 @@
 			        <!-- Wrapper for slides -->
 			        <div class="carousel-inner" role="listbox">
 			            <div class="item active">
-			            	<img src="{{ asset('images/website/slide-one.png') }}" alt="">
+			            	<img src="{{ asset('images/website/slide-one.jpg') }}" alt="">
 			                <div class="carousel-caption">
 		               			<h1>PONTE EN LINEA</h1>
 		               			<p>Servicio desde la comodidad de tu casa</p>
