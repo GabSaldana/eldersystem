@@ -8,11 +8,11 @@
 	<div class="col-md-2">
 	</div>
 	<div class="col-md-8 show card hovercard" style="color:#616161;">
-		<div class="cardheader">
+		<div class="cardheaderD">
 
 		</div>
 		{!! Form::open(['route' => ['patient.updatesee', $patient->id], 'method' => 'PUT','files'=>true]) !!}
-			<div class="form-group text-center avatar">
+			<div class="form-group text-center avatarD">
 					 {{Html::image(asset($patient->photo), 'a picture', array('width' => 200 , 'height' => 200, 'class' => 'thumb'))}}
 				</div>
 			<div class="form-group">
