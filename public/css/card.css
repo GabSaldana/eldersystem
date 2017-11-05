@@ -209,9 +209,13 @@
 }
 
 .btn-circle{
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
    border-radius: 50%;
    width:35px;
    height:35px;
+   min-width: 35px;
+   min-height: 35px;
    line-height:18px;
    padding: 8px;
    margin: 3px;

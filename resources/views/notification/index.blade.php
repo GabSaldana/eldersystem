@@ -34,7 +34,7 @@
 			<th></th>
 			<!--th>Foto de perfil paciente</th-->
 		</thead></br>
-		<tbody>
+		<tbody style="padding:10px;">
 			@foreach($notifications as $notification)
 				<tr class="shownot colorow">
 						<!--td>{{ $notification->id }}</td-->
